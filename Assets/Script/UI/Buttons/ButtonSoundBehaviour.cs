@@ -1,5 +1,7 @@
+using Audio;
 using UnityEngine;
 using UnityEngine.UI;
+using AudioType = Audio.AudioType;
 
 public class ButtonSoundBehaviour : MonoBehaviour
 {
@@ -12,6 +14,6 @@ public class ButtonSoundBehaviour : MonoBehaviour
 
     private void PlaySound()
     {
-        SoundManager.Instance.PlayClick();
+        AudioController.Instance.PlayAudio(AudioType.SFX_ButtonPressed);
     }
 }

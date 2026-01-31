@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c89ac4b6770ab844a859a129a1f16d91
+guid: 63444b75709eef748b91e438519fc78a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2047942956533883096
-    second: FEZ_0
+      213: 592368016165255686
+    second: char_head_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FEZ_0
+      name: char_head_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 46
-        width: 47
-        height: 49
+        x: 16
+        y: 7
+        width: 65
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82fd8834bbe3493e0800000000000000
-      internalID: -2047942956533883096
+      spriteID: 60a35db7293883800800000000000000
+      internalID: 592368016165255686
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      FEZ_0: -2047942956533883096
+      char_head_0: 592368016165255686
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

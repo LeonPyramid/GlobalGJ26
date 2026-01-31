@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c89ac4b6770ab844a859a129a1f16d91
+guid: 8bc8a586eee50af43804fa3b2477dcaf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2047942956533883096
-    second: FEZ_0
+      213: 2837257013642637027
+    second: grass_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FEZ_0
+      name: grass_1_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 46
-        width: 47
-        height: 49
+        x: 23
+        y: 18
+        width: 48
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82fd8834bbe3493e0800000000000000
-      internalID: -2047942956533883096
+      spriteID: 3eea7a2b836ff5720800000000000000
+      internalID: 2837257013642637027
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      FEZ_0: -2047942956533883096
+      grass_1_0: 2837257013642637027
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

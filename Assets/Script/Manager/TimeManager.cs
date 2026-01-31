@@ -12,10 +12,14 @@ public class TimeManager : Singleton<TimeManager>
     [SerializeField] private float timeSpeedQTE;
     [SerializeField] private float timeSpeedBin;
 
-    [SerializeField] private Tween lastChange;
+    private float InitiaFixedDeltaTime;
+
+    [SerializeField] private Tween lastChangeTime;
+    [SerializeField] private Tween lastChangeFixed;
 
     [SerializeField] private Queue<NewTimeType> newTimeQueue;
     [SerializeField] private Queue<float> qualityQTEQueue;
+    [SerializeField] public enum NewTimeType { Wall, Moving, QTE, Bin };
     [SerializeField] public NewTimeType newTimeType{
          get; private set;
     }
@@ -23,7 +27,6 @@ public class TimeManager : Singleton<TimeManager>
     private QteBehaviour qteBehaviour;
 
 
-    public enum NewTimeType { Wall, Moving, QTE, Bin };
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,6 +35,8 @@ public class TimeManager : Singleton<TimeManager>
         qualityQTEQueue = new Queue<float>();
         qteBehaviour = QteBehaviour.Instance;
         qteBehaviour.OnDone += OnQteDone;
+        InitiaFixedDeltaTime = Time.fixedDeltaTime;
+        newTimeType = NewTimeType.Wall;
     }
 
     // Update is called once per frame
@@ -101,7 +106,7 @@ public class TimeManager : Singleton<TimeManager>
         
         ChangeTimeSpeed(timeSpeed);
         if(localType == NewTimeType.QTE){
-            float dir = Random.Range(0,1)==0?-1f:1f;
+            float dir = Random.Range(0,2)==0?-1f:1f;
             qteBehaviour.Show(dir,qualityQTEQueue.Peek());
         }
     }
@@ -113,8 +118,11 @@ public class TimeManager : Singleton<TimeManager>
     }
 
     void ChangeTimeSpeed(float newTimeSpeed){
-        lastChange.Kill();
-        lastChange = DOTween.To(x => Time.timeScale = x,Time.timeScale,newTimeSpeed,timeChangeSpeed);
+        lastChangeTime.Kill();
+        lastChangeTime = DOTween.To(x => Time.timeScale = x,Time.timeScale,newTimeSpeed,timeChangeSpeed);
+        lastChangeFixed.Kill();
+        lastChangeFixed = DOTween.To(x => Time.fixedDeltaTime = x,Time.fixedDeltaTime,InitiaFixedDeltaTime * newTimeSpeed,timeChangeSpeed);
+        //Time.fixedDeltaTime = InitiaFixedDeltaTime * newTimeSpeed;
     }
 
 }

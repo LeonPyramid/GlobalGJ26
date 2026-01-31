@@ -1150,8 +1150,8 @@ MonoBehaviour:
   timeChangeSpeed: 0.01
   timeSpeedWall: 0.05
   timeSpeedMoving: 1
-  timeSpeedQTE: 0
-  timeSpeedBin: 0.9
+  timeSpeedQTE: 0.01
+  timeSpeedBin: 0.7
 --- !u!1 &1330292921
 GameObject:
   m_ObjectHideFlags: 0

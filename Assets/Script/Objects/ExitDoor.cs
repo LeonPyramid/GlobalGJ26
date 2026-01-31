@@ -1,11 +1,9 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class CopGrasp : MonoBehaviour
+public class ExitDoor : MonoBehaviour
 {
-    public static Action<bool> OnPlayerCatched;
-
+    public static Action<bool> OnPlayerExit;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int CollLayer = collision.gameObject.layer;
@@ -14,7 +12,7 @@ public class CopGrasp : MonoBehaviour
             Player player = collision.gameObject.GetComponent<Player>();
             if (player.status != Player.Status.Hidden)
             {
-                OnPlayerCatched.Invoke(false);
+                OnPlayerExit.Invoke(true);
             }
         }
     }

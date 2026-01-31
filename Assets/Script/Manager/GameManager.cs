@@ -20,11 +20,13 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     private bool _isGamePaused = false;
     private bool _isGameOver = false;
 
-    public static Action OnGameOver;
+    public static Action<bool> OnGameOver; //true -> win | false -> loose
+    public static Action OnKeyPickUp;
     public static Action<bool> OnGamePause;
     public static Action<int> OnGoldAdded;
     void Start()
     {
+        _isGameOver = false;
         AudioController.Instance.PlayAudio(levelMusic);
     }
 
@@ -40,12 +42,14 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
 
     private void OnEnable()
     {
-
+        CopGrasp.OnPlayerCatched += GameOver;
+        ExitDoor.OnPlayerExit += GameOver;
     }
 
     private void OnDisable()
     {
-
+        CopGrasp.OnPlayerCatched -= GameOver;
+        ExitDoor.OnPlayerExit += GameOver;
     }
 
     public void RestartLevel()
@@ -53,9 +57,9 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
         SceneManager.LoadScene("Game");
     }
 
-    private void GameOver()
+    private void GameOver(bool isWin)
     {
-        OnGameOver?.Invoke();
+        OnGameOver?.Invoke(isWin);
         _isGameOver = true;
     }
 

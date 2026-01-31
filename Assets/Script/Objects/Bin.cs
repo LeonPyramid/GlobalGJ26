@@ -49,7 +49,7 @@ public class Bin : PlayerInteraction.PlayerAction
             isPlayerInside = false;
         }
     }
-    public override void TimerEffect()
+    public override void TimerEffect(Collider2D playerCollider)
     {
         if (!isUsable) return;
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Bin);
@@ -57,6 +57,7 @@ public class Bin : PlayerInteraction.PlayerAction
 
     public override void TimerRevert()
     {
+        timeManager.PopTypeSpeed(TimeManager.NewTimeType.Bin);
         timeManager.PopTypeSpeed();
         StartCoroutine(ProcessUseCoolDown());
     }

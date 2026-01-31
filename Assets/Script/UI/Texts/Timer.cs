@@ -16,6 +16,6 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.SetText($"{Time.time - initialTime}s : {TimeManager.Instance.newTimeType}");
+        text.SetText($"{Time.time - initialTime}s : {TimeManager.Instance.newTimeType}, {Time.timeScale}");
     }
 }

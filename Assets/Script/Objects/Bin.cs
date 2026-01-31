@@ -14,13 +14,13 @@ public class Bin : PlayerInteraction.PlayerAction
         playerGo.transform.position = transform.position;
         playerGo.GetComponent<Player>().SetStatic();
     }
-    public override void TimerEffect()
+    public override void TimerEffect(Collider2D playerCollider)
     {
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Bin);
     }
 
     public override void TimerRevert()
     {
-        timeManager.PopTypeSpeed();
+        timeManager.PopTypeSpeed(TimeManager.NewTimeType.Bin);
     }
 }

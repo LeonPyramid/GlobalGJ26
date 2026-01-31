@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Collider2D childTrigger;
 
     private TimeManager timeManager;
+    public Vector2 direction{
+        get;private set;
+    }
 
     /// <summary>
     ///  The player's current status
@@ -137,10 +140,11 @@ public class Player : MonoBehaviour
     private void MoveDir()
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
+        direction = (mousePosition - (Vector2)transform.position).normalized;
         Debug.DrawRay(transform.position, direction * dashDistance, Color.yellow,0.5f);
         GetComponent<Rigidbody2D>().AddForce(direction*dashSpeed);
         SetMoving();
+
     }
 
 

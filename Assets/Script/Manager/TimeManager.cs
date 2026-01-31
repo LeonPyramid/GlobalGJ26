@@ -15,9 +15,12 @@ public class TimeManager : Singleton<TimeManager>
     [SerializeField] private Tween lastChange;
 
     [SerializeField] private Queue<NewTimeType> newTimeQueue;
+    [SerializeField] private Queue<float> qualityQTEQueue;
     [SerializeField] public NewTimeType newTimeType{
          get; private set;
     }
+
+    private QteBehaviour qteBehaviour;
 
 
     public enum NewTimeType { Wall, Moving, QTE, Bin };
@@ -26,6 +29,9 @@ public class TimeManager : Singleton<TimeManager>
     void Start()
     {
         newTimeQueue = new Queue<NewTimeType>();
+        qualityQTEQueue = new Queue<float>();
+        qteBehaviour = QteBehaviour.Instance;
+        qteBehaviour.OnDone += OnQteDone;
     }
 
     // Update is called once per frame
@@ -53,7 +59,15 @@ public class TimeManager : Singleton<TimeManager>
 
     }
 
-    public void PopTypeSpeed(){
+    public void AddQualityQTE(float qualt){
+        qualityQTEQueue.Enqueue(qualt);
+    }
+
+    public void PopTypeSpeed(NewTimeType type){
+        if (type == NewTimeType.QTE){
+            if( qualityQTEQueue.Count > 0 )
+                qualityQTEQueue.Dequeue();
+        }
         if( newTimeQueue.Count > 0 )
             newTimeQueue.Dequeue();
         ComputeTimeSpeed(null);
@@ -86,9 +100,17 @@ public class TimeManager : Singleton<TimeManager>
         };
         
         ChangeTimeSpeed(timeSpeed);
+        if(localType == NewTimeType.QTE){
+            float dir = Random.Range(0,1)==0?-1f:1f;
+            qteBehaviour.Show(dir,qualityQTEQueue.Peek());
+        }
     }
 
 
+    void OnQteDone(int score){
+        Debug.Log("J'ai pop");
+        PopTypeSpeed(NewTimeType.QTE);
+    }
 
     void ChangeTimeSpeed(float newTimeSpeed){
         lastChange.Kill();

@@ -446,7 +446,7 @@ MonoBehaviour:
     source: {fileID: 1409805659878409159}
     audio:
     - type: 3
-      clip: {fileID: 8300000, guid: b13a412cbdf197c47b2064928cd3488c, type: 3}
+      clip: {fileID: 8300000, guid: aa238a94c7da8f54e8955766242fb803, type: 3}
     paused: 0
     volume: 0
     pitch: 0

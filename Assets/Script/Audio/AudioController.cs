@@ -136,6 +136,8 @@ namespace Audio
             // Initialisation du volume
             m_AudioTable = new Hashtable();
             m_JobTable = new Hashtable();
+
+            var mute = PlayerPrefs.GetInt(MuteKey, 1) == 1;
             
             foreach (var bus in audioBuses)
             {
@@ -147,6 +149,8 @@ namespace Audio
                 if (busDict.TryGetValue(track.busType, out var bus))
                 {
                     bus.sources.Add(track.source);
+
+                    track.source.enabled = !mute;
                 }
 
                 foreach (var obj in track.audio)
@@ -191,6 +195,9 @@ namespace Audio
             if (!m_AudioTable.ContainsKey(job.type)) yield break;
 
             AudioTrack track = (AudioTrack)m_AudioTable[job.type];
+
+            if(!track.source.enabled) yield break;
+
             track.source.clip = GetClipFromTrack(job.type, track);
 
             Debug.Log($"[RunAudioJob] Starting action: {job.action} for {job.type}");
@@ -377,6 +384,20 @@ namespace Audio
             return busDict.TryGetValue(type, out var bus) ? bus.volume : 1f;
         }
 
+        public const string MuteKey = "Mute";
+
+        public void ChangeAudioState(bool mute)
+        {
+            foreach (var audioBus in busDict.Values)
+            {
+                foreach (var audioSource in audioBus.sources)
+                {
+                    audioSource.enabled = !mute;
+                }
+            }
+
+            PlayerPrefs.SetInt(MuteKey, mute ? 1 : 0);
+        }
         #endregion
     }
 }

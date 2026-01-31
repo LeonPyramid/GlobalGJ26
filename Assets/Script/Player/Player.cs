@@ -23,9 +23,11 @@ public class Player : MonoBehaviour
     /// <summary>
     ///  The player's current status
     /// </summary>
-    private enum Status {Moving, Static, Hidden};
+    public enum Status {Moving, Static, Hidden};
 
-    [SerializeField] Status status = Status.Static;
+    [SerializeField] public Status status {
+        get;set;
+    } = Status.Static;
     Camera m_Camera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -70,6 +72,8 @@ public class Player : MonoBehaviour
         }*/
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         GetComponent<Rigidbody2D>().angularVelocity = 0;
+        status = Status.Static;
+
     }
 
     /// <summary>

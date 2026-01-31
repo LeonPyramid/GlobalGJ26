@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4e8957c03ec66814cb88f469ec9ad818
+guid: f6b15d2bb009e8f4b9f8fc95903e30cb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7127775992108165136
-    second: char_body_0
+      213: 6093286654331370248
+    second: fez_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: char_body_0
+      name: fez_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 20
-        width: 52
-        height: 54
+        x: 2
+        y: 9
+        width: 75
+        height: 79
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0f7d5dfef7d051d90800000000000000
-      internalID: -7127775992108165136
+      spriteID: 80bbc02bde3bf8450800000000000000
+      internalID: 6093286654331370248
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c78ff7c6722ed884f9b40ad3d03f1107
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      char_body_0: -7127775992108165136
+      fez_0: 6093286654331370248
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

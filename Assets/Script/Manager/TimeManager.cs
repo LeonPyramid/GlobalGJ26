@@ -12,20 +12,31 @@ public class TimeManager : Singleton<TimeManager>
     [SerializeField] private float timeSpeedQTE;
     [SerializeField] private float timeSpeedBin;
 
-    [SerializeField] private Tween lastChange;
+    private float InitiaFixedDeltaTime;
+
+    [SerializeField] private Tween lastChangeTime;
+    [SerializeField] private Tween lastChangeFixed;
 
     [SerializeField] private Queue<NewTimeType> newTimeQueue;
+    [SerializeField] private Queue<float> qualityQTEQueue;
+    [SerializeField] public enum NewTimeType { Wall, Moving, QTE, Bin };
     [SerializeField] public NewTimeType newTimeType{
          get; private set;
     }
 
+    private QteBehaviour qteBehaviour;
 
-    public enum NewTimeType { Wall, Moving, QTE, Bin };
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         newTimeQueue = new Queue<NewTimeType>();
+        qualityQTEQueue = new Queue<float>();
+        qteBehaviour = QteBehaviour.Instance;
+        qteBehaviour.OnDone += OnQteDone;
+        InitiaFixedDeltaTime = Time.fixedDeltaTime;
+        newTimeType = NewTimeType.Wall;
     }
 
     // Update is called once per frame
@@ -53,7 +64,15 @@ public class TimeManager : Singleton<TimeManager>
 
     }
 
-    public void PopTypeSpeed(){
+    public void AddQualityQTE(float qualt){
+        qualityQTEQueue.Enqueue(qualt);
+    }
+
+    public void PopTypeSpeed(NewTimeType type){
+        if (type == NewTimeType.QTE){
+            if( qualityQTEQueue.Count > 0 )
+                qualityQTEQueue.Dequeue();
+        }
         if( newTimeQueue.Count > 0 )
             newTimeQueue.Dequeue();
         ComputeTimeSpeed(null);
@@ -86,13 +105,24 @@ public class TimeManager : Singleton<TimeManager>
         };
         
         ChangeTimeSpeed(timeSpeed);
+        if(localType == NewTimeType.QTE){
+            float dir = Random.Range(0,2)==0?-1f:1f;
+            qteBehaviour.Show(dir,qualityQTEQueue.Peek());
+        }
     }
 
 
+    void OnQteDone(int score){
+        Debug.Log("J'ai pop");
+        PopTypeSpeed(NewTimeType.QTE);
+    }
 
     void ChangeTimeSpeed(float newTimeSpeed){
-        lastChange.Kill();
-        lastChange = DOTween.To(x => Time.timeScale = x,Time.timeScale,newTimeSpeed,timeChangeSpeed);
+        lastChangeTime.Kill();
+        lastChangeTime = DOTween.To(x => Time.timeScale = x,Time.timeScale,newTimeSpeed,timeChangeSpeed);
+        lastChangeFixed.Kill();
+        lastChangeFixed = DOTween.To(x => Time.fixedDeltaTime = x,Time.fixedDeltaTime,InitiaFixedDeltaTime * newTimeSpeed,timeChangeSpeed);
+        //Time.fixedDeltaTime = InitiaFixedDeltaTime * newTimeSpeed;
     }
 
 }

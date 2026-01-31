@@ -23,9 +23,9 @@ public class Player : MonoBehaviour
     /// <summary>
     ///  The player's current status
     /// </summary>
-    public enum Status {Moving, Static, Hidden}
+    private enum Status {Moving, Static, Hidden};
 
-    [SerializeField] 
+    [SerializeField] Status status = Status.Static;
     Camera m_Camera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -43,6 +43,11 @@ public class Player : MonoBehaviour
         if(mouse.leftButton.wasPressedThisFrame){
             lastMove.Kill();
             float time;
+            if(status == Status.Moving)
+            {
+                GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+                GetComponent<Rigidbody2D>().angularVelocity = 0;
+            }
             Vector2 dest = GetDestPos(out time);
             //MoveToPos(dest,time);
             MoveDir();
@@ -57,10 +62,12 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("HasLanded");
-        int CollLayer = collision.gameObject.layer;
+        /*int CollLayer = collision.gameObject.layer;
         if(CollLayer==LayerMask.GetMask("Wall") || CollLayer==LayerMask.GetMask("CollidableObject")){
             lastMove.Kill();
-        }
+        }*/
+        GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().angularVelocity = 0;
     }
 
     /// <summary>
@@ -120,6 +127,7 @@ public class Player : MonoBehaviour
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
         GetComponent<Rigidbody2D>().AddForce(direction*dashSpeed);
+        status = Status.Moving;
     }
 
 #region DEBUG_FUNC

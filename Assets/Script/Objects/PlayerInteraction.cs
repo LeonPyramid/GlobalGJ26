@@ -16,7 +16,7 @@ public class PlayerInteraction : MonoBehaviour
 
 
 
-    public enum Status { Far, Close, Interacted };
+    public enum Status { Far, Close, Interacted , Blocked};
 
     [SerializeField] public Status status;
 
@@ -25,14 +25,13 @@ public class PlayerInteraction : MonoBehaviour
 
     private Collider2D closeCollider;
 
-    [SerializeField] public bool IsInteractable;
+    //[SerializeField] private bool IsInteractable;
 
     [SerializeReference] private PlayerAction action;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        status = Status.Far;
         spriteR = GetComponent<SpriteRenderer>();
         interAction = InputSystem.actions.FindAction("Attack");
         closeCollider = null;
@@ -49,27 +48,29 @@ public class PlayerInteraction : MonoBehaviour
 
     }
 
-    void OnButtonPressed(InputControl button){
-
-    }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("HasTouched");
-        int CollLayer = collision.gameObject.layer;
-        if(CollLayer==LayerMask.NameToLayer("PlayerRange")){
-            status = Status.Close;
-            closeCollider = collision;
+        if(status!=Status.Blocked){
+            Debug.Log("HasTouched");
+            int CollLayer = collision.gameObject.layer;
+            if(CollLayer==LayerMask.NameToLayer("PlayerRange")){
+                status = Status.Close;
+                closeCollider = collision;
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        int CollLayer = collision.gameObject.layer;
-         if(CollLayer==LayerMask.NameToLayer("PlayerRange")){
-            status = Status.Far;
-            closeCollider = null;
+        if (status != Status.Blocked)
+        {
+            int CollLayer = collision.gameObject.layer;
+            if (CollLayer == LayerMask.NameToLayer("PlayerRange"))
+            {
+                status = Status.Far;
+                closeCollider = null;
+            }
         }
     }
 
@@ -81,9 +82,17 @@ public class PlayerInteraction : MonoBehaviour
             Status.Far => Color.white,
             Status.Close => Color.green,
             Status.Interacted => Color.red,
+            Status.Blocked => Color.gray,
             _ => Color.black,
         };
         spriteR.color = col;
     }
 
+    public void SetBLocked(){
+        status = Status.Blocked;
+    }
+
+    public void SetUnblocked(){
+        status = Status.Far;
+    }
 }

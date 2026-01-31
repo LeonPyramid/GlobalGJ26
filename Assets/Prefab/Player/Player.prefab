@@ -139,7 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashDistance: 40
-  dashSpeed: 40
+  dashSpeed: 0.3
+  status: 1
 --- !u!50 &3853536026916828205
 Rigidbody2D:
   serializedVersion: 5
@@ -165,5 +166,5 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0

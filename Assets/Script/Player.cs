@@ -40,7 +40,6 @@ public class Player : MonoBehaviour
     /// </summary>
     /// <returns>The new position</returns>
     private Vector2 GetDestPos(){
-        //TODO rajouter masque de layers pour diff objets
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
 
@@ -51,6 +50,7 @@ public class Player : MonoBehaviour
         Debug.Log(hitPoint);
         if (hitPoint)
         {   
+            //TODO Modifier le calcul de l'endroit de stop pcq il faut être distant à la tangente
             Vector2 dest = hitPoint.point - (direction * cCollider.radius);
             Debug.DrawRay(transform.position, direction * (Vector2.Distance(transform.position,dest)), Color.blue,0.5f);
             return hitPoint.point - (direction * cCollider.radius);
@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
     /// <param name="pos"></param>
     private void MoveToPos(Vector2 pos){
         //TODO fine tune la foction d'acceleration
+        //TODO Changer le temps par une vitesse de déplacement (faire en sorte que le tps dépende de la distance)
         transform.DOMove(pos,dashSpeed).SetEase(Ease.OutSine);
     }
 

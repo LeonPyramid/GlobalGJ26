@@ -137,4 +137,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2fed54845eb5f38ac83e1259e57418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpDistance: 50
+  dashDistance: 40
+  dashSpeed: 0.3

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Audio;
 using DG.Tweening;
 using TMPro;
@@ -16,6 +18,12 @@ public class QteBehaviour : Singleton<QteBehaviour>
 
     [Header("Gauge")]
     [SerializeField] private RawImage rawImage;
+    [SerializeField] private Color outOfRangeColor;
+    [SerializeField] private Color midOutInColor;
+    [SerializeField] private Color inRangeColor;
+    [SerializeField] private Color midInPerfectColor;
+    [SerializeField] private Color inPerfectRangeColor;
+    private Texture2D _texture;
 
     [Header("Handle")]
     [SerializeField] private RectTransform handleRectTransform;
@@ -42,12 +50,21 @@ public class QteBehaviour : Singleton<QteBehaviour>
 
     [Header("Score")]
     [SerializeField] private TextMeshProUGUI score;
+    [SerializeField] private string perfectText;
+    [SerializeField] private string almostPerfectText;
+    [SerializeField] private string inText;
+    [SerializeField] private string almostText;
+    [SerializeField] private string failed;
     [SerializeField] private RectTransform scoreTransform;
     [SerializeField] private Vector3 scoreScale;
     [SerializeField] private float scoreDuration;
     [SerializeField] private Ease scoreEase;
 
     private float _currentDir;
+    [SerializeField] private float ScoreRange;
+    [SerializeField] private List<float> scoreRangesPossible;
+
+    public Action<int> OnDone;
 
     private void Start()
     {
@@ -56,7 +73,11 @@ public class QteBehaviour : Singleton<QteBehaviour>
 
     private void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Space) && handleTween != null && handleTween.active)
+        if(Input.GetKeyDown(KeyCode.Tab) && !_shown)
+        {
+            Show(1,ScoreRange);
+        }
+        if(Input.GetKeyDown(KeyCode.Space) && handleTween != null && handleTween.active && _shown)
         {
             handleTween.Kill();
 
@@ -70,21 +91,97 @@ public class QteBehaviour : Singleton<QteBehaviour>
 
         lineRectTransform.anchoredPosition = dir > 0 ? new Vector2(hideX, 0) : new Vector2(-hideX, 0);
         
-        globalRectTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, dir > 0 ? Random.Range(0, rotationRange) : -Random.Range(0, rotationRange)));
+        globalRectTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, dir > 0 ? UnityEngine.Random.Range(0, rotationRange) : -UnityEngine.Random.Range(0, rotationRange)));
 
         AnchorUtils.SetAnchorPresetWithoutMoving(handleRectTransform, dir > 0 ? AnchorPreset.MiddleRight : AnchorPreset.MiddleLeft);
 
         handleRectTransform.anchoredPosition = Vector2.zero;
 
+        scoreRange = FixScoreRange(scoreRange);
+
+        ColorGauge(scoreRange);
+
+        ScoreRange = scoreRange;
+
         lineRectTransform
             .DOAnchorPosX(showX, appearDuration)
             .SetEase(appearEase)
+            .SetUpdate(true)
             .OnComplete(() =>
             {
                 _shown = true;
 
                 PlayHandle(dir);
             });
+    }
+
+    private float FixScoreRange(float colorRange)
+    {
+        var res = 0.125f;
+
+        foreach (var possibleRange in scoreRangesPossible)
+        {
+            if(colorRange > possibleRange)
+            {
+                res = possibleRange;
+
+                break;
+            }
+        }
+
+        return res;
+    }
+
+    private void ColorGauge(float scoreRange)
+    {
+        var perfectScoreRange = scoreRange/2;
+
+        _texture = new Texture2D(16, 1)
+            {
+                wrapMode = TextureWrapMode.Clamp,
+                name = "HueTexture"
+            };
+
+            for (var i = 0; i < _texture.width; i++)
+            {
+                _ = Color.white;
+                Color color;
+                if (i >= (_texture.width / 2) - (scoreRange * _texture.width / 2) && i <= (_texture.width / 2) + (scoreRange * _texture.width / 2))
+                {
+                    if (i >= (_texture.width / 2) - (perfectScoreRange * _texture.width / 2) && i <= (_texture.width / 2) + (perfectScoreRange * _texture.width / 2))
+                    {
+                        if(i == (_texture.width / 2) - (perfectScoreRange * _texture.width / 2) || i == (_texture.width / 2) + (perfectScoreRange * _texture.width / 2))
+                        {
+                            color = midInPerfectColor;
+                        } 
+                        else
+                        {
+                            color = inPerfectRangeColor;
+                        }
+                    }
+                    else
+                    {
+                        if(i == (_texture.width / 2) - (scoreRange * _texture.width / 2) || i == (_texture.width / 2) + (scoreRange * _texture.width / 2))
+                        {
+                            color = midOutInColor;
+                        } 
+                        else
+                        {
+                            color = inRangeColor;
+                        }
+                    }
+                }
+                else
+                {
+                    color = outOfRangeColor;
+                }
+
+                _texture.SetPixel(i, i, color);
+            }
+
+            _texture.Apply();
+
+            rawImage.texture = _texture;
     }
 
     private void PlayHandle(float dir)
@@ -96,11 +193,10 @@ public class QteBehaviour : Singleton<QteBehaviour>
         handleTween = handleRectTransform
             .DOAnchorPosX(0, handleDuration / handleSpeedMultiplier)
             .SetEase(handleEase)
+            .SetUpdate(true)
             .OnUpdate(() =>
             {
                 _currentScore = (handleRectTransform.anchoredPosition.x - _currentPivot) / _currentPivot;
-
-                score.text = _currentScore.ToString();
             })
             .OnComplete(() =>
             {
@@ -112,22 +208,54 @@ public class QteBehaviour : Singleton<QteBehaviour>
     {
         AudioController.Instance.PlayAudio(Audio.AudioType.SFX_NewBestScore);
 
+        var score = CalculateScore();
+
         scoreTransform
             .DOScale(scoreScale, scoreDuration)
             .SetEase(scoreEase)
+            .SetUpdate(true)
             .OnComplete(() =>
             {
                 scoreTransform
                     .DOScale(Vector3.one, scoreDuration)
                     .SetEase(scoreEase)
+                    .SetUpdate(true)
                     .OnComplete(() =>
                     {
-                       Hide(dir);
+                       Hide(dir, false, score);
                     });
             });
     }
 
-    private void Hide(float dir, bool fast = false)
+    private int CalculateScore()
+    {
+        if(Mathf.Abs(_currentScore) < ScoreRange)
+        {
+            if(Mathf.Abs(_currentScore) < ScoreRange/2)
+            {
+                score.text = perfectText;
+                score.color = inPerfectRangeColor;
+
+                return 2;
+            } 
+            else
+            {
+                score.text = inText;
+                score.color = inRangeColor;
+
+                return 1;
+            }
+        } 
+        else
+        {
+            score.text = failed;
+            score.color = outOfRangeColor;
+
+            return 0;
+        }
+    }
+
+    private void Hide(float dir, bool fast = false, int score = 0)
     {
         var hideXPos = dir > 0 ? -hideX : hideX;
 
@@ -143,9 +271,12 @@ public class QteBehaviour : Singleton<QteBehaviour>
         lineRectTransform
             .DOAnchorPosX(hideXPos, appearDuration)
             .SetEase(appearEase)
+            .SetUpdate(true)
             .OnComplete(() =>
             {
                 _shown = false;
+
+                OnDone?.Invoke(score);
             });
     }
 

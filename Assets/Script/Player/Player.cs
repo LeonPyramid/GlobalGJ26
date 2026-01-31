@@ -142,7 +142,8 @@ public class Player : MonoBehaviour
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition - (Vector2)transform.position).normalized;
         Debug.DrawRay(transform.position, direction * dashDistance, Color.yellow,0.5f);
-        GetComponent<Rigidbody2D>().AddForce(direction*dashSpeed);
+        Debug.Log($"New Force {direction * dashSpeed} of power {(direction * dashSpeed).SqrMagnitude()}");
+        GetComponent<Rigidbody2D>().linearVelocity = (direction*dashSpeed);
         SetMoving();
 
     }

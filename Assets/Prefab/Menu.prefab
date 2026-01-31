@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 1731236250080633162}
   - component: {fileID: 6180268599857319132}
   - component: {fileID: 2478312643160987264}
-  - component: {fileID: 1261179326732172522}
+  - component: {fileID: 1307497469684664445}
   m_Layer: 0
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -557,7 +557,7 @@ MonoBehaviour:
   titleButtons: {fileID: 9020326478510354630}
   rectTransform: {fileID: 1731236250080633162}
   alwaysHigh: 0
---- !u!114 &1261179326732172522
+--- !u!114 &1307497469684664445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -566,11 +566,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1298573473057695543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53dee2f26e6d0b4dbfb614b30a4b7b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 692b0682975a65647aec17d3ef26389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 8170936420978314553}
-  SFX: {fileID: 6301137058073433589}
+  musicSlider: {fileID: 8170936420978314553}
+  musicValue: {fileID: 5333887176386673962}
+  sfxSlider: {fileID: 6301137058073433589}
+  sfxValue: {fileID: 214883918032217747}
+  soundButton: {fileID: 4352063100845150438}
+  soundText: {fileID: 6829802195814799992}
 --- !u!1 &1431400604782375160
 GameObject:
   m_ObjectHideFlags: 0

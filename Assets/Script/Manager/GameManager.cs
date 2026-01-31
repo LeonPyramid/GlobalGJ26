@@ -30,6 +30,18 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
         AudioController.Instance.PlayAudio(levelMusic);
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            GameOver(true);
+        }
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            GameOver(false);
+        }
+    }
+
     public void OnGamePauseHandler(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -43,13 +55,13 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     private void OnEnable()
     {
         CopGrasp.OnPlayerCatched += GameOver;
-        ExitDoor.OnPlayerExit += GameOver;
+        //ExitDoor.OnPlayerExit += GameOver;
     }
 
     private void OnDisable()
     {
         CopGrasp.OnPlayerCatched -= GameOver;
-        ExitDoor.OnPlayerExit += GameOver;
+        //ExitDoor.OnPlayerExit += GameOver;
     }
 
     public void RestartLevel()

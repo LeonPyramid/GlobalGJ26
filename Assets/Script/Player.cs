@@ -19,6 +19,13 @@ public class Player : MonoBehaviour
     /// </summary>
     private CircleCollider2D cCollider;
     private float radius;
+
+    /// <summary>
+    ///  The player's current status
+    /// </summary>
+    public enum Status {Moving, Static, Hidden}
+
+    [SerializeField] 
     Camera m_Camera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -37,7 +44,8 @@ public class Player : MonoBehaviour
             lastMove.Kill();
             float time;
             Vector2 dest = GetDestPos(out time);
-            MoveToPos(dest,time);
+            //MoveToPos(dest,time);
+            MoveDir();
         }
     }
 
@@ -62,7 +70,7 @@ public class Player : MonoBehaviour
     private Vector2 GetDestPos(out float time){
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
-
+    
         //Restrict raycast to collidables first
         LayerMask mask = LayerMask.GetMask("CollidableObject");
         RaycastHit2D hitPoint = Physics2D.Raycast(transform.position,direction, (dashDistance+radius),mask);
@@ -80,7 +88,7 @@ public class Player : MonoBehaviour
         hitPoint = Physics2D.Raycast(transform.position,direction, (dashDistance+radius),mask);
         if (hitPoint)
         {
-            ExtWall.Orientation wallOrt = hitPoint.collider.gameObject.GetComponent<ExtWall>().wallOrientation;
+            //ExtWall.Orientation wallOrt = hitPoint.collider.gameObject.GetComponent<ExtWall>().wallOrientation;
             //TODO Terminer le calcul de la tangente si jamais on revient à DotWeen
 
             Vector2 dest = hitPoint.point - (direction * cCollider.radius);
@@ -107,6 +115,12 @@ public class Player : MonoBehaviour
         lastMove = transform.DOMove(pos,time).SetEase(Ease.OutQuart);
     }
 
+    private void MoveDir()
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
+        GetComponent<Rigidbody2D>().AddForce(direction*dashSpeed);
+    }
 
 #region DEBUG_FUNC
 

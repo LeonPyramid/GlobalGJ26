@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Collider2D childTrigger;
 
+    private TimeManager timeManager;
+
     /// <summary>
     ///  The player's current status
     /// </summary>
@@ -32,12 +34,13 @@ public class Player : MonoBehaviour
     } = Status.Static;
     Camera m_Camera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    void Start()
     {
         m_Camera = Camera.main;
         cCollider = this.GetComponent<CircleCollider2D>();
         radius = cCollider.radius;
         //childTrigger = GetComponentInChildren<Collider2D>();
+        timeManager = TimeManager.Instance;
         SetStatic();
 
     }
@@ -146,15 +149,19 @@ public class Player : MonoBehaviour
         GetComponent<Rigidbody2D>().angularVelocity = 0;
         childTrigger.enabled = false;
         status = Status.Static;
+        timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Wall);
     }
 
     public void SetMoving(){
         childTrigger.enabled = true;
         status = Status.Moving;
+        timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Moving);
+
     }
     public void SetHidden(){
         childTrigger.enabled = false;
         status = Status.Hidden;
+        timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Wall);
     }
 
 #region DEBUG_FUNC

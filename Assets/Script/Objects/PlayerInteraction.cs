@@ -12,6 +12,8 @@ public class PlayerInteraction : MonoBehaviour
     [Serializable]
     public abstract class PlayerAction : MonoBehaviour {
         abstract public void ActionEffect(Collider2D playerCollider);
+        abstract public void TimerEffect();
+        abstract public void TimerRevert();
     }
 
 
@@ -53,6 +55,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(status!=Status.Blocked){
             Debug.Log("HasTouched");
+            action.TimerEffect();
             int CollLayer = collision.gameObject.layer;
             if(CollLayer==LayerMask.NameToLayer("PlayerRange")){
                 status = Status.Close;
@@ -65,6 +68,8 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (status != Status.Blocked)
         {
+            action.TimerRevert();
+
             int CollLayer = collision.gameObject.layer;
             if (CollLayer == LayerMask.NameToLayer("PlayerRange"))
             {

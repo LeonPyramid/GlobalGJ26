@@ -159,6 +159,8 @@ public class Player : MonoBehaviour
 
     }
     public void SetHidden(){
+        GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().angularVelocity = 0;
         childTrigger.enabled = false;
         status = Status.Hidden;
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Wall);

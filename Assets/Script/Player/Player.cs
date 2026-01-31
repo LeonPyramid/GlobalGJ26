@@ -1,4 +1,5 @@
 using DG.Tweening;
+using UI.Menu;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,7 +14,6 @@ public class Player : MonoBehaviour
     /// The time of the dash
     /// </summary>
     [SerializeField] private float dashSpeed;
-    private Tween lastMove;
     /// <summary>
     /// The player's collider, needed to get its dimension
     /// </summary>
@@ -41,17 +41,18 @@ public class Player : MonoBehaviour
     {
         Mouse mouse = Mouse.current;
         if(mouse.leftButton.wasPressedThisFrame){
-            lastMove.Kill();
-            float time;
-            if(status == Status.Moving)
-            {
-                GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-                GetComponent<Rigidbody2D>().angularVelocity = 0;
-                status = Status.Static;
+            if (MenuManager.Instance.MenuCount == 0){
+                if(status == Status.Moving)
+                {
+                    GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+                    GetComponent<Rigidbody2D>().angularVelocity = 0;
+                }
+                //MoveToPos(dest,time);
+                MoveDir();
             }
-            Vector2 dest = GetDestPos(out time);
-            //MoveToPos(dest,time);
-            MoveDir();
+            else{
+                Debug.Log("Not moving mecause a menu");
+            }
         }
     }
 
@@ -120,7 +121,7 @@ public class Player : MonoBehaviour
     private void MoveToPos(Vector2 pos,float time){
         //TODO fine tune la foction d'acceleration
         //TODO Changer le temps par une vitesse de déplacement (faire en sorte que le tps dépende de la distance)
-        lastMove = transform.DOMove(pos,time).SetEase(Ease.OutQuart);
+        //lastMove = transform.DOMove(pos,time).SetEase(Ease.OutQuart);
     }
 
     private void MoveDir()

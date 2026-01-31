@@ -241,9 +241,8 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &194097253
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3096797934879224835, guid: 58e256d161e63dd4baf71fb3c559fef0, type: 3}
+  m_PrefabInstance: {fileID: 5392132416767990310}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194097252}
   serializedVersion: 2
@@ -1100,6 +1099,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1657771138}
   - {fileID: 194097253}
   - {fileID: 705375606}
   m_Father: {fileID: 0}

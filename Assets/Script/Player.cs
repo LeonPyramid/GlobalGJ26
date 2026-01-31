@@ -19,10 +19,7 @@ public class Player : MonoBehaviour
         if (mouse.leftButton.wasPressedThisFrame)
         {
             //Vector3 mousePosition = mouse.position.ReadValue();
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
-
-            Debug.DrawRay(transform.position, direction * 100, Color.yellow);
+            
 
             //MoveToPos(mousePosition);
             // Ray ray = m_Camera.ScreenPointToRay(mousePosition);
@@ -34,6 +31,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    private Vector2 GetDestPos(Mouse curMouse){
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
+            
+            Debug.DrawRay(transform.position, direction * 100, Color.yellow);
+    }
+
     private void MoveToPos(Vector2 pos){
         transform.DOMove(pos,1).SetEase(Ease.OutSine);
     }
@@ -42,4 +46,12 @@ public class Player : MonoBehaviour
     {
         
     }
+#region DEBUG_FUNC
+
+[System.Diagnostics.Conditional("DEBUG")]
+public void ColorStatus(){
+    //TODO : change la couleur du perso en fonction de son êtat
+}
+
+#endregion
 }

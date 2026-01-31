@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
     /// </summary>
     [SerializeField] private float dashDistance;
     /// <summary>
+    /// The time of the dash
+    /// </summary>
+    [SerializeField] private float dashSpeed;
+    /// <summary>
     /// The player's collider, needed to get its dimension
     /// </summary>
     private CircleCollider2D cCollider;
@@ -25,7 +29,7 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
             Mouse mouse = Mouse.current;
             if(mouse.leftButton.wasPressedThisFrame)
@@ -66,7 +70,7 @@ public class Player : MonoBehaviour
     /// <param name="pos"></param>
     private void MoveToPos(Vector2 pos){
         //TODO fine tune la foction d'acceleration
-        transform.DOMove(pos,1).SetEase(Ease.OutSine);
+        transform.DOMove(pos,dashSpeed).SetEase(Ease.OutSine);
     }
 
 

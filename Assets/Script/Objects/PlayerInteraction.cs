@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PLayerInteraction : MonoBehaviour
 {
@@ -8,19 +9,30 @@ public class PLayerInteraction : MonoBehaviour
     [SerializeField] public Status status;
 
     private SpriteRenderer spriteR;
+    private InputAction interAction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         status = Status.Far;
         spriteR = GetComponent<SpriteRenderer>();
+        interAction = InputSystem.actions.FindAction("Attack");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(interAction.WasPerformedThisFrame() && status == Status.Close){
+            status = Status.Interacted;
+        }
         ColorStatus();
+
     }
+
+    void OnButtonPressed(InputControl button){
+
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

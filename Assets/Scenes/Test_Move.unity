@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 705375606}
   - component: {fileID: 705375608}
   - component: {fileID: 705375607}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,9 +538,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5706884872713957839, guid: 58e256d161e63dd4baf71fb3c559fef0, type: 3}
+      propertyPath: dashDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6238202285048926333, guid: 58e256d161e63dd4baf71fb3c559fef0, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238202285048926333, guid: 58e256d161e63dd4baf71fb3c559fef0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

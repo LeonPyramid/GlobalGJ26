@@ -1,51 +1,75 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float jumpDistance;
+    /// <summary>
+    /// The max distance the player can dash
+    /// </summary>
+    [SerializeField] private float dashDistance;
+    /// <summary>
+    /// The player's collider, needed to get its dimension
+    /// </summary>
+    private CircleCollider2D cCollider;
+    private float radius;
     Camera m_Camera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         m_Camera = Camera.main;
+        cCollider = this.GetComponent<CircleCollider2D>();
+        radius = cCollider.radius;
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Mouse mouse = Mouse.current;
-        if (mouse.leftButton.wasPressedThisFrame)
+            Mouse mouse = Mouse.current;
+            if(mouse.leftButton.wasPressedThisFrame)
+                MoveToPos(GetDestPos(mouse));
+    }
+
+    /// <summary>
+    ///    Returns the max position where the player can jump, counting obstacles
+    /// </summary>
+    /// <param name="curMouse">The current mouse cursor (used to get the pointing position)</param>
+    /// <returns>The new position</returns>
+    private Vector2 GetDestPos(Mouse curMouse){
+        //TODO rajouter masque de layers pour diff objets
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
+
+        //Restrict raycast to walls
+        LayerMask mask = LayerMask.GetMask("Wall");
+        RaycastHit2D hitPoint = Physics2D.Raycast(transform.position,direction, (dashDistance+radius),mask);
+
+        Debug.Log(hitPoint);
+        if (hitPoint)
+        {   
+            Vector2 dest = hitPoint.point - (direction * cCollider.radius);
+            Debug.DrawRay(transform.position, direction * (Vector2.Distance(transform.position,dest)), Color.blue,0.5f);
+            return hitPoint.point - (direction * cCollider.radius);
+        }
+        else
         {
-            //Vector3 mousePosition = mouse.position.ReadValue();
-            
-
-            //MoveToPos(mousePosition);
-            // Ray ray = m_Camera.ScreenPointToRay(mousePosition);
-            // if (Physics.Raycast(ray, out RaycastHit hit))
-            // {
-
-            //     MoveToPos(hit.point);
-            // }
+            Debug.DrawRay(transform.position, direction * 100, Color.yellow,0.5f);
+            return (Vector2)transform.position + (direction * dashDistance);
         }
     }
 
-    private Vector2 GetDestPos(Mouse curMouse){
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
-            
-            Debug.DrawRay(transform.position, direction * 100, Color.yellow);
-    }
-
+    /// <summary>
+    /// Moves the object to this position
+    /// </summary>
+    /// <param name="pos"></param>
     private void MoveToPos(Vector2 pos){
+        //TODO fine tune la foction d'acceleration
         transform.DOMove(pos,1).SetEase(Ease.OutSine);
     }
 
-    private void OnMouseDown()
-    {
-        
-    }
+
 #region DEBUG_FUNC
 
 [System.Diagnostics.Conditional("DEBUG")]

@@ -1,8 +1,20 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PLayerInteraction : MonoBehaviour
+
+
+
+
+
+public class PlayerInteraction : MonoBehaviour
 {
+    [Serializable]
+    public abstract class PlayerAction : MonoBehaviour {
+        abstract public void ActionEffect(Collider2D playerCollider);
+    }
+
+
 
     public enum Status { Far, Close, Interacted };
 
@@ -11,12 +23,17 @@ public class PLayerInteraction : MonoBehaviour
     private SpriteRenderer spriteR;
     private InputAction interAction;
 
+    private Collider2D closeCollider;
+
+    [SerializeReference] private PlayerAction action;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         status = Status.Far;
         spriteR = GetComponent<SpriteRenderer>();
         interAction = InputSystem.actions.FindAction("Attack");
+        closeCollider = null;
     }
 
     // Update is called once per frame
@@ -24,6 +41,7 @@ public class PLayerInteraction : MonoBehaviour
     {
         if(interAction.WasPerformedThisFrame() && status == Status.Close){
             status = Status.Interacted;
+            action.ActionEffect(closeCollider);
         }
         ColorStatus();
 
@@ -40,6 +58,7 @@ public class PLayerInteraction : MonoBehaviour
         int CollLayer = collision.gameObject.layer;
         if(CollLayer==LayerMask.NameToLayer("PlayerRange")){
             status = Status.Close;
+            closeCollider = collision;
         }
     }
 
@@ -48,6 +67,7 @@ public class PLayerInteraction : MonoBehaviour
         int CollLayer = collision.gameObject.layer;
          if(CollLayer==LayerMask.NameToLayer("PlayerRange")){
             status = Status.Far;
+            closeCollider = null;
         }
     }
 

@@ -2,10 +2,14 @@ using UnityEngine;
 
 public class PlayerGrasp : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] public Player player
+    {
+        get;
+        private set;
+    }
     void Start()
     {
-        
+        player = this.GetComponentInParent<Player>();
     }
 
     // Update is called once per frame

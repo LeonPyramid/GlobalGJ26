@@ -73,10 +73,6 @@ public class QteBehaviour : Singleton<QteBehaviour>
 
     private void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Tab) && !_shown)
-        {
-            Show(1,ScoreRange);
-        }
         if(Input.GetKeyDown(KeyCode.Space) && handleTween != null && handleTween.active && _shown)
         {
             handleTween.Kill();
@@ -187,7 +183,6 @@ public class QteBehaviour : Singleton<QteBehaviour>
     private void PlayHandle(float dir)
     {
         AnchorUtils.SetAnchorPresetWithoutMoving(handleRectTransform, dir > 0 ? AnchorPreset.MiddleLeft : AnchorPreset.MiddleRight);
-
         _currentPivot = handleRectTransform.anchoredPosition.x / 2;
 
         handleTween = handleRectTransform

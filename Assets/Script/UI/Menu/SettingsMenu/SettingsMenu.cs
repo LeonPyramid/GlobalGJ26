@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,13 +9,11 @@ public class SettingsMenu : MonoBehaviour
     [Header("Music")]
     [SerializeField] private Slider musicSlider;
     [SerializeField] private TextMeshProUGUI musicValue;
-    private const string MusicKey = "MUSIC";
     public Action<float> OnMusicVolumeChanged;
 
     [Header("Sfx")]
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private TextMeshProUGUI sfxValue;
-    private const string SfxKey = "SFX";
     public Action<float> OnSfxVolumeChanged;
 
     [Header("Sound")]
@@ -22,8 +21,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI soundText;
     private const string SoundOn = "Sound: On";
     private const string SoundOff = "Sound: Off";
-    private const string SoundKey = "Sound";
-    private bool _currentSoundState = true;
+    private bool _mute;
     public Action<bool> OnSoundChanged;
 
 
@@ -34,15 +32,13 @@ public class SettingsMenu : MonoBehaviour
         InitSfx();
 
         InitSound();
-
-        SoundManager.Instance.Notify(this);
     }
 
     private void InitMusic()
     {
         musicSlider.onValueChanged.AddListener(OnMusicValueChanged);
 
-        musicSlider.value = PlayerPrefs.GetFloat(SoundManager.MusicKey, 1f);
+        musicSlider.value = PlayerPrefs.GetFloat(nameof(AudioBusType.Music));
 
         musicValue.text = ((int)(musicSlider.value * 100)).ToString();
     }
@@ -51,7 +47,7 @@ public class SettingsMenu : MonoBehaviour
     {
         sfxSlider.onValueChanged.AddListener(OnSfxValueChanged);
 
-        sfxSlider.value = PlayerPrefs.GetFloat(SoundManager.SfxKey, 1f);
+        sfxSlider.value = PlayerPrefs.GetFloat(nameof(AudioBusType.SFX));
 
         sfxValue.text = ((int)(sfxSlider.value * 100)).ToString();
     }
@@ -60,53 +56,47 @@ public class SettingsMenu : MonoBehaviour
     {
         soundButton.onClick.AddListener(SoundButtonClicked);
 
-        _currentSoundState = PlayerPrefs.GetInt(SoundManager.SoundKey, 1) != 0;
+        _mute = PlayerPrefs.GetInt(AudioController.MuteKey, 1) == 1;
 
-        if(_currentSoundState)
+        if(_mute)
         {
-            soundText.text = SoundOn;
+            soundText.text = SoundOff;
         } 
         else
         {
-            soundText.text  = SoundOff;
+            soundText.text  = SoundOn;
         }
     }
 
     private void SoundButtonClicked()
     {
-        if(_currentSoundState)
+        if(_mute)
         {
-            _currentSoundState = false;
+            _mute = false;
 
-            soundText.text = SoundOff;
+            soundText.text = SoundOn;
         } 
         else
         {
-            _currentSoundState = true;
+            _mute = true;
 
-            soundText.text = SoundOn;
+            soundText.text = SoundOff;
         }
 
-        PlayerPrefs.SetInt(SoundKey, _currentSoundState? 1 : 0);
-
-        OnSoundChanged?.Invoke(_currentSoundState);
+        AudioController.Instance?.ChangeAudioState(_mute);
     }
 
     private void OnMusicValueChanged(float value)
     {
         musicValue.text = ((int)(value * 100)).ToString();
 
-        PlayerPrefs.SetFloat(MusicKey, value);
-
-        OnMusicVolumeChanged?.Invoke(value);
+        AudioController.Instance?.SetBusVolume(AudioBusType.Music, value);
     }
 
     private void OnSfxValueChanged(float value)
     {
         sfxValue.text = ((int)(value * 100)).ToString();
 
-        PlayerPrefs.SetFloat(SfxKey, value);
-
-        OnSfxVolumeChanged?.Invoke(value);
+        AudioController.Instance?.SetBusVolume(AudioBusType.SFX, value);
     }
 }

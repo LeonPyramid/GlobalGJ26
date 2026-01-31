@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
             {
                 GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
                 GetComponent<Rigidbody2D>().angularVelocity = 0;
+                status = Status.Static;
             }
             Vector2 dest = GetDestPos(out time);
             //MoveToPos(dest,time);

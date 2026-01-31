@@ -392,7 +392,7 @@ namespace Audio
             {
                 foreach (var audioSource in audioBus.sources)
                 {
-                    audioSource.enabled = !mute;
+                    audioSource.mute = !mute;
                 }
             }
 

@@ -58,7 +58,6 @@ public class Bin : PlayerInteraction.PlayerAction
     public override void TimerRevert()
     {
         timeManager.PopTypeSpeed(TimeManager.NewTimeType.Bin);
-        timeManager.PopTypeSpeed();
         StartCoroutine(ProcessUseCoolDown());
     }
 

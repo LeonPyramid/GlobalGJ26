@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     private CircleCollider2D cCollider;
     private float radius;
 
+    [SerializeField] private Collider2D childTrigger;
+
     /// <summary>
     ///  The player's current status
     /// </summary>
@@ -35,6 +37,8 @@ public class Player : MonoBehaviour
         m_Camera = Camera.main;
         cCollider = this.GetComponent<CircleCollider2D>();
         radius = cCollider.radius;
+        //childTrigger = GetComponentInChildren<Collider2D>();
+        SetStatic();
 
     }
 
@@ -46,8 +50,7 @@ public class Player : MonoBehaviour
             if (MenuManager.Instance.MenuCount == 0){
                 if(status == Status.Moving)
                 {
-                    GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-                    GetComponent<Rigidbody2D>().angularVelocity = 0;
+                    SetStatic();
                 }
                 //MoveToPos(dest,time);
                 MoveDir();
@@ -72,7 +75,7 @@ public class Player : MonoBehaviour
         }*/
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         GetComponent<Rigidbody2D>().angularVelocity = 0;
-        status = Status.Static;
+        SetStatic();
 
     }
 
@@ -132,8 +135,26 @@ public class Player : MonoBehaviour
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
+        Debug.DrawRay(transform.position, direction * dashDistance, Color.yellow,0.5f);
         GetComponent<Rigidbody2D>().AddForce(direction*dashSpeed);
+        SetMoving();
+    }
+
+
+    public void SetStatic(){
+        GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().angularVelocity = 0;
+        childTrigger.enabled = false;
+        status = Status.Static;
+    }
+
+    public void SetMoving(){
+        childTrigger.enabled = true;
         status = Status.Moving;
+    }
+    public void SetHidden(){
+        childTrigger.enabled = false;
+        status = Status.Hidden;
     }
 
 #region DEBUG_FUNC

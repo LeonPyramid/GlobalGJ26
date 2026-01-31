@@ -25,6 +25,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private Collider2D closeCollider;
 
+    [SerializeField] public bool IsInteractable;
+
     [SerializeReference] private PlayerAction action;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

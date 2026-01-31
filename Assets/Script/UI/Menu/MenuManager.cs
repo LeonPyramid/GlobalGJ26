@@ -57,7 +57,7 @@ namespace UI.Menu
 
         private void Pause()
         {
-            _oldTime = Time.deltaTime;
+            _oldTime = Time.timeScale;
 
             Time.timeScale = 0f;
 

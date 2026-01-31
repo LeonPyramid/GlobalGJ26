@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -33,15 +32,14 @@ public class Player : MonoBehaviour
     {
             Mouse mouse = Mouse.current;
             if(mouse.leftButton.wasPressedThisFrame)
-                MoveToPos(GetDestPos(mouse));
+                MoveToPos(GetDestPos());
     }
 
     /// <summary>
     ///    Returns the max position where the player can jump, counting obstacles
     /// </summary>
-    /// <param name="curMouse">The current mouse cursor (used to get the pointing position)</param>
     /// <returns>The new position</returns>
-    private Vector2 GetDestPos(Mouse curMouse){
+    private Vector2 GetDestPos(){
         //TODO rajouter masque de layers pour diff objets
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;

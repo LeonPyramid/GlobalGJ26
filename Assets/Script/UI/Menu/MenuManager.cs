@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Utils.Singleton;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace UI.Menu
 {
@@ -21,6 +23,10 @@ namespace UI.Menu
         public Vector2 MenuInactivePosition => menuInactivePosition;
         [SerializeField] private float menuOffset;
         public float MenuOffset => menuOffset;
+
+        [Header("MainMenu")]
+        [SerializeField] private Button mainMenuButton;
+
         
         private readonly List<MenuShown> _menus = new();
         public int MenuCount => _menus.Count;
@@ -30,6 +36,16 @@ namespace UI.Menu
         private bool _paused;
 
         private GameState _stateBeforePause;
+
+        private void Start()
+        {
+            mainMenuButton.onClick.AddListener(BackToMainMenu);
+        }
+
+        private void BackToMainMenu()
+        {
+            SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
+        }
 
         private void Update()
         {

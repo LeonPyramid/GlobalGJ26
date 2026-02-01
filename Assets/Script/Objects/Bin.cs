@@ -25,7 +25,7 @@ public class Bin : PlayerInteraction.PlayerAction
 
     override public void ActionEffect(Collider2D playerCollider)
     {
-        if (!isUsable) return;
+        //if (!isUsable) return;
         GameObject playerGo = playerCollider.gameObject.GetComponent<PlayerGrasp>().player.gameObject;
         playerGo.transform.position = transform.position;
         Player player = playerGo.GetComponent<Player>();

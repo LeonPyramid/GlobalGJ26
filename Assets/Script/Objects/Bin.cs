@@ -80,11 +80,14 @@ public class Bin : PlayerInteraction.PlayerAction
         if (player == null)
             player = playerGo.GetComponent<Player>(); 
         player.SetHidden();
-        binUI.PlayFill();
         player.OnClick += LeaveBin;
         isPlayerInside = true;
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Moving);
-        StartCoroutine(ProcessEjectCoolDown(player));
+        if(!GameManager.Instance.HasMaskEquiped(MaskEnum.Gas))
+        {
+            StartCoroutine(ProcessEjectCoolDown(player));
+            binUI.PlayFill();
+        }
         if (hasKey)
         {
             OnKeyPickedUp.Invoke();

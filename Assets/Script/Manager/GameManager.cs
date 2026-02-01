@@ -19,6 +19,8 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     private int _dashCount;
     private int _goldAmount;
     private int _score;
+    private MaskEnum _currentMask;
+    public MaskEnum CurrentMask => _currentMask;
 
 
     private bool _isGamePaused = false;
@@ -32,13 +34,24 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
 
     private ExitDoor door;
 
-    [SerializeField] public GameState gameState = GameState.PreGame;
+    [SerializeField] public GameState gameState = GameState.PreGame;    
     void Start()
     {
         _isGameOver = false;
         AudioController.Instance.PlayAudio(levelMusic);
         QteBehaviour.Instance.OnDone += OnQteDone;
+        PreGameUI.Instance.OnMaskChanged += OnMaskChanged;
         ExitDoor.OnPlayerExit += GameOver;
+    }
+
+    private void OnMaskChanged(MaskEnum maskEnum)
+    {
+        _currentMask = maskEnum;
+    }
+
+    public bool HasMaskEquiped(MaskEnum maskEnum)
+    {
+        return maskEnum == _currentMask;
     }
 
     private void Update()
@@ -80,7 +93,6 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     {
         CopGrasp.OnPlayerCatched -= GameOver;
         Bin.OnKeyPickedUp -= HasKey;
-
         //ExitDoor.OnPlayerExit += GameOver;
     }
 

@@ -74,7 +74,7 @@ public class CharacterAnimation : Character
         {
             timer -= Time.deltaTime;
         }
-        else
+        else if(!isStatic)
         {
             LookLeft(flip);
             ResetTimer();

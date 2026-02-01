@@ -281,7 +281,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
+  m_AlphaCutoff: 0
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
   - {x: -0.8199997, y: -0.61000013, z: 0}
@@ -298,14 +298,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 7424389222335285852}
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_InstanceId: 0
   m_ShadowShape2DComponent: {fileID: 1704064395181677195}
   m_ShadowShape2DProvider:
-    rid: 6898162947854696530
+    rid: 8676706989523599434
   m_ShadowCastingSource: 2
   m_ShadowMesh:
     m_Mesh: {fileID: 0}
@@ -528,10 +528,10 @@ MonoBehaviour:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0.05999756, y: 0.4149933, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.04
+    m_TrimEdge: 0
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.04
   m_CastingOption: 2
   m_PreviousTrimEdge: 0.04
   m_PreviousEdgeProcessing: 1
@@ -540,7 +540,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6898162947854696530
+    - rid: 8676706989523599434
       type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
 --- !u!1 &446697213506299719
@@ -1276,14 +1276,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 3019543716027465564}
@@ -1781,7 +1781,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
+  m_AlphaCutoff: 0
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
   - {x: -0.8199997, y: -0.61000013, z: 0}
@@ -1798,14 +1798,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 7889466340289948031}
@@ -2065,8 +2065,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 2837257013642637027, guid: 544f54eac42f04176bf4ddb72f0d27fe, type: 3}
-  m_Color: {r: 0.6933962, g: 1, b: 0.790788, a: 1}
+  m_Sprite: {fileID: -6268241297508726992, guid: dc9391b91e5d85d3c94d7ccfeda64ee3, type: 3}
+  m_Color: {r: 0.6509434, g: 1, b: 0.8061653, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
@@ -2374,14 +2374,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 789842546574426807}
@@ -2863,14 +2863,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 6134510041785076467}
@@ -3080,7 +3080,7 @@ Transform:
   m_GameObject: {fileID: 2644765584581622742}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalPosition: {x: -0.18, y: -1.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3104,7 +3104,7 @@ MonoBehaviour:
   m_FalloffIntensity: 0.638
   m_Color: {r: 0.2264151, g: 1, b: 0.33049825, a: 1}
   m_Intensity: 5
-  m_LightVolumeIntensity: 1
+  m_LightVolumeIntensity: 0.5
   m_LightVolumeEnabled: 1
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -3127,7 +3127,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 5
+  m_PointLightOuterRadius: 6
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -3610,14 +3610,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 9175974031395075123}
@@ -5213,14 +5213,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 5139019409105631036}
@@ -5789,14 +5789,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 7518897395732636147}
@@ -6017,14 +6017,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 2644684083167791254}
@@ -6158,14 +6158,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 2158569396425077125}
@@ -6282,7 +6282,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
+  m_AlphaCutoff: 0
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
   - {x: -0.8199997, y: -0.61000013, z: 0}
@@ -6299,14 +6299,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 115888001067379593}
@@ -6978,14 +6978,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 8889830339916776355}
@@ -7363,7 +7363,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
+  m_AlphaCutoff: 0
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
   - {x: -0.8199997, y: -0.61000013, z: 0}
@@ -7380,14 +7380,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 7991011437449583652}
@@ -7504,7 +7504,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
+  m_AlphaCutoff: 0
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
   - {x: -0.8199997, y: -0.61000013, z: 0}
@@ -7521,14 +7521,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 6065292358953185411}
@@ -7868,14 +7868,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 2564786755291401963}
@@ -8009,14 +8009,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 2005238739425929246}
@@ -9183,6 +9183,99 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7861732689686853135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7028483988568136591}
+  - component: {fileID: 891139589103064273}
+  - component: {fileID: 1720406018084325510}
+  m_Layer: 9
+  m_Name: ExitDoor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7028483988568136591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7861732689686853135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 17.5, y: 1.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6710646264514953258}
+  - {fileID: 2200535235733540347}
+  m_Father: {fileID: 3631080346457378832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &891139589103064273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7861732689686853135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f6eb0dbbaa0ef64fa9d42e8d115ac27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1720406018084325510
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7861732689686853135}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4, y: 0.9}
+  m_EdgeRadius: 0
 --- !u!1 &8009691696294428278
 GameObject:
   m_ObjectHideFlags: 0
@@ -9290,7 +9383,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
+  m_AlphaCutoff: 0
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
   - {x: -0.8199997, y: -0.61000013, z: 0}
@@ -9307,14 +9400,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 4420317669157249939}
@@ -9518,7 +9611,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
+  m_AlphaCutoff: 0
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
   - {x: -0.8199997, y: -0.61000013, z: 0}
@@ -9535,14 +9628,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 2892160166233900057}
@@ -9659,7 +9752,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
+  m_AlphaCutoff: 0
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
   - {x: -0.8199997, y: -0.60999966, z: 0}
@@ -9676,14 +9769,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 5081905586324040951}
@@ -9991,14 +10084,14 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.7599945, y: 0.5499878, z: 0}
+      m_Extent: {x: 0.71998596, y: 0.50997925, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.06
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.06
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.06
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 7677968060705015144}
@@ -10280,6 +10373,7 @@ GameObject:
   - component: {fileID: 5064393705389856530}
   - component: {fileID: 8079896449430280877}
   - component: {fileID: 9137262079676960703}
+  - component: {fileID: 7439252227753112828}
   m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
@@ -10368,6 +10462,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b173b7b2b65c50adbabdae44a9b88e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7439252227753112828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9089747885965134816}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_Priority: 0
+  m_ComponentVersion: 5
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.014955759, y: -0.25, z: 0}
+  - {x: -0.014955759, y: 0.25, z: 0}
+  - {x: 0.014955699, y: 0.25, z: 0}
+  - {x: 0.014955699, y: -0.25, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 8079896449430280877}
+  m_ShadowShape2DProvider:
+    rid: 8676706989523599433
+  m_ShadowCastingSource: 2
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: -0.0008163452, y: 5.554451, z: 0}
+      m_Extent: {x: 0.025611877, y: 1.3354111, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 2
+  m_PreviousTrimEdge: 0
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 2
+  m_PreviousShadowShape2DSource: {fileID: 8079896449430280877}
+  references:
+    version: 2
+    RefIds:
+    - rid: 8676706989523599433
+      type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data: 
 --- !u!1 &9136630215207044126
 GameObject:
   m_ObjectHideFlags: 0
@@ -10629,142 +10776,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &5439751453235089549
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3631080346457378832}
-    m_Modifications:
-    - target: {fileID: 2767353232977192578, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_Name
-      value: ExitDoor
-      objectReference: {fileID: 0}
-    - target: {fileID: 2767353232977192578, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 17.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8073137070671351750, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 8073137070671351750, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6710646264514953258}
-    - targetCorrespondingSourceObject: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2200535235733540347}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2767353232977192578, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1720406018084325510}
-  m_SourcePrefab: {fileID: 100100000, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
---- !u!4 &7028483988568136591 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3096173972277021442, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-  m_PrefabInstance: {fileID: 5439751453235089549}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7861732689686853135 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2767353232977192578, guid: e243c38061d3a814b82531cceb0ba460, type: 3}
-  m_PrefabInstance: {fileID: 5439751453235089549}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1720406018084325510
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7861732689686853135}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 4, y: 0.9}
-  m_EdgeRadius: 0

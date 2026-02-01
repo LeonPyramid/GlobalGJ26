@@ -4,9 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
-using Audio;
-using Random = UnityEngine.Random;
-using System.Collections.Generic;
 
 
 public class Player : MonoBehaviour
@@ -19,7 +16,6 @@ public class Player : MonoBehaviour
     /// The time of the dash
     /// </summary>
     [SerializeField] private float dashSpeed;
-    [SerializeField] private List<Audio.AudioType> dashSFX;
     /// <summary>
     /// The player's collider, needed to get its dimension
     /// </summary>
@@ -46,6 +42,9 @@ public class Player : MonoBehaviour
     Camera m_Camera;
 
     GameManager _manager;
+
+    [SerializeField] private PlayerVisual visual;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -64,8 +63,7 @@ public class Player : MonoBehaviour
     {
         Mouse mouse = Mouse.current;
         if(mouse.leftButton.wasPressedThisFrame){
-            if (MenuManager.Instance.MenuCount == 0 && 
-                GameManager.Instance.gameState == GameState.Moving){
+            if (MenuManager.Instance.MenuCount == 0 && GameManager.Instance.gameState == GameState.Moving){
                 OnClick?.Invoke();
                 if(status == Status.Moving)
                 {
@@ -152,10 +150,11 @@ public class Player : MonoBehaviour
 
     private void MoveDir()
     {
-        //GameManager.Instance.AddDash(); Uncomment to update dash if gameManager is in the scene
+        GameManager.Instance.AddDash();
+
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        AudioController.Instance.PlayAudio(dashSFX[Random.Range(0, dashSFX.Count)], false, 0, Random.Range(.8f, 1.2f));
         direction = (mousePosition - (Vector2)transform.position).normalized;
+        visual.Turn(direction.x);
         Debug.DrawRay(transform.position, direction * dashDistance, Color.yellow,0.5f);
         Debug.Log($"New Force {direction * dashSpeed} of power {(direction * dashSpeed).SqrMagnitude()}");
         GetComponent<Rigidbody2D>().linearVelocity = (direction*dashSpeed);
@@ -165,28 +164,29 @@ public class Player : MonoBehaviour
 
 
     public void SetStatic(){
+        visual.HideMode(false);
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         GetComponent<Rigidbody2D>().angularVelocity = 0;
         childTrigger.enabled = false;
         status = Status.Static;
-        GetComponent<SpriteRenderer>().enabled = true;
 
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Wall);
     }
 
     public void SetMoving(){
+        visual.HideMode(false);
         childTrigger.enabled = true;
         status = Status.Moving;
-        GetComponent<SpriteRenderer>().enabled = true;
+
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Moving);
 
     }
     public void SetHidden(){
+        visual.HideMode(true);
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         GetComponent<Rigidbody2D>().angularVelocity = 0;
         childTrigger.enabled = false;
         status = Status.Hidden;
-        GetComponent<SpriteRenderer>().enabled = false;
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Wall);
     }
 

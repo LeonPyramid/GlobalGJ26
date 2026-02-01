@@ -9,10 +9,52 @@ public class CharacterAnimation : Character
 {
     bool flip;
     [SerializeField]float timer;
+
+    [SerializeField] List<Color> habitsColors;
+
+    [SerializeField] List<Color> skinColors;
+
+    [SerializeField] List<Sprite> Hats;
+
+    [SerializeField] List<Sprite> Accessories;
+
+    [SerializeField] SpriteRenderer hatRenderer;
+
+    [SerializeField] SpriteRenderer BodyRenderer;
+    [SerializeField] SpriteRenderer HeadRenderer;
+
+    [SerializeField] SpriteRenderer accessoryRenderer;
+
     protected override void Start()
     {
+        //Randomize Objects
+
+        if(Random.Range(0,2)==0){
+            hatRenderer.sprite = Hats[Random.Range(0, Hats.Count)];
+            SetRandomColor(hatRenderer, habitsColors);
+        }
+        else{
+            hatRenderer.enabled = false;
+        }
+
+        SetRandomColor(HeadRenderer, skinColors);
+        SetRandomColor(BodyRenderer, habitsColors);
+
+        if(Random.Range(0,3)==0){
+            accessoryRenderer.sprite = Accessories[Random.Range(0, Accessories.Count)];
+            SetRandomColor(accessoryRenderer, habitsColors);
+        }
+        else{
+            accessoryRenderer.enabled = false;
+        }
         ResetTimer();
+
+        head.transform.DOMoveY(.015f, 2f).SetLoops(-1, LoopType.Yoyo);
         base.Start();
+    }
+
+    void SetRandomColor(SpriteRenderer rend, List<Color> colList){
+        rend.color = colList[Random.Range(0, colList.Count)];
     }
 
     private void Update()
@@ -28,11 +70,11 @@ public class CharacterAnimation : Character
 
     public void LookAtRandomDirection()
     {
-        if (timer > 0 && !isStatic)
+        if (timer > 0)
         {
             timer -= Time.deltaTime;
         }
-        else
+        else if(!isStatic)
         {
             LookLeft(flip);
             ResetTimer();
@@ -43,8 +85,8 @@ public class CharacterAnimation : Character
 
     public void LookLeft(bool lookLeft)
     {
-        head.transform.DOScaleX(lookLeft ? 1 : -1, 0.01f);
-        body.transform.DOScaleX(lookLeft ? 1 : -1, 0.01f);    
+        head.transform.DOScaleX(lookLeft ? 1 : -1, 0.01f).SetUpdate(true);
+        body.transform.DOScaleX(lookLeft ? 1 : -1, 0.01f).SetUpdate(true);    
     }
 }
 

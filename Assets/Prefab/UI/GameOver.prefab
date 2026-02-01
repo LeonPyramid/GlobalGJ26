@@ -179,7 +179,7 @@ MonoBehaviour:
   m_text: 'Dash: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d483892b40fe0504082445a73f482f5d, type: 2}
-  m_sharedMaterial: {fileID: -367834463689691219, guid: d483892b40fe0504082445a73f482f5d, type: 2}
+  m_sharedMaterial: {fileID: 2909855766442324699, guid: d483892b40fe0504082445a73f482f5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_text: Retry
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d483892b40fe0504082445a73f482f5d, type: 2}
-  m_sharedMaterial: {fileID: -367834463689691219, guid: d483892b40fe0504082445a73f482f5d, type: 2}
+  m_sharedMaterial: {fileID: 2909855766442324699, guid: d483892b40fe0504082445a73f482f5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_text: 'Score: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d483892b40fe0504082445a73f482f5d, type: 2}
-  m_sharedMaterial: {fileID: -367834463689691219, guid: d483892b40fe0504082445a73f482f5d, type: 2}
+  m_sharedMaterial: {fileID: 2909855766442324699, guid: d483892b40fe0504082445a73f482f5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -742,7 +742,7 @@ MonoBehaviour:
   m_text: Game over
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d483892b40fe0504082445a73f482f5d, type: 2}
-  m_sharedMaterial: {fileID: -367834463689691219, guid: d483892b40fe0504082445a73f482f5d, type: 2}
+  m_sharedMaterial: {fileID: 2909855766442324699, guid: d483892b40fe0504082445a73f482f5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_text: 'Time:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d483892b40fe0504082445a73f482f5d, type: 2}
-  m_sharedMaterial: {fileID: -367834463689691219, guid: d483892b40fe0504082445a73f482f5d, type: 2}
+  m_sharedMaterial: {fileID: 2909855766442324699, guid: d483892b40fe0504082445a73f482f5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

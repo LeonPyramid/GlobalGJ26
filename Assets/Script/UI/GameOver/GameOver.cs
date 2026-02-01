@@ -2,6 +2,7 @@ using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
@@ -35,6 +36,7 @@ public class GameOver : MonoBehaviour
     [SerializeField] private Ease showRetryEase;
     [SerializeField] private RectTransform retry;
     [SerializeField] private Button retryButton;
+    [SerializeField] private Button nextButton;
 
 
     private void Start()
@@ -44,6 +46,11 @@ public class GameOver : MonoBehaviour
         retryButton.onClick.AddListener(() =>
         {
             GameManager.Instance.RestartLevel();
+        });
+
+        nextButton.onClick.AddListener(() =>
+        {
+            SceneManager.SetActiveScene(SceneManager.GetSceneAt(2));
         });
     }
 

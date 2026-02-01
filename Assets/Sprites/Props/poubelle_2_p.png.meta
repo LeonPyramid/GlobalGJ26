@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 17ac9b666db6aef22b658a180f0ae0ed
+guid: c6800466a65e87d82b9af40295699bed
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -932510848210435037
-    second: "sac \xE0 main_sans corps_0"
+      213: -6633767628650285541
+    second: poubelle_2_p_0
+  - first:
+      213: 9186172060505026879
+    second: poubelle_2_p_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,23 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "sac \xE0 main_sans corps_0"
+      name: poubelle_2_p_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
-        width: 96
-        height: 80
+        x: 2
+        y: 0
+        width: 28
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 324083ff25e0f03f0800000000000000
-      internalID: -932510848210435037
+      spriteID: b1670db2d7f10f3a0800000000000000
+      internalID: -6633767628650285541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poubelle_2_p_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1
+        width: 73
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f31350091d6db7f70800000000000000
+      internalID: 9186172060505026879
       vertices: []
       indices: 
       edges: []
@@ -138,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ece7aff92b2da97be896498dc64e26df
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "sac \xE0 main_sans corps_0": -932510848210435037
+      poubelle_2_p_0: -6633767628650285541
+      poubelle_2_p_1: 9186172060505026879
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

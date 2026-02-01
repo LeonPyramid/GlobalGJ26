@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 544140b37cf846d6d8cb80be8af540d7
+guid: a86ecd8be4715c2fd943c9fa9a4758db
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 387520583455535730
-    second: "sac \xE0 dos_sans corps_0"
+      213: 3762619718184084343
+    second: poubelle_2_v_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "sac \xE0 dos_sans corps_0"
+      name: poubelle_2_v_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 24
+        x: 17
+        y: 1
         width: 66
-        height: 71
+        height: 91
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 272f400eaefb06500800000000000000
-      internalID: 387520583455535730
+      spriteID: 7732e3fc2b2873430800000000000000
+      internalID: 3762619718184084343
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c0d7006c4ee90ae2c985203790d55eb5
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "sac \xE0 dos_sans corps_0": 387520583455535730
+      poubelle_2_v_0: 3762619718184084343
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

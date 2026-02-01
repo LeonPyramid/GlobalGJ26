@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a17cd728b35b1ee2db56f11ff30c9604
+guid: 489276abfc79770509b1e32e773926b3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3421276624734698171
-    second: monocle et moustache_0
+      213: -1935372940403357341
+    second: sacoche_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: monocle et moustache_0
+      name: sacoche_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 0
-        width: 67
-        height: 57
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 22
+        y: 32
+        width: 57
+        height: 31
+      alignment: 9
+      pivot: {x: 0.40734088, y: 0.82738197}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5454758590f2580d0800000000000000
-      internalID: -3421276624734698171
+      spriteID: 369ca53909c2425e0800000000000000
+      internalID: -1935372940403357341
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ff412194be7d61c709d7dcdb5b525ef1
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      monocle et moustache_0: -3421276624734698171
+      sacoche_0: -1935372940403357341
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

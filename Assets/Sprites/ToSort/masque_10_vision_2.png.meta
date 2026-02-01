@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4fe24682e9dfc85e6983584d18d695b3
+guid: 6c2dbe34d2ea2dccfa740d7e503fea82
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5799501590492466624
-    second: poubelle pleine 2_0
+      213: 7984755415455938473
+    second: masque_10_vision_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: poubelle pleine 2_0
+      name: masque_10_vision_2_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 0
-        width: 78
-        height: 95
+        x: 6
+        y: 6
+        width: 74
+        height: 81
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0423260d708048fa0800000000000000
-      internalID: -5799501590492466624
+      spriteID: 9a7b0accebc8fce60800000000000000
+      internalID: 7984755415455938473
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      poubelle pleine 2_0: -5799501590492466624
+      masque_10_vision_2_0: 7984755415455938473
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

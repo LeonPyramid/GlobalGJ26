@@ -802,6 +802,10 @@ MonoBehaviour:
   dashSpeed: 60
   childTrigger: {fileID: 6861466231106017239}
   visual: {fileID: 1439653871994141172}
+  playerMaskHandler: {fileID: 2193638033764546761}
+  smallGraspSize: 1.5
+  bigGraspSize: 2.5
+  circleCollider2D: {fileID: 6861466231106017239}
 --- !u!50 &3853536026916828205
 Rigidbody2D:
   serializedVersion: 5

@@ -19,6 +19,8 @@ public class PreGameUI : Singleton<PreGameUI>
     private MaskTemplate _currentMaskSelected;
 
     public Action<MaskEnum> OnMaskChanged;
+
+    public Action OnGameStarted;
     
     private void Start()
     {
@@ -76,7 +78,7 @@ public class PreGameUI : Singleton<PreGameUI>
             .OnComplete(() =>
             {
                 GameManager.Instance.ChangeGameState(GameState.Moving);
-
+                OnGameStarted?.Invoke();
             });
     }
 

@@ -41,6 +41,7 @@ public class TimeManager : Singleton<TimeManager>
         qteBehaviour.OnDone += OnQteDone;
         InitiaFixedDeltaTime = Time.fixedDeltaTime;
         newTimeType = NewTimeType.Wall;
+        ComputeTimeSpeed(newTimeType);
     }
 
     // Update is called once per frame

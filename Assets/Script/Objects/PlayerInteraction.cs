@@ -14,6 +14,9 @@ public class PlayerInteraction : MonoBehaviour
         abstract public void ActionEffect(Collider2D playerCollider);
         abstract public void TimerEffect(Collider2D playerCollider);
         abstract public void TimerRevert();
+        abstract public void SetUnblocked();
+        abstract public void SetBlocked();
+
     }
 
 
@@ -79,25 +82,31 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-
-    [System.Diagnostics.Conditional("DEBUG")]
-    public void ColorStatus(){
-        Color col = status switch
-        {
-            Status.Far => Color.white,
-            Status.Close => Color.green,
-            Status.Interacted => Color.red,
-            Status.Blocked => Color.gray,
-            _ => Color.black,
-        };
-        spriteR.color = col;
-    }
-
     public void SetBLocked(){
         status = Status.Blocked;
+        action.SetBlocked();
+
     }
 
     public void SetUnblocked(){
         status = Status.Far;
+        action.SetUnblocked();
+
     }
+
+
+    [System.Diagnostics.Conditional("DEBUG")]
+    public void ColorStatus(){
+        // Color col = status switch
+        // {
+        //     Status.Far => Color.white,
+        //     Status.Close => Color.green,
+        //     Status.Interacted => Color.red,
+        //     Status.Blocked => Color.gray,
+        //     _ => Color.black,
+        // };
+        // spriteR.color = col;
+    }
+
+
 }

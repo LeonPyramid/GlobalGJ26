@@ -95,7 +95,7 @@ namespace Script.UI.BinUI
 
         public void StopFill()
         {
-            _fillTween?.Kill();
+            _fillTween?.Complete();
             _shakeTween?.Kill();
             _shakeControlTween?.Kill();
             PlayUnfill();

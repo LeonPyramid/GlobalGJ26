@@ -247,6 +247,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childSprite: {fileID: 1251145401402391215}
+  binFaceEmpty:
+  - {fileID: 5120582756923962193, guid: e04d50c31245edb1ea3f7899f0615e00, type: 3}
+  - {fileID: -4355741868504135979, guid: adaee9083a1cee0f4a63dde48fd9326f, type: 3}
+  binFaceFull:
+  - {fileID: -2271598715611379645, guid: cd17c91859b59f708912230abf4a41a4, type: 3}
+  - {fileID: -5799501590492466624, guid: 4fe24682e9dfc85e6983584d18d695b3, type: 3}
   binUI: {fileID: 8427847282417305881}
   shakeTime: 0.2
   vibrato: 90

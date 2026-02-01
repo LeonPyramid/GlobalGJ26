@@ -20,6 +20,16 @@ public class Pnj : PlayerInteraction.PlayerAction
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.QTE);
     }
 
+    public override void SetBlocked()
+    {
+        throw new System.NotImplementedException();
+    }
+
+        public override void SetUnblocked()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void TimerRevert()
     {
         //

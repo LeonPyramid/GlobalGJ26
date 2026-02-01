@@ -22,6 +22,10 @@ public class Bin : PlayerInteraction.PlayerAction
     bool isUsable = true;
     bool isPlayerInside;
 
+    [SerializeField] private List<Sprite> binFaceEmpty;
+    [SerializeField] private List<Sprite> binFaceFull;
+
+
     private Player ?player;
 
     [SerializeField] private BinUI binUI;
@@ -45,6 +49,19 @@ public class Bin : PlayerInteraction.PlayerAction
         childSprite.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
         childSprite.enabled = false;
         player = null;
+    }
+
+
+
+    public override void SetBlocked()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = binFaceFull[UnityEngine.Random.Range(0, binFaceFull.Count)];
+    }
+
+    public override void SetUnblocked()
+    {
+                gameObject.GetComponent<SpriteRenderer>().sprite = binFaceEmpty[UnityEngine.Random.Range(0, binFaceFull.Count)];
+
     }
 
     override public void ActionEffect(Collider2D playerCollider)

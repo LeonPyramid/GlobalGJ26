@@ -15,6 +15,7 @@ public class Pnj : PlayerInteraction.PlayerAction
     }
     public override void TimerEffect(Collider2D ?playerCollider)
     {
+        GameManager.Instance.ChangeGameState(GameState.Qte);
         Vector2 playerDir = (Vector2)(playerCollider?.gameObject.GetComponent<PlayerGrasp>().player.direction);
         Vector2 playerToObjDir = (transform.position - playerCollider.gameObject.transform.position).normalized;
         float quality = playerDir.x  * playerToObjDir.x +  playerDir.y  * playerToObjDir.y ;

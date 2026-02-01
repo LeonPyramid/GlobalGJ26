@@ -117,6 +117,7 @@ public class TimeManager : Singleton<TimeManager>
 
     void OnQteDone(int score){
         Debug.Log("J'ai pop");
+        GameManager.Instance.ChangeGameState(GameState.Moving);
         PopTypeSpeed(NewTimeType.QTE);
     }
 

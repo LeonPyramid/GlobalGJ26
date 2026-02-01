@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 using Utils.Singleton;
 using AudioType = Audio.AudioType;
 
+public enum GameState { PreGame, Pause, Moving, Qte, GameOver };
+
+
 public class GameManager : Utils.Singleton.Singleton<GameManager>
 {
     [SerializeField] AudioType levelMusic;
@@ -17,6 +20,7 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     private int _goldAmount;
     private int _score;
 
+
     private bool _isGamePaused = false;
     private bool _isGameOver = false;
 
@@ -25,6 +29,8 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     public static Action<bool> OnGamePause;
     public static Action<int> OnGoldUpdated;
     public static Action<int> OnDashUpdated;
+
+    [SerializeField] public GameState gameState = GameState.PreGame;
     void Start()
     {
         _isGameOver = false;
@@ -43,6 +49,12 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
         //     GameOver(false);
         // }
     }
+
+    public void ChangeGameState(GameState state){
+        gameState = state;
+    }
+
+
 
     public void OnGamePauseHandler(InputAction.CallbackContext context)
     {
@@ -73,6 +85,7 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
 
     private void GameOver(bool isWin)
     {
+        gameState = GameState.GameOver;
         Debug.Log("MG has game over");
         OnGameOver?.Invoke(isWin);
         _isGameOver = true;

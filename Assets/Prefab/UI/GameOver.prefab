@@ -104,8 +104,11 @@ MonoBehaviour:
   showScoreDuration: 0.25
   showScoreEase: 6
   dash: {fileID: 4395328328394603723}
+  dashText: {fileID: 780273808522309328}
   score: {fileID: 2551094990492745778}
+  scoreText: {fileID: 2544654543571525979}
   time: {fileID: 5048775487155899374}
+  timeText: {fileID: 6456166975934953102}
   showRetryY: -750
   showRetryDuration: 0.25
   showRetryEase: 6

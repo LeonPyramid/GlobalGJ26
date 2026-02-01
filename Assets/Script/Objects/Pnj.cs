@@ -4,6 +4,7 @@ using UnityEngine;
 public class Pnj : PlayerInteraction.PlayerAction
 {
    private TimeManager timeManager;
+    [SerializeField] private GameObject richPart;
 
     private void Start()
     {
@@ -26,12 +27,13 @@ public class Pnj : PlayerInteraction.PlayerAction
     #nullable disable
     public override void SetBlocked()
     {
-        //TODO Drop le monocle
+        richPart.SetActive(false);
     }
 
         public override void SetUnblocked()
     {
-        //TODO Mettre le monocle
+        richPart.SetActive(true);
+
     }
 
     public override void TimerRevert()

@@ -13,12 +13,14 @@ public class CharacterAnimation : Character
     [SerializeField] List<Color> habitsColors;
 
     [SerializeField] List<Color> skinColors;
+    [SerializeField] List<Color> moustacheColors;
 
     [SerializeField] List<Sprite> Hats;
 
     [SerializeField] List<Sprite> Accessories;
 
     [SerializeField] SpriteRenderer hatRenderer;
+    [SerializeField] SpriteRenderer moustacheRenderer;
 
     [SerializeField] SpriteRenderer BodyRenderer;
     [SerializeField] SpriteRenderer HeadRenderer;
@@ -38,6 +40,7 @@ public class CharacterAnimation : Character
         }
 
         SetRandomColor(HeadRenderer, skinColors);
+        SetRandomColor(moustacheRenderer, moustacheColors);
         SetRandomColor(BodyRenderer, habitsColors);
 
         if(Random.Range(0,3)==0){
@@ -74,7 +77,7 @@ public class CharacterAnimation : Character
         {
             timer -= Time.deltaTime;
         }
-        else if(!isStatic)
+        else if(isStatic)
         {
             LookLeft(flip);
             ResetTimer();

@@ -29,16 +29,21 @@ namespace UI.Menu
 
         private bool _paused;
 
+        private GameState _stateBeforePause;
+
         private void Update()
         {
             if(Input.GetKeyDown(pauseKey))
             {
                 if(_paused)
                 {
+                    GameManager.Instance.ChangeGameState(_stateBeforePause);
                     Resume();
                 } 
                 else
                 {
+                    _stateBeforePause = GameManager.Instance.gameState;
+                    GameManager.Instance.ChangeGameState(GameState.Pause);
                     Pause();
                 }
             }

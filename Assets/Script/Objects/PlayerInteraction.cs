@@ -11,8 +11,10 @@ public class PlayerInteraction : MonoBehaviour
 {
     [Serializable]
     public abstract class PlayerAction : MonoBehaviour {
+        #nullable enable
         abstract public void ActionEffect(Collider2D ?playerCollider);
         abstract public void TimerEffect(Collider2D ?playerCollider);
+        #nullable disable
         abstract public void TimerRevert();
         abstract public void SetUnblocked();
         abstract public void SetBlocked();

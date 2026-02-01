@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+//using UnityEngine.Rendering.PostProcessing;
 using Utils.Singleton;
 
 public class TimeManager : Singleton<TimeManager>
@@ -117,6 +117,7 @@ public class TimeManager : Singleton<TimeManager>
 
     void OnQteDone(int score){
         Debug.Log("J'ai pop");
+        GameManager.Instance.ChangeGameState(GameState.Moving);
         PopTypeSpeed(NewTimeType.QTE);
     }
 
@@ -125,8 +126,8 @@ public class TimeManager : Singleton<TimeManager>
         lastChangeTime = DOTween.To(x => Time.timeScale = x,Time.timeScale,newTimeSpeed,timeChangeSpeed);
         lastChangeFixed.Kill();
         lastChangeFixed = DOTween.To(x => Time.fixedDeltaTime = x, Time.fixedDeltaTime, InitiaFixedDeltaTime * newTimeSpeed, timeChangeSpeed);
-        VolumeManager.Instance.LerpVignette(newTimeSpeed/ vignetteAttenuationRatio, 
-                                            Time.timeScale/ vignetteAttenuationRatio, timeChangeSpeed);
+        //VolumeManager.Instance.LerpVignette(newTimeSpeed/ vignetteAttenuationRatio, 
+        //                                    Time.timeScale/ vignetteAttenuationRatio, timeChangeSpeed);
     }
 
 }

@@ -1,6 +1,7 @@
 using Audio;
 using System;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class CopVision : MonoBehaviour
@@ -24,7 +25,14 @@ public class CopVision : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Rotate(0, 0, rotatingSpeed, Space.Self);
+        if (status != Status.Chasing)
+        transform.Rotate(0, 0, rotatingSpeed*Time.timeScale, Space.Self);
+        if(status == Status.Chasing)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, chasingSpeed*Time.timeScale);
+            Vector2 direction = (target.transform.position - transform.position).normalized;
+            transform.rotation = Quaternion.FromToRotation(new Vector2(0,1), direction);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

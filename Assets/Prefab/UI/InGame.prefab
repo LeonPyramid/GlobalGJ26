@@ -54,7 +54,7 @@ MonoBehaviour:
   timer: {fileID: 3528261178085353639}
   dash: {fileID: 4550179430196282815}
   dashPrefix: 'Dash: '
-  dashRect: {fileID: 0}
+  dashRect: {fileID: 876754568733266209}
   dashScale: {x: 0, y: 0, z: 0}
   dashDuration: 0
   dashEase: 0

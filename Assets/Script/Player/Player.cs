@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
         get;set;
     } = Status.Static;
     Camera m_Camera;
+
+    GameManager _manager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,6 +55,7 @@ public class Player : MonoBehaviour
         //childTrigger = GetComponentInChildren<Collider2D>();
         timeManager = TimeManager.Instance;
         SetStatic();
+        _manager = GameManager.Instance;
 
     }
 
@@ -61,7 +64,7 @@ public class Player : MonoBehaviour
     {
         Mouse mouse = Mouse.current;
         if(mouse.leftButton.wasPressedThisFrame){
-            if (MenuManager.Instance.MenuCount == 0){
+            if (MenuManager.Instance.MenuCount == 0 && _manager.gameState == GameState.Moving){
                 OnClick?.Invoke();
                 if(status == Status.Moving)
                 {

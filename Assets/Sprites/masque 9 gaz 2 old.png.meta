@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 4396ec5366a043c60b1d8b9091d31d65
+guid: bf9d6877b0a45b84abf8cba59eccdf99
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3868589382984322905
-    second: masque_1_seconde_chance_2_0
+      213: -9053660011284015823
+    second: masque 9 gaz 2_0
+  - first:
+      213: 1044235462417137163
+    second: masque 9 gaz 2_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +100,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -113,23 +116,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: masque_1_seconde_chance_2_0
+      name: masque 9 gaz 2_1
       rect:
         serializedVersion: 2
-        x: 8
-        y: 6
-        width: 56
-        height: 87
+        x: 12
+        y: 3
+        width: 76
+        height: 83
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7a03f5de372005ac0800000000000000
-      internalID: -3868589382984322905
+      spriteID: b0e3d37de9edd7e00800000000000000
+      internalID: 1044235462417137163
       vertices: []
       indices: 
       edges: []
@@ -138,7 +141,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1e6c9957d95b2aa458ac6a5ea86fdf13
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +151,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      masque_1_seconde_chance_2_0: -3868589382984322905
+      masque 9 gaz 2_0: -9053660011284015823
+      masque 9 gaz 2_1: 1044235462417137163
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4de403291fdd1dbd8a9e5e8127747a36
+guid: 971b554642576f649bb9788ab2d45b27
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1659276123693333139
-    second: masque_9_gaz_2_0
+      213: 8871711722377225404
+    second: masque 3 assassin_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,27 +109,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: masque_9_gaz_2_0
+      name: masque 3 assassin_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 0
-        width: 58
-        height: 71
+        x: 9
+        y: 6
+        width: 76
+        height: 83
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 39a3701e7dee60710800000000000000
-      internalID: 1659276123693333139
+      spriteID: cb4a6f1aec6ae1b70800000000000000
+      internalID: 8871711722377225404
       vertices: []
       indices: 
       edges: []
@@ -138,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: df73cec3135e8bb4b96123be5770d7e0
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      masque_9_gaz_2_0: 1659276123693333139
+      masque 3 assassin_0: 8871711722377225404
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e39701010662bbcd69b534312d595acc
+guid: 544f54eac42f04176bf4ddb72f0d27fe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2756283592736229838
-    second: masque_3_assassin_0
+      213: 2837257013642637027
+    second: grass_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: masque_3_assassin_0
+      name: grass_1_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 0
         y: 0
-        width: 78
-        height: 75
+        width: 740
+        height: 740
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 23638b20da6bfb9d0800000000000000
-      internalID: -2756283592736229838
+      spriteID: 3eea7a2b836ff5720800000000000000
+      internalID: 2837257013642637027
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      masque_3_assassin_0: -2756283592736229838
+      grass_1_0: 2837257013642637027
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

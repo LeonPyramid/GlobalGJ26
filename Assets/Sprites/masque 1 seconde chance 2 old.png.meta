@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6c2dbe34d2ea2dccfa740d7e503fea82
+guid: f58cce004c0b60a42b737b182f117e7a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7984755415455938473
-    second: masque_10_vision_2_0
+      213: -2566346989400437830
+    second: masque 1 seconde chance 2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,27 +109,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: masque_10_vision_2_0
+      name: masque 1 seconde chance 2_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 6
-        width: 74
-        height: 81
+        x: 0
+        y: 13
+        width: 76
+        height: 83
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9a7b0accebc8fce60800000000000000
-      internalID: 7984755415455938473
+      spriteID: abbc46e9201826cd0800000000000000
+      internalID: -2566346989400437830
       vertices: []
       indices: 
       edges: []
@@ -138,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 48000c66b2eff6e43aae4a18e2ca58e2
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      masque_10_vision_2_0: 7984755415455938473
+      masque 1 seconde chance 2_0: -2566346989400437830
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 572ac5c043ae61047a6bb7c887b75547
+guid: 19fb180a91df88fdb8a5f93e99c368be
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3422978025275661150
-    second: masque 5 basique_0
+      213: 2453604587796202661
+    second: masque_5_basique_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: masque 5 basique_0
+      name: masque_5_basique_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 10
-        width: 76
-        height: 83
+        x: 13
+        y: 1
+        width: 83
+        height: 59
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2a4e9792f932f70d0800000000000000
-      internalID: -3422978025275661150
+      spriteID: 5a48cd27f54fc0220800000000000000
+      internalID: 2453604587796202661
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6623fc24ecfcb574aa058e992f6d1878
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      masque 5 basique_0: -3422978025275661150
+      masque_5_basique_0: 2453604587796202661
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

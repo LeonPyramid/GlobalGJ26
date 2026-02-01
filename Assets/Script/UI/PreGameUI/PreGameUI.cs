@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils.Singleton;
 
-public class PreGameUI : MonoBehaviour
+
+public class PreGameUI : Singleton<PreGameUI>
 {
     [SerializeField] List<MaskTemplate> maskTemplates;
     [SerializeField] private Button playButton;
@@ -14,6 +17,8 @@ public class PreGameUI : MonoBehaviour
     [SerializeField] private float hidePosY;
 
     private MaskTemplate _currentMaskSelected;
+
+    public Action<MaskEnum> OnMaskChanged;
     
     private void Start()
     {
@@ -57,16 +62,21 @@ public class PreGameUI : MonoBehaviour
 
             maskTemp.Unselect();
         }
+
+        OnMaskChanged?.Invoke(mask.Mask);
     }
 
     private void Hide()
     {
+        OnMaskChanged?.Invoke(_currentMaskSelected.Mask);
+
         rectTransform
             .DOAnchorPosY(hidePosY, hideDuration)
             .SetUpdate(true)
             .OnComplete(() =>
             {
                 GameManager.Instance.ChangeGameState(GameState.Moving);
+
             });
     }
 }

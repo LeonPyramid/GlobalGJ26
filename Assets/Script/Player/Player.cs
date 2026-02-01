@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
     {
         Mouse mouse = Mouse.current;
         if(mouse.leftButton.wasPressedThisFrame){
-            if (MenuManager.Instance.MenuCount == 0 && _manager.gameState == GameState.Moving){
+            if (MenuManager.Instance.MenuCount == 0 && GameManager.Instance.gameState == GameState.Moving){
                 OnClick?.Invoke();
                 if(status == Status.Moving)
                 {
@@ -147,8 +147,8 @@ public class Player : MonoBehaviour
 
     private void MoveDir()
     {
-        //GameManager.Instance.AddDash(); Uncomment to update dash if gameManager is in the scene
-        
+        GameManager.Instance.AddDash();
+
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition - (Vector2)transform.position).normalized;
         Debug.DrawRay(transform.position, direction * dashDistance, Color.yellow,0.5f);

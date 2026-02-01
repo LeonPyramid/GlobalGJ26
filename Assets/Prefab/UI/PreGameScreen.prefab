@@ -2723,7 +2723,7 @@ GameObject:
   - component: {fileID: 7845200725314718769}
   - component: {fileID: 1441516579907859018}
   m_Layer: 0
-  m_Name: RightClick
+  m_Name: LeftClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2776,7 +2776,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Right Click: Move'
+  m_text: 'Left Click: Move'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d483892b40fe0504082445a73f482f5d, type: 2}
   m_sharedMaterial: {fileID: -367834463689691219, guid: d483892b40fe0504082445a73f482f5d, type: 2}

@@ -14,7 +14,7 @@ namespace Utils.Anchor
             var minutes = total % 3600 / 60;
             var secs = total % 60;
 
-            return hours > 0 ? $"{hours:00}:{minutes:00}:{secs:00}" : minutes > 0 ? $"{minutes:00}:{secs:00}" : $"{secs:00}";
+            return hours > 0 ? $"{hours:00}:{minutes:00}:{secs:00}" : $"{minutes:00}:{secs:00}";
         }
     }
 }

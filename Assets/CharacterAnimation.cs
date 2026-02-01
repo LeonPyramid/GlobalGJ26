@@ -26,7 +26,7 @@ public class CharacterAnimation : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
-        else
+        else if(!isStatic)
         {
             LookLeft(flip);
             ResetTimer();

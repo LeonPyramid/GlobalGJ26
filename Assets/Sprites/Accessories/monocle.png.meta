@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f6b15d2bb009e8f4b9f8fc95903e30cb
+guid: f3a904c21eabb2f04b205150152537b0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6093286654331370248
-    second: fez_0
+      213: 4546468060787468801
+    second: monocle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,11 +46,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.197806, y: 0.42710534}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fez_0
+      name: monocle_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 9
-        width: 75
-        height: 79
+        x: 38
+        y: 7
+        width: 44
+        height: 50
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80bbc02bde3bf8450800000000000000
-      internalID: 6093286654331370248
+      spriteID: 10a65e1fc9c481f30800000000000000
+      internalID: 4546468060787468801
       vertices: []
       indices: 
       edges: []
@@ -138,8 +138,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c78ff7c6722ed884f9b40ad3d03f1107
-    internalID: 1294772925
+    spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fez_0: 6093286654331370248
+      monocle_0: 4546468060787468801
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

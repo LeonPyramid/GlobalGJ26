@@ -3,11 +3,13 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using Utils.Anchor;
+using Utils.Singleton;
 
-public class InGameUi : MonoBehaviour
+public class InGameUi : Singleton<InGameUi>
 {
     [Header("Timer")]
     [SerializeField] private TextMeshProUGUI timer;
+    public string TimerText => timer.text;
 
     public float ElapsedTime { get; private set; }
 
@@ -21,6 +23,7 @@ public class InGameUi : MonoBehaviour
     [SerializeField] private float dashDuration;
     [SerializeField] private Ease dashEase;
     private int _dash;
+    public string DashText => dash.text;
 
     [Header("Score")]
     [SerializeField] private TextMeshProUGUI score;
@@ -29,6 +32,7 @@ public class InGameUi : MonoBehaviour
     [SerializeField] private Vector3 scoreScale;
     [SerializeField] private float scoreDuration;
     [SerializeField] private Ease scoreEase;
+    public string ScoreText => score.text;
 
     private void Start()
     {

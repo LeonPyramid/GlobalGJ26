@@ -23,8 +23,11 @@ public class GameOver : MonoBehaviour
     [SerializeField] private float showScoreDuration;
     [SerializeField] private Ease showScoreEase;
     [SerializeField] private RectTransform dash;
+    [SerializeField] private TextMeshProUGUI dashText;
     [SerializeField] private RectTransform score;
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private RectTransform time;
+    [SerializeField] private TextMeshProUGUI timeText;
 
     [Header("Retry")]
     [SerializeField] private float showRetryY;
@@ -62,6 +65,10 @@ public class GameOver : MonoBehaviour
 
     private void Show(bool win)
     {
+        timeText.text = InGameUi.Instance.TimerText;
+        dashText.text = InGameUi.Instance.DashText;
+        scoreText.text = InGameUi.Instance.ScoreText;
+
         rectTransform
             .DOAnchorPosY(0f, showDuration)
             .SetEase(showEase)

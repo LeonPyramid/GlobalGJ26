@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 636a88be788027578b5ab51678117b6c
+guid: 4de403291fdd1dbd8a9e5e8127747a36
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8982206906611405652
-    second: collier_0
+      213: 1659276123693333139
+    second: masque_9_gaz_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: collier_0
+      name: masque_9_gaz_2_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 48
-        width: 52
-        height: 26
+        x: 10
+        y: 0
+        width: 58
+        height: 71
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 45312af779537ac70800000000000000
-      internalID: 8982206906611405652
+      spriteID: 39a3701e7dee60710800000000000000
+      internalID: 1659276123693333139
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      collier_0: 8982206906611405652
+      masque_9_gaz_2_0: 1659276123693333139
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

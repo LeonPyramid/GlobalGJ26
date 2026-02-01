@@ -65,17 +65,15 @@ MonoBehaviour:
   - {r: 0.7058824, g: 0.6509804, b: 0.45882353, a: 1}
   Hats:
   - {fileID: -6147307135976486470, guid: 4b7ff379920f0784fa4ea17f0e98331f, type: 3}
-  - {fileID: -6052264108443376028, guid: cb1efead36a35f542a1e0cd3a004ade0, type: 3}
-  - {fileID: -784691351580495860, guid: 34865be011d07b54d9e97bbb906f030e, type: 3}
+  - {fileID: 8291531332579697186, guid: 696bac8bfa78fe459b0fb16462a2dc96, type: 3}
   - {fileID: -2110273330930914030, guid: 5f08ebeb75c3adc42960e6edf87f960f, type: 3}
-  - {fileID: 21300000, guid: f6b15d2bb009e8f4b9f8fc95903e30cb, type: 3}
-  - {fileID: 21300000, guid: 95bb9ec5b96c9db4f963ec2fde88c273, type: 3}
+  - {fileID: -2110273330930914030, guid: 5f08ebeb75c3adc42960e6edf87f960f, type: 3}
+  - {fileID: 1334101769890458025, guid: f8f5e54845264aca181d3a539c15f353, type: 3}
   Accessories:
   - {fileID: 302192902933404138, guid: 32397f53778f84df6806e617b0e46141, type: 3}
   - {fileID: 8982206906611405652, guid: 636a88be788027578b5ab51678117b6c, type: 3}
-  - {fileID: 387520583455535730, guid: 544140b37cf846d6d8cb80be8af540d7, type: 3}
-  - {fileID: -932510848210435037, guid: 17ac9b666db6aef22b658a180f0ae0ed, type: 3}
-  - {fileID: 3875767470655110863, guid: 7854c34748b170d58b386017713d897e, type: 3}
+  - {fileID: -6123109971323328722, guid: 79330b68453f06decad161201399c4db, type: 3}
+  - {fileID: -1935372940403357341, guid: 489276abfc79770509b1e32e773926b3, type: 3}
   hatRenderer: {fileID: 3627345710775598951}
   BodyRenderer: {fileID: 7825294493388768181}
   HeadRenderer: {fileID: 735208782522097998}
@@ -483,12 +481,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 8982206906611405652, guid: 86c516cdec4b45b409b54e86ea6edd1a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.5, y: 0.24}
+  m_Size: {x: 0.52, y: 0.26}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

@@ -116,10 +116,10 @@ TextureImporter:
       name: moustache_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 0
-        width: 57
-        height: 36
+        x: 17
+        y: 17
+        width: 55
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

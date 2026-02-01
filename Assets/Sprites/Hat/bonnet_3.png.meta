@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e04d50c31245edb1ea3f7899f0615e00
+guid: 696bac8bfa78fe459b0fb16462a2dc96
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5120582756923962193
-    second: poubelle 1_0
+      213: 8291531332579697186
+    second: bonnet_3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: poubelle 1_0
+      name: bonnet_3_0
       rect:
         serializedVersion: 2
         x: 16
-        y: 0
-        width: 64
-        height: 87
+        y: 29
+        width: 77
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 153717d23e6ff0740800000000000000
-      internalID: 5120582756923962193
+      spriteID: 2222f6a01df611370800000000000000
+      internalID: 8291531332579697186
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      poubelle 1_0: 5120582756923962193
+      bonnet_3_0: 8291531332579697186
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

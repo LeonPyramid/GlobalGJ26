@@ -126,7 +126,7 @@ public class Bin : PlayerInteraction.PlayerAction
         StartCoroutine(ProcessUseCoolDown());
     }
 
-    public override void TimerEffect(Collider2D playerCollider)
+    public override void TimerEffect(Collider2D ?playerCollider)
     {
         childSprite.enabled = true;
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Bin);

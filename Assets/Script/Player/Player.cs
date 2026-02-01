@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     /// The time of the dash
     /// </summary>
     [SerializeField] private float dashSpeed;
+
     /// <summary>
     /// The player's collider, needed to get its dimension
     /// </summary>
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
     private float radius;
 
     [SerializeField] private Collider2D childTrigger;
-
+    TrailRenderer _trailRenderer;
     private TimeManager timeManager;
     public Vector2 direction{
         get;private set;
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
         SetStatic();
         _manager = GameManager.Instance;
         playerMaskHandler.OnNewMask += OnNewMask;
+        _trailRenderer = GetComponent<TrailRenderer>();
     }
 
     private void OnNewMask(MaskEnum maskEnum)

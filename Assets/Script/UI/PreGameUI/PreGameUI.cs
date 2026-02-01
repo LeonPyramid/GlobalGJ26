@@ -66,7 +66,7 @@ public class PreGameUI : MonoBehaviour
             .SetUpdate(true)
             .OnComplete(() =>
             {
-                //Play logic
+                GameManager.Instance.ChangeGameState(GameState.Moving);
             });
     }
 }

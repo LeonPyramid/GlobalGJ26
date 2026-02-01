@@ -85,7 +85,7 @@ public class QteBehaviour : Singleton<QteBehaviour>
     {
         score.text = "";
 
-        VolumeManager.Instance.LerpChromaticAberration(0, .8f, appearDuration);
+        //VolumeManager.Instance.LerpChromaticAberration(0, .8f, appearDuration);
         //VolumeManager.Instance.LerpVignette(0f, 0.8f, appearDuration);
         lineRectTransform.anchoredPosition = dir > 0 ? new Vector2(hideX, 0) : new Vector2(-hideX, 0);
         
@@ -255,7 +255,7 @@ public class QteBehaviour : Singleton<QteBehaviour>
     private void Hide(float dir, bool fast = false, int score = 0)
     {
         var hideXPos = dir > 0 ? -hideX : hideX;
-        VolumeManager.Instance.LerpChromaticAberration(.8f, 0f, appearDuration);
+        //VolumeManager.Instance.LerpChromaticAberration(.8f, 0f, appearDuration);
         //VolumeManager.Instance.LerpVignette(.8f, 0f, appearDuration);
         if (fast)
         {

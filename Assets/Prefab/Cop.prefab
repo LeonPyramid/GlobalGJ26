@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.39658165, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
   chasingSpeed: 0.8
   mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 832
   status: 0
 --- !u!114 &8608851738179946198
 MonoBehaviour:
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_LightType: 1
   m_BlendStyleIndex: 1
   m_FalloffIntensity: 0.866
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.74690986, b: 0, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 0.8
   m_LightVolumeEnabled: 1
@@ -194,8 +194,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 1
   m_LocalBounds:
-    m_Center: {x: -0.00084996223, y: 1.9999001, z: 0}
-    m_Extent: {x: 1.39975, y: 2.5009, z: 0}
+    m_Center: {x: -0.0009999871, y: 2.2999, z: 0}
+    m_Extent: {x: 1.3996, y: 2.2009, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 0.5
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.1, y: 0, z: 0}
-  - {x: 0.1, y: 0, z: 0}
+  - {x: -0.1, y: 0.6, z: 0}
+  - {x: 0.1, y: 0.6, z: 0}
   - {x: 0.9, y: 4, z: 0}
   - {x: -0.9, y: 4, z: 0}

@@ -4,6 +4,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using Audio;
+using Random = UnityEngine.Random;
+using System.Collections.Generic;
 
 
 public class Player : MonoBehaviour
@@ -16,6 +19,7 @@ public class Player : MonoBehaviour
     /// The time of the dash
     /// </summary>
     [SerializeField] private float dashSpeed;
+    [SerializeField] private List<Audio.AudioType> dashSFX;
     /// <summary>
     /// The player's collider, needed to get its dimension
     /// </summary>
@@ -145,8 +149,8 @@ public class Player : MonoBehaviour
     private void MoveDir()
     {
         //GameManager.Instance.AddDash(); Uncomment to update dash if gameManager is in the scene
-        
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        AudioController.Instance.PlayAudio(dashSFX[Random.Range(0, dashSFX.Count)], false, 0, Random.Range(.8f, 1.2f));
         direction = (mousePosition - (Vector2)transform.position).normalized;
         Debug.DrawRay(transform.position, direction * dashDistance, Color.yellow,0.5f);
         Debug.Log($"New Force {direction * dashSpeed} of power {(direction * dashSpeed).SqrMagnitude()}");
@@ -170,7 +174,6 @@ public class Player : MonoBehaviour
         childTrigger.enabled = true;
         status = Status.Moving;
         GetComponent<SpriteRenderer>().enabled = true;
-
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Moving);
 
     }

@@ -5,6 +5,7 @@ using Audio;
 using DG.Tweening;
 using Script.UI.BinUI;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Bin : PlayerInteraction.PlayerAction
 {
@@ -140,7 +141,7 @@ public class Bin : PlayerInteraction.PlayerAction
     }
 
     void BinShake(){
-        AudioController.Instance.PlayAudio(Audio.AudioType.SFX_Bin);
+        AudioController.Instance.PlayAudio(Audio.AudioType.SFX_Bin, false, 0f, Random.Range(.8f,1f));
         transform.DOShakeRotation(shakeTime,new Vector3(0,0,force),vibrato,randomness).SetUpdate(true);
     }
 

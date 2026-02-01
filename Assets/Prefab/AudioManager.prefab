@@ -579,6 +579,22 @@ MonoBehaviour:
     volume: 0
     pitch: 0
   - busType: 1
+    source: {fileID: 5047934584966267619}
+    audio:
+    - type: 7
+      clip: {fileID: 8300000, guid: fdc4627d1bab6154cbf8291c84599feb, type: 3}
+    - type: 8
+      clip: {fileID: 8300000, guid: 01e875e9db1a37147ad3bf99a1b38be7, type: 3}
+    - type: 15
+      clip: {fileID: 8300000, guid: fdc4627d1bab6154cbf8291c84599feb, type: 3}
+    - type: 5
+      clip: {fileID: 8300000, guid: ccc1d56e518661d4aaee5062d55bb2d3, type: 3}
+    - type: 6
+      clip: {fileID: 8300000, guid: 5c9026d5f92df6f4f8401133af226f98, type: 3}
+    paused: 0
+    volume: 0
+    pitch: 0
+  - busType: 1
     source: {fileID: 1409805659878409159}
     audio:
     - type: 3
@@ -588,7 +604,9 @@ MonoBehaviour:
     pitch: 0
   - busType: 0
     source: {fileID: 4006337072897482456}
-    audio: []
+    audio:
+    - type: 2
+      clip: {fileID: 8300000, guid: 6474ec6c0d7b5b64c9773f03eb3c85b5, type: 3}
     paused: 0
     volume: 0
     pitch: 0

@@ -23,7 +23,7 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     public static Action<bool> OnGameOver; //true -> win | false -> loose
     public static Action OnKeyPickUp;
     public static Action<bool> OnGamePause;
-    public static Action<int> OnGoldAdded;
+    public static Action<int> OnGoldUpdated;
     void Start()
     {
         _isGameOver = false;
@@ -56,6 +56,8 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     {
         CopGrasp.OnPlayerCatched += GameOver;
         //ExitDoor.OnPlayerExit += GameOver;
+        
+        QteBehaviour.Instance.OnDone += OnQteDone;
     }
 
     private void OnDisable()
@@ -73,6 +75,13 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     {
         OnGameOver?.Invoke(isWin);
         _isGameOver = true;
+    }
+
+    private void OnQteDone(int score)
+    {
+        _score += score;
+
+        OnGoldUpdated?.Invoke(_score);
     }
 
     public void SetGamePause(bool pause)

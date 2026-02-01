@@ -652,7 +652,7 @@ MonoBehaviour:
   failed: Failed
   scoreTransform: {fileID: 4979223710815770767}
   scoreScale: {x: 1.25, y: 1.25, z: 1.25}
-  scoreDuration: 0.5
+  scoreDuration: 0.1
   scoreEase: 6
   ScoreRange: 1
   scoreRangesPossible:

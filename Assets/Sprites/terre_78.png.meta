@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: bf9d6877b0a45b84abf8cba59eccdf99
+guid: f8681ef097302929987dd2dba9bf7d8f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9053660011284015823
-    second: masque 9 gaz 2_0
-  - first:
-      213: 1044235462417137163
-    second: masque 9 gaz 2_1
+      213: 3621978208366415029
+    second: terre_78_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -129,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: masque 9 gaz 2_1
+      name: terre_78_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 3
-        width: 76
-        height: 83
+        x: 22
+        y: 9
+        width: 973
+        height: 658
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b0e3d37de9edd7e00800000000000000
-      internalID: 1044235462417137163
+      spriteID: 5bcc2ed8df9d34230800000000000000
+      internalID: 3621978208366415029
       vertices: []
       indices: 
       edges: []
@@ -154,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1e6c9957d95b2aa458ac6a5ea86fdf13
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -164,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      masque 9 gaz 2_0: -9053660011284015823
-      masque 9 gaz 2_1: 1044235462417137163
+      terre_78_0: 3621978208366415029
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

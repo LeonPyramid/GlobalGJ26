@@ -4,6 +4,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using Audio;
+using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 
 public class Player : MonoBehaviour
@@ -26,6 +29,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Collider2D childTrigger;
     TrailRenderer _trailRenderer;
     private TimeManager timeManager;
+    [SerializeField] List<Audio.AudioType> dashSounds;
     public Vector2 direction{
         get;private set;
     }
@@ -169,7 +173,7 @@ public class Player : MonoBehaviour
     private void MoveDir()
     {
         GameManager.Instance.AddDash();
-
+        AudioController.Instance.PlayAudio(dashSounds[Random.Range(0,dashSounds.Count-1)], false, 0, Random.Range(.8f,1.2f));
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition - (Vector2)transform.position).normalized;
         visual.Turn(direction.x);

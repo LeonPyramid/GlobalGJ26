@@ -23,6 +23,13 @@ public class QteBehaviour : Singleton<QteBehaviour>
     [SerializeField] private Color inRangeColor;
     [SerializeField] private Color midInPerfectColor;
     [SerializeField] private Color inPerfectRangeColor;
+
+    [Header("CopGauge")]
+    [SerializeField] private Color copOutOfRangeColor;
+    [SerializeField] private Color copMidOutInColor;
+    [SerializeField] private Color copInRangeColor;
+    [SerializeField] private Color copMidInPerfectColor;
+    [SerializeField] private Color copInPerfectRangeColor;
     private Texture2D _texture;
 
     [Header("Handle")]
@@ -65,6 +72,7 @@ public class QteBehaviour : Singleton<QteBehaviour>
     [SerializeField] private List<float> scoreRangesPossible;
 
     public Action<int> OnDone;
+    private bool _copMode = false;
 
     private void Start()
     {
@@ -77,14 +85,15 @@ public class QteBehaviour : Singleton<QteBehaviour>
         {
             handleTween.Kill();
 
-            PlayScore(_currentDir);
+            PlayScore(_currentDir, _copMode);
         }
     }
 
-    public void Show(float dir, float scoreRange)
+    public void Show(float dir, float scoreRange, bool copMode = false)
     {
         score.text = "";
 
+        _copMode = copMode;
         //VolumeManager.Instance.LerpChromaticAberration(0, .8f, appearDuration);
         //VolumeManager.Instance.LerpVignette(0f, 0.8f, appearDuration);
         lineRectTransform.anchoredPosition = dir > 0 ? new Vector2(hideX, 0) : new Vector2(-hideX, 0);
@@ -97,7 +106,7 @@ public class QteBehaviour : Singleton<QteBehaviour>
 
         scoreRange = FixScoreRange(scoreRange);
 
-        ColorGauge(scoreRange);
+        ColorGauge(scoreRange, copMode);
 
         ScoreRange = scoreRange;
 
@@ -130,7 +139,7 @@ public class QteBehaviour : Singleton<QteBehaviour>
         return res;
     }
 
-    private void ColorGauge(float scoreRange)
+    private void ColorGauge(float scoreRange, bool copMode)
     {
         var perfectScoreRange = scoreRange/2;
 
@@ -150,28 +159,28 @@ public class QteBehaviour : Singleton<QteBehaviour>
                     {
                         if(i == (_texture.width / 2) - (perfectScoreRange * _texture.width / 2) || i == (_texture.width / 2) + (perfectScoreRange * _texture.width / 2))
                         {
-                            color = midInPerfectColor;
+                            color = copMode? copMidInPerfectColor : midInPerfectColor;
                         } 
                         else
                         {
-                            color = inPerfectRangeColor;
+                            color = copMode? copInPerfectRangeColor : inPerfectRangeColor;
                         }
                     }
                     else
                     {
                         if(i == (_texture.width / 2) - (scoreRange * _texture.width / 2) || i == (_texture.width / 2) + (scoreRange * _texture.width / 2))
                         {
-                            color = midOutInColor;
+                            color = copMode? copMidOutInColor : midOutInColor;
                         } 
                         else
                         {
-                            color = inRangeColor;
+                            color = copMode? copInRangeColor : inRangeColor;
                         }
                     }
                 }
                 else
                 {
-                    color = outOfRangeColor;
+                    color = copMode? copOutOfRangeColor : outOfRangeColor;
                 }
 
                 _texture.SetPixel(i, i, color);
@@ -201,10 +210,10 @@ public class QteBehaviour : Singleton<QteBehaviour>
             });
     }
 
-    private void PlayScore(float dir)
+    private void PlayScore(float dir, bool copMode)
     {
 
-        var score = CalculateScore();
+        var score = CalculateScore(copMode);
 
         scoreTransform
             .DOScale(scoreScale, scoreDuration)
@@ -223,7 +232,7 @@ public class QteBehaviour : Singleton<QteBehaviour>
             });
     }
 
-    private int CalculateScore()
+    private int CalculateScore(bool copMode)
     {
         if(Mathf.Abs(_currentScore) < ScoreRange)
         {
@@ -231,14 +240,14 @@ public class QteBehaviour : Singleton<QteBehaviour>
             if (Mathf.Abs(_currentScore) < ScoreRange/2)
             {
                 score.text = perfectText;
-                score.color = inPerfectRangeColor;
+                score.color = copMode ? copInPerfectRangeColor : inPerfectRangeColor;
 
                 return 2;
             } 
             else
             {
                 score.text = inText;
-                score.color = inRangeColor;
+                score.color = copMode ? copInRangeColor : inRangeColor;
 
                 return 1;
             }

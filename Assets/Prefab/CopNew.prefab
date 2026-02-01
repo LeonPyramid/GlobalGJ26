@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5633116b4b5f6a648a218b03edef83e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cop: {fileID: 4050179798646425828}
 --- !u!58 &818310888550798047
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -470,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe68d340d5a22b499a3284f8d744e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotatingSpeed: 0.65
+  rotatingSpeed: 0.35
   mask:
     serializedVersion: 2
     m_Bits: 320
@@ -723,7 +724,7 @@ Transform:
   m_GameObject: {fileID: 8897654907768107923}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.45, y: -2.72, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -748,3 +749,4 @@ MonoBehaviour:
   status: 0
   chasingSpeed: 0.5
   patrolSpeed: 0.1
+  copVisionGo: {fileID: 5754665617578081286}

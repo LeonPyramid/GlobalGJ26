@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: bf9d6877b0a45b84abf8cba59eccdf99
+guid: 3ae6d2ba8fce7d2a49f723620a6c0ff9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9053660011284015823
-    second: masque 9 gaz 2_0
-  - first:
-      213: 1044235462417137163
-    second: masque 9 gaz 2_1
+      213: 4150905486886989163
+    second: banc_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -129,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: masque 9 gaz 2_1
+      name: banc_1_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 3
-        width: 76
-        height: 83
+        x: 25
+        y: 11
+        width: 238
+        height: 72
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b0e3d37de9edd7e00800000000000000
-      internalID: 1044235462417137163
+      spriteID: b6d6e124c8afa9930800000000000000
+      internalID: 4150905486886989163
       vertices: []
       indices: 
       edges: []
@@ -154,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1e6c9957d95b2aa458ac6a5ea86fdf13
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -164,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      masque 9 gaz 2_0: -9053660011284015823
-      masque 9 gaz 2_1: 1044235462417137163
+      banc_1_0: 4150905486886989163
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

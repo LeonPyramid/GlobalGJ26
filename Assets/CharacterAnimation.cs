@@ -27,6 +27,7 @@ public class CharacterAnimation : Character
 
     [SerializeField] SpriteRenderer accessoryRenderer;
 
+
     protected override void Start()
     {
         //Randomize Objects

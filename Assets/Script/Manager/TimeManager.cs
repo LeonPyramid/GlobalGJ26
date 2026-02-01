@@ -22,7 +22,7 @@ public class TimeManager : Singleton<TimeManager>
 
     [SerializeField] private Queue<NewTimeType> newTimeQueue;
     [SerializeField] private Queue<float> qualityQTEQueue;
-    [SerializeField] public enum NewTimeType { Wall, Moving, QTE, Bin };
+    [SerializeField] public enum NewTimeType { Wall, Moving, QTE, Bin,Cop };
     [SerializeField] public NewTimeType newTimeType{
          get; private set;
     }
@@ -57,6 +57,7 @@ public class TimeManager : Singleton<TimeManager>
         switch (type) {
             case NewTimeType.Bin :
             case NewTimeType.QTE :
+            case NewTimeType.Cop :
                 newTimeQueue.Enqueue(type);
                 break;
             case NewTimeType.Moving :
@@ -77,7 +78,7 @@ public class TimeManager : Singleton<TimeManager>
     public void PopTypeSpeed(NewTimeType type){
         if (newTimeQueue == null)
             newTimeQueue = new Queue<NewTimeType>();
-        if (type == NewTimeType.QTE){
+        if (type == NewTimeType.QTE || type == NewTimeType.Cop){
             if( qualityQTEQueue.Count > 0 )
                 qualityQTEQueue.Dequeue();
         }
@@ -108,6 +109,7 @@ public class TimeManager : Singleton<TimeManager>
             NewTimeType.Wall => timeSpeedWall,
             NewTimeType.Moving => timeSpeedMoving,
             NewTimeType.QTE => timeSpeedQTE,
+            NewTimeType.Cop => timeSpeedQTE,
             NewTimeType.Bin => timeSpeedBin,
             _ => Time.timeScale
         };

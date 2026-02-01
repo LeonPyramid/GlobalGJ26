@@ -36,6 +36,18 @@ public class InGameUi : Singleton<InGameUi>
 
     private void Start()
     {
+        GameManager.OnGameOver += OnGameOver;
+
+        PreGameUI.Instance.OnGameStarted += OnGameStarted;
+    }
+
+    private void OnGameOver(bool obj)
+    {
+        PauseTimer();
+    }
+
+    private void OnGameStarted()
+    {
         StartTimer();
     }
 

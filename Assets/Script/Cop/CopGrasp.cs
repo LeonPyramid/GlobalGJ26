@@ -1,10 +1,11 @@
 using Audio;
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CopGrasp : MonoBehaviour
 {
+    [SerializeField] private Cop cop;
+
     public static Action<bool> OnPlayerCatched;
 
     float cooldownDuration = 1f;
@@ -12,7 +13,7 @@ public class CopGrasp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(cooldown) return;
+        if(cooldown || GameManager.Instance.gameState == GameState.GameOver) return;
 
         int CollLayer = collision.gameObject.layer;
         if (CollLayer == LayerMask.NameToLayer("PlayerBody"))
@@ -27,12 +28,34 @@ public class CopGrasp : MonoBehaviour
                 cooldown = true;
                 Invoke(nameof(ResetCooldown), cooldownDuration);
                 return;
+            } 
+            else if(GameManager.Instance.HasMaskEquiped(MaskEnum.Assassin))
+            {
+                cooldown = true;
+                Invoke(nameof(ResetCooldown), cooldownDuration);
+                QteBehaviour.Instance.OnDone += OnQteDone;   
+                QteBehaviour.Instance.Show(UnityEngine.Random.Range(0,2)==0?-1f:1f, 0.25f, true);
+                return;
             }
 
             OnPlayerCatched?.Invoke(false);
             AudioController.Instance.PlayAudio(Audio.AudioType.SFX_GameOver);
-            // }
         }
+    }
+
+    private void OnQteDone(int score)
+    {
+        if(score == 0)
+        {
+            OnPlayerCatched?.Invoke(false);
+            AudioController.Instance.PlayAudio(Audio.AudioType.SFX_GameOver);
+
+            return;
+        }
+
+        cooldown = true;
+        cop.Stun(score);
+        Invoke(nameof(ResetCooldown), cooldownDuration);
     }
 
     private void ResetCooldown()

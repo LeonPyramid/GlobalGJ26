@@ -1,3 +1,4 @@
+using Audio;
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,10 +9,11 @@ public class Cop : MonoBehaviour
     [SerializeField] List<Transform> wayPoint;
     int currentIndex;
     Vector2 currentDirection = Vector2.zero;
-    public enum Status { Idle, Chasing };
+    public enum Status { Idle, Chasing, Stun };
     [SerializeField] public Status status;
     [SerializeField] private float chasingSpeed = 2f;
     [SerializeField] private float patrolSpeed = .5f;
+    [SerializeField] private GameObject copVisionGo;
     float currentSpeed;
 
     private Transform _target;
@@ -30,7 +32,7 @@ public class Cop : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!IsStatic())
+        if (!IsStatic() && status != Status.Stun)
         {
             if (Vector2.Distance(transform.position, _target.position) < .2f && !(status==Status.Chasing))
             {
@@ -58,5 +60,23 @@ public class Cop : MonoBehaviour
     public bool IsStatic()
     {
         return _target == null;
+    }
+
+    public void Stun(int force)
+    {
+        status = Status.Stun;
+
+        copVisionGo.SetActive(false);
+        
+        AudioController.Instance.PlayAudio(Audio.AudioType.SFX_Wood);
+
+        Invoke(nameof(Unstun), force);
+    }
+
+    private void Unstun()
+    {
+        copVisionGo.SetActive(true);
+
+        status = Status.Chasing;
     }
 }

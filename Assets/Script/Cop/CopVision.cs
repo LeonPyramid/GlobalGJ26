@@ -13,7 +13,7 @@ public class CopVision : MonoBehaviour
     public enum Status { Idle, Chasing };
 
     [SerializeField] public Status status;
-    private Player target;
+    private Transform target;
     private Cop cop;
 
 
@@ -25,12 +25,17 @@ public class CopVision : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (status != Status.Chasing)
-        transform.Rotate(0, 0, rotatingSpeed*Time.timeScale, Space.Self);
-        if(status == Status.Chasing)
+        if (cop.IsStatic())
+            transform.Rotate(0, 0, rotatingSpeed*Time.timeScale, Space.Self);
+
+        else if(target !=  null)
         {
-            Vector2 direction = (target.transform.position - transform.position).normalized;
-            transform.rotation = Quaternion.FromToRotation(new Vector2(0,1), direction);
+            Vector2 direction = (cop.GetTarget().position - transform.position).normalized;
+            transform.rotation = Quaternion.FromToRotation(new Vector2(0, 1), direction);
+        }
+        else if(status == Status.Idle) 
+        {
+            target = cop.GetTarget();
         }
     }
 
@@ -45,7 +50,7 @@ public class CopVision : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast( (Vector2)this.transform.position,direction,Mathf.Infinity, mask);
                 Debug.Log(hit);
                 if(hit.collider.gameObject.layer == LayerMask.NameToLayer("PlayerBody") && status != Status.Chasing){
-                    target = player;
+                    target = player.transform;
                     status = Status.Chasing;
                     cop.BeginChase(target.transform);
                     AudioController.Instance.PlayAudio(Audio.AudioType.SFX_CopWhistle);

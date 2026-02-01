@@ -133,8 +133,8 @@ public class TimeManager : Singleton<TimeManager>
         lastChangeTime = DOTween.To(x => Time.timeScale = x,Time.timeScale,newTimeSpeed,timeChangeSpeed);
         lastChangeFixed.Kill();
         lastChangeFixed = DOTween.To(x => Time.fixedDeltaTime = x, Time.fixedDeltaTime, InitiaFixedDeltaTime * newTimeSpeed, timeChangeSpeed);
-        //VolumeManager.Instance.LerpVignette(newTimeSpeed/ vignetteAttenuationRatio, 
-        //                                    Time.timeScale/ vignetteAttenuationRatio, timeChangeSpeed);
+        VolumeManager.Instance.LerpVignette(newTimeSpeed / vignetteAttenuationRatio,
+                                            Time.timeScale / vignetteAttenuationRatio, timeChangeSpeed);
     }
 
 }

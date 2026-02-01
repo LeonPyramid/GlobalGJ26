@@ -1,4 +1,5 @@
 using Audio;
+using DG.Tweening;
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,6 +61,11 @@ public class Cop : MonoBehaviour
     public bool IsStatic()
     {
         return _target == null;
+    }
+
+    public void LookLeft(bool lookLeft)
+    {
+       transform.DOScaleX(lookLeft ? 1 : -1, 0.01f).SetUpdate(true);       
     }
 
     public void Stun(int force)

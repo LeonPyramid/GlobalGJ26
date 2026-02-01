@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Script.UI.BinUI;
 using UnityEngine;
 
 public class Bin : PlayerInteraction.PlayerAction
@@ -12,6 +13,9 @@ public class Bin : PlayerInteraction.PlayerAction
     [SerializeField] float ejectCoolDown = 3;
     bool isUsable = true;
     bool isPlayerInside;
+    
+    [SerializeField] private BinUI binUI;
+    // Use Play fill to play fill, Stop fill to stop it, values can be changed in Bin prefab, deactivate Canvas if you don't like the system
 
     public static Action OnKeyPickedUp;
     private void Awake()

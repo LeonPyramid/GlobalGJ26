@@ -1,17 +1,22 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using Utils.Anchor;
 
 public class InGameUi : MonoBehaviour
 {
     [Header("Timer")]
     [SerializeField] private TextMeshProUGUI timer;
-    private float _startTime;
-    private float _currentTime;
+
+    public float ElapsedTime { get; private set; }
+
+    private Tween _timerTween;
 
     [Header("Dash")]
     [SerializeField] private TextMeshProUGUI dash;
     [SerializeField] private string dashPrefix;
+    [SerializeField] private RectTransform dashRect;
     [SerializeField] private Vector3 dashScale;
     [SerializeField] private float dashDuration;
     [SerializeField] private Ease dashEase;
@@ -25,9 +30,38 @@ public class InGameUi : MonoBehaviour
     [SerializeField] private float scoreDuration;
     [SerializeField] private Ease scoreEase;
 
+    private void Start()
+    {
+        StartTimer();
+    }
+
     private void OnEnable()
     {
         GameManager.OnGoldUpdated += OnGoldUpdated;
+        
+        GameManager.OnDashUpdated += OnDashUpdated;
+    }
+
+    private void OnDashUpdated(int obj)
+    {
+        dash.text = dashPrefix + obj;
+
+        dashRect
+            .DOScale(dashScale, dashDuration)
+            .SetEase(dashEase)
+            .SetUpdate(true)
+            .OnComplete(() =>
+            {
+                dashRect
+                    .DOScale(Vector3.one, dashDuration)
+                    .SetEase(dashEase)
+                    .SetUpdate(true);
+            });
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGoldUpdated -= OnGoldUpdated;
     }
 
     private void OnGoldUpdated(int newScore)
@@ -47,15 +81,31 @@ public class InGameUi : MonoBehaviour
             });
     }
 
-   void StartTimer()
+    private void Update()
     {
-        _startTime = Time.realtimeSinceStartup;
+        UpdateTimerText();
     }
 
-    void Update()
+    private void StartTimer()
     {
-        float elapsedTime = Time.realtimeSinceStartup - _startTime;
-        float remainingTime = originalTime - elapsedTime;
-        timer.text = 
+        _timerTween = DOTween.To(
+                () => ElapsedTime,
+                x => ElapsedTime = x,
+                float.MaxValue,
+                float.MaxValue
+            )
+            .SetEase(Ease.Linear)
+            .SetUpdate(true)
+            .OnUpdate(UpdateTimerText);
+    }
+
+    private void UpdateTimerText()
+    {
+        timer.text = TimeUtils.FormatTime(ElapsedTime);
+    }
+
+    public void PauseTimer()
+    {
+        _timerTween?.Pause();
     }
 }

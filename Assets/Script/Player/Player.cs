@@ -139,6 +139,8 @@ public class Player : MonoBehaviour
 
     private void MoveDir()
     {
+        //GameManager.Instance.AddDash(); Uncomment to update dash if gameManager is in the scene
+        
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition - (Vector2)transform.position).normalized;
         Debug.DrawRay(transform.position, direction * dashDistance, Color.yellow,0.5f);

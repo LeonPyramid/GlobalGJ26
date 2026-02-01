@@ -13,7 +13,7 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     //[SerializeField] AudioType levelMusic;
     //[SerializeField] AudioType levelMusic;
 
-
+    private int _dashCount;
     private int _goldAmount;
     private int _score;
 
@@ -24,10 +24,12 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     public static Action OnKeyPickUp;
     public static Action<bool> OnGamePause;
     public static Action<int> OnGoldUpdated;
+    public static Action<int> OnDashUpdated;
     void Start()
     {
         _isGameOver = false;
         AudioController.Instance.PlayAudio(levelMusic);
+        QteBehaviour.Instance.OnDone += OnQteDone;
     }
 
     private void Update()
@@ -56,8 +58,6 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     {
         CopGrasp.OnPlayerCatched += GameOver;
         //ExitDoor.OnPlayerExit += GameOver;
-        
-        QteBehaviour.Instance.OnDone += OnQteDone;
     }
 
     private void OnDisable()
@@ -87,5 +87,12 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     public void SetGamePause(bool pause)
     {
         Time.timeScale = pause ? 0 : 1;
+    }
+
+    public void AddDash()
+    {
+        _dashCount++;
+        
+        OnDashUpdated?.Invoke(_dashCount);
     }
 }

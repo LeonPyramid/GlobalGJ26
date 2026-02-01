@@ -79,4 +79,9 @@ public class PreGameUI : Singleton<PreGameUI>
 
             });
     }
+
+    public void ForceNewMask(MaskEnum maskEnum)
+    {
+        OnMaskChanged?.Invoke(maskEnum);
+    }
 }

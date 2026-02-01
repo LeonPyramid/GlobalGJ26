@@ -67,7 +67,8 @@ public class Player : MonoBehaviour
         if(maskEnum == MaskEnum.Owl)
         {
             circleCollider2D.radius = bigGraspSize;
-        } else
+        } 
+        else
         {
             circleCollider2D.radius = smallGraspSize;
         }

@@ -21,13 +21,17 @@ namespace Audio
         Music_Gameplay,
         SFX_ButtonPressed,
         SFX_ButtonHover,
+        SFX_CopWhistle,
         SFX_GameOver,
-        SFX_PlaceTile,
-        ST_Main,
+        SFX_Bin,
+        SFX_Gold,
         SFX_TileScoring,
         SFX_AddScore,
         SFX_ScoreCounter,
-        SFX_NewBestScore
+        SFX_NewBestScore,
+        SFX_Dash1,
+        SFX_Dash2,
+        SFX_Failed,
     }
 
     public class AudioController : Singleton<AudioController>

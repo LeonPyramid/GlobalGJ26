@@ -22,7 +22,7 @@ public class TimeManager : Singleton<TimeManager>
 
     [SerializeField] private Queue<NewTimeType> newTimeQueue;
     [SerializeField] private Queue<float> qualityQTEQueue;
-    [SerializeField] public enum NewTimeType { Wall, Moving, QTE, Bin,Cop };
+    [SerializeField] public enum NewTimeType { Wall, Moving, QTE, Bin,Cop,Pause };
     [SerializeField] public NewTimeType newTimeType{
          get; private set;
     }
@@ -40,7 +40,8 @@ public class TimeManager : Singleton<TimeManager>
         qteBehaviour = QteBehaviour.Instance;
         qteBehaviour.OnDone += OnQteDone;
         InitiaFixedDeltaTime = Time.fixedDeltaTime;
-        newTimeType = NewTimeType.Wall;
+        newTimeType = NewTimeType.Pause;
+        //Time.timeScale = 0;
         ComputeTimeSpeed(newTimeType);
     }
 
@@ -61,6 +62,7 @@ public class TimeManager : Singleton<TimeManager>
                 newTimeQueue.Enqueue(type);
                 break;
             case NewTimeType.Moving :
+            case NewTimeType.Pause :
             case NewTimeType.Wall :
                 newTimeQueue.Clear();
                 //newTimeType = type;
@@ -111,6 +113,7 @@ public class TimeManager : Singleton<TimeManager>
             NewTimeType.QTE => timeSpeedQTE,
             NewTimeType.Cop => timeSpeedQTE,
             NewTimeType.Bin => timeSpeedBin,
+            NewTimeType.Pause => 0,
             _ => Time.timeScale
         };
         
@@ -129,10 +132,14 @@ public class TimeManager : Singleton<TimeManager>
     }
 
     void ChangeTimeSpeed(float newTimeSpeed){
+        if(newTimeSpeed==0f){
+            Time.timeScale = 0;
+            return;
+        }
         lastChangeTime.Kill();
-        lastChangeTime = DOTween.To(x => Time.timeScale = x,Time.timeScale,newTimeSpeed,timeChangeSpeed);
+        lastChangeTime = DOTween.To(x => Time.timeScale = x,Time.timeScale,newTimeSpeed,timeChangeSpeed).SetUpdate(true);
         lastChangeFixed.Kill();
-        lastChangeFixed = DOTween.To(x => Time.fixedDeltaTime = x, Time.fixedDeltaTime, InitiaFixedDeltaTime * newTimeSpeed, timeChangeSpeed);
+        lastChangeFixed = DOTween.To(x => Time.fixedDeltaTime = x, Time.fixedDeltaTime, InitiaFixedDeltaTime * newTimeSpeed, timeChangeSpeed).SetUpdate(true);
         //VolumeManager.Instance.LerpVignette(newTimeSpeed/ vignetteAttenuationRatio, 
         //                                    Time.timeScale/ vignetteAttenuationRatio, timeChangeSpeed);
     }

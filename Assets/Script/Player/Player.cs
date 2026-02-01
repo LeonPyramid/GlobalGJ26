@@ -62,7 +62,12 @@ public class Player : MonoBehaviour
         radius = cCollider.radius;
         //childTrigger = GetComponentInChildren<Collider2D>();
         timeManager = TimeManager.Instance;
-        SetStatic();
+        visual.HideMode(false);
+        GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().angularVelocity = 0;
+        childTrigger.enabled = false;
+        status = Status.Static;
+        //SetStatic();
         _manager = GameManager.Instance;
         playerMaskHandler.OnNewMask += OnNewMask;
         _trailRenderer = GetComponent<TrailRenderer>();

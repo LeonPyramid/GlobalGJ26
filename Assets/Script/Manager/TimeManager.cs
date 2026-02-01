@@ -34,12 +34,14 @@ public class TimeManager : Singleton<TimeManager>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        newTimeQueue = new Queue<NewTimeType>();
+        if (newTimeQueue == null)
+            newTimeQueue = new Queue<NewTimeType>();
         qualityQTEQueue = new Queue<float>();
         qteBehaviour = QteBehaviour.Instance;
         qteBehaviour.OnDone += OnQteDone;
         InitiaFixedDeltaTime = Time.fixedDeltaTime;
         newTimeType = NewTimeType.Wall;
+        ComputeTimeSpeed(newTimeType);
     }
 
     // Update is called once per frame
@@ -50,7 +52,8 @@ public class TimeManager : Singleton<TimeManager>
 
 
     public void SetNewTimeSpeed(NewTimeType type){
-
+        if(newTimeQueue==null)
+            newTimeQueue= new Queue<NewTimeType>();
         switch (type) {
             case NewTimeType.Bin :
             case NewTimeType.QTE :
@@ -72,6 +75,8 @@ public class TimeManager : Singleton<TimeManager>
     }
 
     public void PopTypeSpeed(NewTimeType type){
+        if (newTimeQueue == null)
+            newTimeQueue = new Queue<NewTimeType>();
         if (type == NewTimeType.QTE){
             if( qualityQTEQueue.Count > 0 )
                 qualityQTEQueue.Dequeue();

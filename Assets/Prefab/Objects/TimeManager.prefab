@@ -49,3 +49,4 @@ MonoBehaviour:
   timeSpeedMoving: 1
   timeSpeedQTE: 0.01
   timeSpeedBin: 0.3
+  vignetteAttenuationRatio: 3.24

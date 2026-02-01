@@ -20,6 +20,9 @@ public class ObjectManager: Utils.Singleton.Singleton<ObjectManager>
         List<PlayerInteraction> binsCp = bins.ToList();
         for (int i = 0; i < nbBinsActive; i ++){
             int pos = Random.Range(0, binsCp.Count);
+            if (i == 0){
+                ((Bin)binsCp[pos].action).SetHasKey();
+            }
             binsCp[pos].SetUnblocked();
             binsCp.RemoveAt(pos);
             if (binsCp.Count == 0)

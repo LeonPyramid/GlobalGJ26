@@ -5,6 +5,7 @@ using Audio;
 using DG.Tweening;
 using Script.UI.BinUI;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Bin : PlayerInteraction.PlayerAction
 {
@@ -45,7 +46,7 @@ public class Bin : PlayerInteraction.PlayerAction
 
 
     public static Action OnKeyPickedUp;
-    private void Awake()
+    private void Start()
     {
         //TODO Rajouter Random sur sprite poubelle
         timeManager = TimeManager.Instance;
@@ -133,19 +134,19 @@ public class Bin : PlayerInteraction.PlayerAction
     public override void TimerEffect(Collider2D ?playerCollider)
     {
         childSprite.enabled = true;
-        timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Bin);
+        TimeManager.Instance.SetNewTimeSpeed(TimeManager.NewTimeType.Bin);
     }
 
     public override void TimerRevert()
     {
         childSprite.enabled = false;
-        timeManager.PopTypeSpeed(TimeManager.NewTimeType.Bin);
+        TimeManager.Instance.PopTypeSpeed(TimeManager.NewTimeType.Bin);
         //StartCoroutine(ProcessUseCoolDown());
     }
     #nullable disable
 
     void BinShake(){
-        AudioController.Instance.PlayAudio(Audio.AudioType.SFX_Bin);
+        AudioController.Instance.PlayAudio(Audio.AudioType.SFX_Bin, false, 0f, Random.Range(.8f,1f));
         transform.DOShakeRotation(shakeTime,new Vector3(0,0,force),vibrato,randomness).SetUpdate(true);
     }
 

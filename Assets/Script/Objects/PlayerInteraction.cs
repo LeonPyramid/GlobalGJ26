@@ -34,7 +34,7 @@ public class PlayerInteraction : MonoBehaviour
 
     //[SerializeField] private bool IsInteractable;
 
-    [SerializeReference] private PlayerAction action;
+    [SerializeReference] public PlayerAction action;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

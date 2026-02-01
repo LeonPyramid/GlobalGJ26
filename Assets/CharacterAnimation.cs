@@ -5,22 +5,28 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class CharacterAnimation : MonoBehaviour
+public class CharacterAnimation : Character
 {
-    [SerializeField] GameObject head;
-    [SerializeField] GameObject body;
-
-    [SerializeField] bool isStatic;
-
     bool flip;
     [SerializeField]float timer;
-    void Start()
+    protected override void Start()
     {
         ResetTimer();
-        head.transform.DOLocalMoveY(0.08f, 2f).SetLoops(-1, LoopType.Yoyo);
+        base.Start();
     }
 
     private void Update()
+    {
+        if(isStatic)
+            LookAtRandomDirection();
+    }
+
+    private void ResetTimer()
+    {
+        timer = Random.Range(1, 10);
+    }
+
+    public void LookAtRandomDirection()
     {
         if (timer > 0 && !isStatic)
         {
@@ -34,14 +40,23 @@ public class CharacterAnimation : MonoBehaviour
         }
     }
 
-    private void ResetTimer()
-    {
-        timer = Random.Range(1, 10);
-    }
 
     public void LookLeft(bool lookLeft)
     {
         head.transform.DOScaleX(lookLeft ? 1 : -1, 0.01f);
         body.transform.DOScaleX(lookLeft ? 1 : -1, 0.01f);    
+    }
+}
+
+public class Character : MonoBehaviour
+{
+    [SerializeField] protected GameObject head;
+    [SerializeField] protected GameObject body;
+
+    [SerializeField] protected bool isStatic;
+
+    protected virtual void Start()
+    {
+        head.transform.DOLocalMoveY(0.05f, 2f).SetLoops(-1, LoopType.Yoyo);
     }
 }

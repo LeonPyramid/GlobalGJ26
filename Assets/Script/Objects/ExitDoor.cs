@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ExitDoor : MonoBehaviour
@@ -23,17 +24,15 @@ public class ExitDoor : MonoBehaviour
         int CollLayer = collision.gameObject.layer;
         if (CollLayer == LayerMask.NameToLayer("PlayerBody"))
         {
-            Player player = collision.gameObject.GetComponent<Player>();
-            if (player.status != Player.Status.Hidden)
-            {
-                OnPlayerExit.Invoke(true);
-            }
+            OnPlayerExit?.Invoke(true);
         }
     }
 
-    void UnlockDoor()
+    public void UnlockDoor()
     {
         isOpen = true;
+        GetComponent<BoxCollider2D>().isTrigger = true;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
         //TODO add FX
     }
 }

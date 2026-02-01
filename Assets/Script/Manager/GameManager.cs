@@ -30,12 +30,15 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     public static Action<int> OnGoldUpdated;
     public static Action<int> OnDashUpdated;
 
+    private ExitDoor door;
+
     [SerializeField] public GameState gameState = GameState.PreGame;
     void Start()
     {
         _isGameOver = false;
         AudioController.Instance.PlayAudio(levelMusic);
         QteBehaviour.Instance.OnDone += OnQteDone;
+        ExitDoor.OnPlayerExit += GameOver;
     }
 
     private void Update()
@@ -69,12 +72,15 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     private void OnEnable()
     {
         CopGrasp.OnPlayerCatched += GameOver;
+        Bin.OnKeyPickedUp += HasKey;
         //ExitDoor.OnPlayerExit += GameOver;
     }
 
     private void OnDisable()
     {
         CopGrasp.OnPlayerCatched -= GameOver;
+        Bin.OnKeyPickedUp -= HasKey;
+
         //ExitDoor.OnPlayerExit += GameOver;
     }
 
@@ -108,5 +114,10 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
         _dashCount++;
         
         OnDashUpdated?.Invoke(_dashCount);
+    }
+
+    public void HasKey(){
+        door = FindAnyObjectByType<ExitDoor>();
+        door.UnlockDoor();
     }
 }

@@ -46,7 +46,7 @@ public class Bin : PlayerInteraction.PlayerAction
 
 
     public static Action OnKeyPickedUp;
-    private void Awake()
+    private void Start()
     {
         //TODO Rajouter Random sur sprite poubelle
         timeManager = TimeManager.Instance;

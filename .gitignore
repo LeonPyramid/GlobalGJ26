@@ -103,3 +103,5 @@ InitTestScene*.unity*
 .vscode
 /Assets/Imports/Font/alagard SDF.asset
 Assets/Imports/Font/alagard SDF.asset.meta
+
+.build

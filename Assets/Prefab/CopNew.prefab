@@ -335,8 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9027b0d9e844c374fb23fa219d79b2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 0}
-  body: {fileID: 0}
+  head: {fileID: 6032738458828903909}
+  body: {fileID: 4127842013834977020}
   isStatic: 0
 --- !u!1 &5173923091916060504
 GameObject:

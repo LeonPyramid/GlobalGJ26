@@ -78,6 +78,7 @@ public class PreGameUI : Singleton<PreGameUI>
             .OnComplete(() =>
             {
                 GameManager.Instance.ChangeGameState(GameState.Moving);
+                TimeManager.Instance.SetNewTimeSpeed(TimeManager.NewTimeType.Wall);
                 OnGameStarted?.Invoke();
             });
     }

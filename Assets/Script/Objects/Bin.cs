@@ -27,7 +27,10 @@ public class Bin : PlayerInteraction.PlayerAction
     [SerializeField] private List<Sprite> binFaceFull;
 
 
+    #nullable enable
     private Player ?player;
+
+    #nullable disable
 
     [SerializeField] private BinUI binUI;
     // Use Play fill to play fill, Stop fill to stop it, values can be changed in Bin prefab, deactivate Canvas if you don't like the system
@@ -126,6 +129,7 @@ public class Bin : PlayerInteraction.PlayerAction
         StartCoroutine(ProcessUseCoolDown());
     }
 
+    #nullable enable
     public override void TimerEffect(Collider2D ?playerCollider)
     {
         childSprite.enabled = true;
@@ -138,6 +142,7 @@ public class Bin : PlayerInteraction.PlayerAction
         timeManager.PopTypeSpeed(TimeManager.NewTimeType.Bin);
         //StartCoroutine(ProcessUseCoolDown());
     }
+    #nullable disable
 
     void BinShake(){
         AudioController.Instance.PlayAudio(Audio.AudioType.SFX_Bin);

@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ExitDoor : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class ExitDoor : MonoBehaviour
         isOpen = true;
         GetComponent<BoxCollider2D>().isTrigger = true;
         GetComponentInChildren<SpriteRenderer>().enabled = false;
+        GetComponentInChildren<ShadowCaster2D>().enabled = false;
         //TODO add FX
     }
 }

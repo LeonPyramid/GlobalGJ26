@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Bin : PlayerInteraction.PlayerAction
 {
+    [SerializeField] private SpriteRenderer childSprite;
     private TimeManager timeManager;
     bool hasKey = false;
     [SerializeField] float useCoolDown = 10;
@@ -15,7 +16,11 @@ public class Bin : PlayerInteraction.PlayerAction
     public static Action OnKeyPickedUp;
     private void Awake()
     {
+        //TODO Rajouter Random sur sprite poubelle
         timeManager = TimeManager.Instance;
+        //childSprite = GetComponentInChildren<SpriteRenderer>();
+        childSprite.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+        childSprite.enabled = false;
     }
 
     override public void ActionEffect(Collider2D playerCollider)
@@ -51,12 +56,13 @@ public class Bin : PlayerInteraction.PlayerAction
     }
     public override void TimerEffect(Collider2D playerCollider)
     {
-        if (!isUsable) return;
+        childSprite.enabled = true;
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Bin);
     }
 
     public override void TimerRevert()
     {
+        childSprite.enabled = false;
         timeManager.PopTypeSpeed(TimeManager.NewTimeType.Bin);
         StartCoroutine(ProcessUseCoolDown());
     }

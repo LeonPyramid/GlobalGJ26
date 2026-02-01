@@ -3,6 +3,8 @@ using UI.Menu;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
+
 
 public class Player : MonoBehaviour
 {
@@ -26,6 +28,8 @@ public class Player : MonoBehaviour
     public Vector2 direction{
         get;private set;
     }
+
+    public Action OnClick;
 
     /// <summary>
     ///  The player's current status
@@ -54,6 +58,7 @@ public class Player : MonoBehaviour
         Mouse mouse = Mouse.current;
         if(mouse.leftButton.wasPressedThisFrame){
             if (MenuManager.Instance.MenuCount == 0){
+                OnClick?.Invoke();
                 if(status == Status.Moving)
                 {
                     SetStatic();
@@ -139,6 +144,8 @@ public class Player : MonoBehaviour
 
     private void MoveDir()
     {
+        //GameManager.Instance.AddDash(); Uncomment to update dash if gameManager is in the scene
+        
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition - (Vector2)transform.position).normalized;
         Debug.DrawRay(transform.position, direction * dashDistance, Color.yellow,0.5f);
@@ -154,12 +161,16 @@ public class Player : MonoBehaviour
         GetComponent<Rigidbody2D>().angularVelocity = 0;
         childTrigger.enabled = false;
         status = Status.Static;
+        GetComponent<SpriteRenderer>().enabled = true;
+
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Wall);
     }
 
     public void SetMoving(){
         childTrigger.enabled = true;
         status = Status.Moving;
+        GetComponent<SpriteRenderer>().enabled = true;
+
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Moving);
 
     }
@@ -168,6 +179,7 @@ public class Player : MonoBehaviour
         GetComponent<Rigidbody2D>().angularVelocity = 0;
         childTrigger.enabled = false;
         status = Status.Hidden;
+        GetComponent<SpriteRenderer>().enabled = false;
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Wall);
     }
 

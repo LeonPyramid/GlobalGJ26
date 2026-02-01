@@ -46,7 +46,6 @@ public class Bin : PlayerInteraction.PlayerAction
         //TODO Rajouter Random sur sprite poubelle
         timeManager = TimeManager.Instance;
         //childSprite = GetComponentInChildren<SpriteRenderer>();
-        childSprite.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
         childSprite.enabled = false;
         player = null;
     }
@@ -60,7 +59,9 @@ public class Bin : PlayerInteraction.PlayerAction
 
     public override void SetUnblocked()
     {
-                gameObject.GetComponent<SpriteRenderer>().sprite = binFaceEmpty[UnityEngine.Random.Range(0, binFaceFull.Count)];
+            gameObject.GetComponent<SpriteRenderer>().sprite = binFaceEmpty[UnityEngine.Random.Range(0, binFaceFull.Count)];
+            childSprite.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+
 
     }
 
@@ -77,6 +78,7 @@ public class Bin : PlayerInteraction.PlayerAction
         binUI.PlayFill();
         player.OnClick += LeaveBin;
         isPlayerInside = true;
+        timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Moving);
         StartCoroutine(ProcessEjectCoolDown(player));
         if (hasKey)
         {
@@ -87,11 +89,14 @@ public class Bin : PlayerInteraction.PlayerAction
 
     IEnumerator ProcessUseCoolDown()
     {
+        PlayerInteraction pi = GetComponentInParent<PlayerInteraction>();
+        pi.status = PlayerInteraction.Status.Blocked;
         isUsable = false;
         Debug.Log("Je peux plus");
         yield return new WaitForSecondsRealtime(useCoolDown);
         Debug.Log("Je use");
         isUsable = true;
+        pi.status = PlayerInteraction.Status.Far;
     }
 
     void LeaveBin(){

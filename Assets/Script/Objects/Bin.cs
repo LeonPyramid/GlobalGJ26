@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Script.UI.BinUI;
 using UnityEngine;
 
@@ -23,9 +24,17 @@ public class Bin : PlayerInteraction.PlayerAction
 
     private Player ?player;
 
-
     [SerializeField] private BinUI binUI;
     // Use Play fill to play fill, Stop fill to stop it, values can be changed in Bin prefab, deactivate Canvas if you don't like the system
+
+    [Header("Shake vars")]
+
+    [SerializeField] private float shakeTime;
+    [SerializeField] int vibrato;
+    [SerializeField] int force;
+    [SerializeField] int randomness;
+
+
 
     public static Action OnKeyPickedUp;
     private void Awake()
@@ -42,6 +51,7 @@ public class Bin : PlayerInteraction.PlayerAction
     {
         
         if (!isUsable) return;
+        BinShake();
         GameObject playerGo = playerCollider.gameObject.GetComponent<PlayerGrasp>().player.gameObject;
         playerGo.transform.position = transform.position;
         if (player == null)
@@ -69,7 +79,6 @@ public class Bin : PlayerInteraction.PlayerAction
 
     void LeaveBin(){
         StopAllCoroutines();
-        player.OnClick -= LeaveBin;
         Debug.Log("Je quitte");
         ProcessEjectInstant(player);
     }
@@ -85,11 +94,13 @@ public class Bin : PlayerInteraction.PlayerAction
     }
 
     void ProcessEjectInstant(Player player){
-            Debug.Log("Pop!");
-            EjectPlayer(player);
-            binUI.StopFill();
-            isPlayerInside = false;
-            StartCoroutine(ProcessUseCoolDown());
+        player.OnClick -= LeaveBin;
+        BinShake();
+        Debug.Log("Pop!");
+        EjectPlayer(player);
+        binUI.StopFill();
+        isPlayerInside = false;
+        StartCoroutine(ProcessUseCoolDown());
     }
 
     public override void TimerEffect(Collider2D playerCollider)
@@ -103,6 +114,10 @@ public class Bin : PlayerInteraction.PlayerAction
         childSprite.enabled = false;
         timeManager.PopTypeSpeed(TimeManager.NewTimeType.Bin);
         //StartCoroutine(ProcessUseCoolDown());
+    }
+
+    void BinShake(){
+        transform.DOShakeRotation(shakeTime,new Vector3(0,0,force),vibrato,randomness).SetUpdate(true);
     }
 
     public void SetHasKey()

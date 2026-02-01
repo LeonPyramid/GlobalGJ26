@@ -247,9 +247,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childSprite: {fileID: 1251145401402391215}
-  useCoolDown: 10
-  ejectCoolDown: 3
   binUI: {fileID: 8427847282417305881}
+  shakeTime: 0.2
+  vibrato: 90
+  force: 7
+  randomness: 160
 --- !u!1 &2260533295042538698
 GameObject:
   m_ObjectHideFlags: 0

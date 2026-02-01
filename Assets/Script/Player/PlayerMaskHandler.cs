@@ -6,6 +6,9 @@ public class PlayerMaskHandler : MonoBehaviour
 {
     [SerializeField] List<EquipedMask> equipedMasks;
     private EquipedMask _currentMaskEquiped;
+    public EquipedMask CurrentMask => _currentMaskEquiped;
+
+    public Action<MaskEnum> OnNewMask;
 
     private void Start()
     {
@@ -26,6 +29,8 @@ public class PlayerMaskHandler : MonoBehaviour
                 equipedMask.MaskInPlayerGo.SetActive(false);
             }
         }
+
+        OnNewMask?.Invoke(mask);
     }
 
     public bool HasMaskEquiped(MaskEnum maskEnum)

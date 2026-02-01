@@ -721,6 +721,8 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: ccc1d56e518661d4aaee5062d55bb2d3, type: 3}
     - type: 6
       clip: {fileID: 8300000, guid: 5c9026d5f92df6f4f8401133af226f98, type: 3}
+    - type: 16
+      clip: {fileID: 8300000, guid: 6c3bad416ba7d094c80fb2404a638b2b, type: 3}
     paused: 0
     volume: 0
     pitch: 0

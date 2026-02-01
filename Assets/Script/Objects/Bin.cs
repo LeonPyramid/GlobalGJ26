@@ -66,7 +66,7 @@ public class Bin : PlayerInteraction.PlayerAction
 
     public override void SetUnblocked()
     {
-            gameObject.GetComponent<SpriteRenderer>().sprite = binFaceEmpty[UnityEngine.Random.Range(0, binFaceFull.Count)];
+            gameObject.GetComponent<SpriteRenderer>().sprite = binFaceEmpty[UnityEngine.Random.Range(0, binFaceEmpty.Count)];
             childSprite.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
 
 

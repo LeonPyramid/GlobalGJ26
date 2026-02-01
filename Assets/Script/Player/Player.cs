@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     /// The time of the dash
     /// </summary>
     [SerializeField] private float dashSpeed;
+
     /// <summary>
     /// The player's collider, needed to get its dimension
     /// </summary>
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
     private float radius;
 
     [SerializeField] private Collider2D childTrigger;
-
+    TrailRenderer _trailRenderer;
     private TimeManager timeManager;
     public Vector2 direction{
         get;private set;
@@ -44,6 +45,10 @@ public class Player : MonoBehaviour
     GameManager _manager;
 
     [SerializeField] private PlayerVisual visual;
+    [SerializeField] private PlayerMaskHandler playerMaskHandler;
+    [SerializeField] private float smallGraspSize;
+    [SerializeField] private float bigGraspSize;
+    [SerializeField] private CircleCollider2D circleCollider2D;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -55,7 +60,20 @@ public class Player : MonoBehaviour
         timeManager = TimeManager.Instance;
         SetStatic();
         _manager = GameManager.Instance;
+        playerMaskHandler.OnNewMask += OnNewMask;
+        _trailRenderer = GetComponent<TrailRenderer>();
+    }
 
+    private void OnNewMask(MaskEnum maskEnum)
+    {
+        if(maskEnum == MaskEnum.Owl)
+        {
+            circleCollider2D.radius = bigGraspSize;
+        } 
+        else
+        {
+            circleCollider2D.radius = smallGraspSize;
+        }
     }
 
     // Update is called once per frame

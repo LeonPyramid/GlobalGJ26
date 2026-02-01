@@ -32,6 +32,7 @@ namespace Audio
         SFX_Dash1,
         SFX_Dash2,
         SFX_Failed,
+        SFX_Wood
     }
 
     public class AudioController : Singleton<AudioController>

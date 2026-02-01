@@ -23,7 +23,7 @@ public class Cop : MonoBehaviour
     {
         if (status == Status.Chasing)
         {
-            transform.position = Vector2.MoveTowards(transform.position, _target.position, chasingSpeed * Time.timeScale);
+            transform.position = Vector2.MoveTowards(transform.position, _target.transform.position, chasingSpeed * Time.timeScale);
         }
 
         if (wayPoint.Count >= 2)

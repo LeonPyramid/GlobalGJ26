@@ -134,13 +134,13 @@ public class Bin : PlayerInteraction.PlayerAction
     public override void TimerEffect(Collider2D ?playerCollider)
     {
         childSprite.enabled = true;
-        timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Bin);
+        TimeManager.Instance.SetNewTimeSpeed(TimeManager.NewTimeType.Bin);
     }
 
     public override void TimerRevert()
     {
         childSprite.enabled = false;
-        timeManager.PopTypeSpeed(TimeManager.NewTimeType.Bin);
+        TimeManager.Instance.PopTypeSpeed(TimeManager.NewTimeType.Bin);
         //StartCoroutine(ProcessUseCoolDown());
     }
     #nullable disable

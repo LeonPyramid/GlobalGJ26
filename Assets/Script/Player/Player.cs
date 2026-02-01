@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
     Camera m_Camera;
 
     GameManager _manager;
+
+    [SerializeField] private PlayerVisual visual;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -151,6 +154,7 @@ public class Player : MonoBehaviour
 
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition - (Vector2)transform.position).normalized;
+        visual.Turn(direction.x);
         Debug.DrawRay(transform.position, direction * dashDistance, Color.yellow,0.5f);
         Debug.Log($"New Force {direction * dashSpeed} of power {(direction * dashSpeed).SqrMagnitude()}");
         GetComponent<Rigidbody2D>().linearVelocity = (direction*dashSpeed);
@@ -160,29 +164,29 @@ public class Player : MonoBehaviour
 
 
     public void SetStatic(){
+        visual.HideMode(false);
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         GetComponent<Rigidbody2D>().angularVelocity = 0;
         childTrigger.enabled = false;
         status = Status.Static;
-        GetComponent<SpriteRenderer>().enabled = true;
 
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Wall);
     }
 
     public void SetMoving(){
+        visual.HideMode(false);
         childTrigger.enabled = true;
         status = Status.Moving;
-        GetComponent<SpriteRenderer>().enabled = true;
 
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Moving);
 
     }
     public void SetHidden(){
+        visual.HideMode(true);
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         GetComponent<Rigidbody2D>().angularVelocity = 0;
         childTrigger.enabled = false;
         status = Status.Hidden;
-        GetComponent<SpriteRenderer>().enabled = false;
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Wall);
     }
 

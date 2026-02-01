@@ -578,7 +578,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 545731509885880523}
-  - component: {fileID: 1929714826322165313}
+  - component: {fileID: 1439653871994141172}
   m_Layer: 0
   m_Name: Skin
   m_TagString: Untagged
@@ -603,7 +603,7 @@ Transform:
   - {fileID: 1021141922993509122}
   m_Father: {fileID: 3096797934879224835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1929714826322165313
+--- !u!114 &1439653871994141172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -612,13 +612,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6021175805176539537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2992211f93e5c5c498a4343be4a035db, type: 3}
+  m_Script: {fileID: 11500000, guid: 045f8abd0d0aa40448696d6b4aef4bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 6410266407849339323}
-  body: {fileID: 369350968892786880}
-  isStatic: 1
-  timer: 0
+  spriteRenderers:
+  - {fileID: 7542326468445899872}
+  - {fileID: 5079355833782617105}
+  - {fileID: 4379926998286863437}
+  - {fileID: 7883090896113641946}
+  - {fileID: 5351168297095901461}
+  - {fileID: 4877709062436683757}
+  - {fileID: 6542875554675224206}
+  hideOpacity: 0.85
+  visibleOpacity: 1
+  hideDuration: 0.15
 --- !u!1 &6189631812314495962
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,6 +801,7 @@ MonoBehaviour:
   dashDistance: 40
   dashSpeed: 60
   childTrigger: {fileID: 6861466231106017239}
+  visual: {fileID: 1439653871994141172}
 --- !u!50 &3853536026916828205
 Rigidbody2D:
   serializedVersion: 5

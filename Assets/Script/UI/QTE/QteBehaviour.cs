@@ -85,6 +85,8 @@ public class QteBehaviour : Singleton<QteBehaviour>
     {
         score.text = "";
 
+        VolumeManager.Instance.LerpChromaticAberration(0, .8f, appearDuration);
+        //VolumeManager.Instance.LerpVignette(0f, 0.8f, appearDuration);
         lineRectTransform.anchoredPosition = dir > 0 ? new Vector2(hideX, 0) : new Vector2(-hideX, 0);
         
         globalRectTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, dir > 0 ? UnityEngine.Random.Range(0, rotationRange) : -UnityEngine.Random.Range(0, rotationRange)));
@@ -253,8 +255,9 @@ public class QteBehaviour : Singleton<QteBehaviour>
     private void Hide(float dir, bool fast = false, int score = 0)
     {
         var hideXPos = dir > 0 ? -hideX : hideX;
-
-        if(fast)
+        VolumeManager.Instance.LerpChromaticAberration(.8f, 0f, appearDuration);
+        //VolumeManager.Instance.LerpVignette(.8f, 0f, appearDuration);
+        if (fast)
         {
             lineRectTransform.position = new Vector2(hideXPos, 0f);
 

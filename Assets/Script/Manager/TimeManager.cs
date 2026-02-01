@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using Utils.Singleton;
 
 public class TimeManager : Singleton<TimeManager>
@@ -11,6 +12,8 @@ public class TimeManager : Singleton<TimeManager>
     [SerializeField] private float timeSpeedMoving;
     [SerializeField] private float timeSpeedQTE;
     [SerializeField] private float timeSpeedBin;
+
+    [SerializeField][Range(1f, 5f)] private float vignetteAttenuationRatio;
 
     private float InitiaFixedDeltaTime;
 
@@ -121,8 +124,9 @@ public class TimeManager : Singleton<TimeManager>
         lastChangeTime.Kill();
         lastChangeTime = DOTween.To(x => Time.timeScale = x,Time.timeScale,newTimeSpeed,timeChangeSpeed);
         lastChangeFixed.Kill();
-        lastChangeFixed = DOTween.To(x => Time.fixedDeltaTime = x,Time.fixedDeltaTime,InitiaFixedDeltaTime * newTimeSpeed,timeChangeSpeed);
-        //Time.fixedDeltaTime = InitiaFixedDeltaTime * newTimeSpeed;
+        lastChangeFixed = DOTween.To(x => Time.fixedDeltaTime = x, Time.fixedDeltaTime, InitiaFixedDeltaTime * newTimeSpeed, timeChangeSpeed);
+        VolumeManager.Instance.LerpVignette(newTimeSpeed/ vignetteAttenuationRatio, 
+                                            Time.timeScale/ vignetteAttenuationRatio, timeChangeSpeed);
     }
 
 }

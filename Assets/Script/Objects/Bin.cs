@@ -9,11 +9,21 @@ public class Bin : PlayerInteraction.PlayerAction
     [SerializeField] private SpriteRenderer childSprite;
     private TimeManager timeManager;
     bool hasKey = false;
-    [SerializeField] float useCoolDown = 10;
-    [SerializeField] float ejectCoolDown = 3;
+    [SerializeField] public float useCoolDown 
+    {
+        get; private set;
+    } = 10;
+    [SerializeField]
+    public float ejectCoolDown
+    {
+        get; private set;
+    } = 3;
     bool isUsable = true;
     bool isPlayerInside;
-    
+
+    private Player ?player;
+
+
     [SerializeField] private BinUI binUI;
     // Use Play fill to play fill, Stop fill to stop it, values can be changed in Bin prefab, deactivate Canvas if you don't like the system
 
@@ -25,15 +35,21 @@ public class Bin : PlayerInteraction.PlayerAction
         //childSprite = GetComponentInChildren<SpriteRenderer>();
         childSprite.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
         childSprite.enabled = false;
+        player = null;
     }
 
     override public void ActionEffect(Collider2D playerCollider)
     {
-        //if (!isUsable) return;
+        
+        if (!isUsable) return;
         GameObject playerGo = playerCollider.gameObject.GetComponent<PlayerGrasp>().player.gameObject;
         playerGo.transform.position = transform.position;
-        Player player = playerGo.GetComponent<Player>();
+        if (player == null)
+            player = playerGo.GetComponent<Player>(); 
         player.SetHidden();
+        binUI.PlayFill();
+        player.OnClick += LeaveBin;
+        isPlayerInside = true;
         StartCoroutine(ProcessEjectCoolDown(player));
         if (hasKey)
         {
@@ -45,19 +61,37 @@ public class Bin : PlayerInteraction.PlayerAction
     IEnumerator ProcessUseCoolDown()
     {
         isUsable = false;
-        yield return new WaitForSeconds(useCoolDown);
+        Debug.Log("Je peux plus");
+        yield return new WaitForSecondsRealtime(useCoolDown);
+        Debug.Log("Je use");
         isUsable = true;
     }
 
+    void LeaveBin(){
+        StopAllCoroutines();
+        player.OnClick -= LeaveBin;
+        Debug.Log("Je quitte");
+        ProcessEjectInstant(player);
+    }
+
+
     IEnumerator ProcessEjectCoolDown(Player player)
     {
-        yield return new WaitForSeconds(ejectCoolDown);
+        yield return new WaitForSecondsRealtime(ejectCoolDown);
         if (isPlayerInside)
         {
-            EjectPlayer(player);
-            isPlayerInside = false;
+            ProcessEjectInstant(player);
         }
     }
+
+    void ProcessEjectInstant(Player player){
+            Debug.Log("Pop!");
+            EjectPlayer(player);
+            binUI.StopFill();
+            isPlayerInside = false;
+            StartCoroutine(ProcessUseCoolDown());
+    }
+
     public override void TimerEffect(Collider2D playerCollider)
     {
         childSprite.enabled = true;
@@ -68,7 +102,7 @@ public class Bin : PlayerInteraction.PlayerAction
     {
         childSprite.enabled = false;
         timeManager.PopTypeSpeed(TimeManager.NewTimeType.Bin);
-        StartCoroutine(ProcessUseCoolDown());
+        //StartCoroutine(ProcessUseCoolDown());
     }
 
     public void SetHasKey()

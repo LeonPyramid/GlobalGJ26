@@ -36,6 +36,8 @@ namespace Script.UI.BinUI
         {
             _barInitialPos = barTransform.anchoredPosition;
             barTransform.gameObject.SetActive(false);
+            fillDuration = GetComponentInParent<Bin>().ejectCoolDown;
+            unfillDuration = GetComponentInParent<Bin>().useCoolDown;
         }
 
         public void PlayFill()
@@ -104,7 +106,7 @@ namespace Script.UI.BinUI
             barTransform.DOKill();
             barTransform.anchoredPosition = _barInitialPos;
 
-            fillTransform
+           _fillTween = fillTransform
                 .DOAnchorPosX(fillStartX, unfillDuration)
                 .SetEase(Ease.Linear)
                 .SetUpdate(true)

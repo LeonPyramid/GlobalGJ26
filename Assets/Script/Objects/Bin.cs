@@ -11,7 +11,7 @@ public class Bin : PlayerInteraction.PlayerAction
 {
     [SerializeField] private SpriteRenderer childSprite;
     private TimeManager timeManager;
-    bool hasKey = false;
+    [SerializeField] bool hasKey = false;
     [SerializeField] public float useCoolDown 
     {
         get; private set;
@@ -43,7 +43,8 @@ public class Bin : PlayerInteraction.PlayerAction
     [SerializeField] int force;
     [SerializeField] int randomness;
 
-
+    [SerializeField] private Key key;
+  
 
     public static Action OnKeyPickedUp;
     private void Start()
@@ -53,6 +54,7 @@ public class Bin : PlayerInteraction.PlayerAction
         //childSprite = GetComponentInChildren<SpriteRenderer>();
         childSprite.enabled = false;
         player = null;
+        key.GetComponent<SpriteRenderer>().enabled = false;
     }
 
 
@@ -91,7 +93,9 @@ public class Bin : PlayerInteraction.PlayerAction
         if (hasKey)
         {
             OnKeyPickedUp.Invoke();
+            key.KeyPickedUp();
             hasKey = false;
+            
         }
     }
 

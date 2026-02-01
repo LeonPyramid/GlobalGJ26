@@ -44,7 +44,7 @@ namespace UI.Menu
 
         private void BackToMainMenu()
         {
-            SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
+            SceneManager.LoadScene("MainMenu");
         }
 
         private void Update()

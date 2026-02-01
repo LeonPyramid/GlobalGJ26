@@ -50,7 +50,7 @@ public class GameOver : MonoBehaviour
 
         nextButton.onClick.AddListener(() =>
         {
-            SceneManager.SetActiveScene(SceneManager.GetSceneAt(2));
+            SceneManager.LoadScene("Game 2");
         });
     }
 

@@ -1,3 +1,4 @@
+using Audio;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class CopGrasp : MonoBehaviour
             if (player.status != Player.Status.Hidden)
             {
                 OnPlayerCatched.Invoke(false);
+                AudioController.Instance.PlayAudio(Audio.AudioType.SFX_GameOver);
             }
         }
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using DG.Tweening;
 using Script.UI.BinUI;
 using UnityEngine;
@@ -139,6 +140,7 @@ public class Bin : PlayerInteraction.PlayerAction
     }
 
     void BinShake(){
+        AudioController.Instance.PlayAudio(Audio.AudioType.SFX_Bin);
         transform.DOShakeRotation(shakeTime,new Vector3(0,0,force),vibrato,randomness).SetUpdate(true);
     }
 

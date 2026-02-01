@@ -203,7 +203,6 @@ public class QteBehaviour : Singleton<QteBehaviour>
 
     private void PlayScore(float dir)
     {
-        AudioController.Instance.PlayAudio(Audio.AudioType.SFX_NewBestScore);
 
         var score = CalculateScore();
 
@@ -228,7 +227,8 @@ public class QteBehaviour : Singleton<QteBehaviour>
     {
         if(Mathf.Abs(_currentScore) < ScoreRange)
         {
-            if(Mathf.Abs(_currentScore) < ScoreRange/2)
+            AudioController.Instance.PlayAudio(Audio.AudioType.SFX_Gold);
+            if (Mathf.Abs(_currentScore) < ScoreRange/2)
             {
                 score.text = perfectText;
                 score.color = inPerfectRangeColor;
@@ -245,6 +245,7 @@ public class QteBehaviour : Singleton<QteBehaviour>
         } 
         else
         {
+            AudioController.Instance.PlayAudio(Audio.AudioType.SFX_Failed);
             score.text = failed;
             score.color = outOfRangeColor;
 

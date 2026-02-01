@@ -1,3 +1,4 @@
+using Audio;
 using System;
 using System.Linq;
 using UnityEditor.Experimental.GraphView;
@@ -45,9 +46,11 @@ public class Cop : MonoBehaviour
                 Vector2 direction = ((Vector2)player.transform.position - (Vector2)transform.position).normalized;
                 RaycastHit2D hit = Physics2D.Raycast( (Vector2)this.transform.position,direction,Mathf.Infinity, mask);
                 Debug.Log(hit);
-                if(hit.collider.gameObject.layer == LayerMask.NameToLayer("PlayerBody")){
+                if(hit.collider.gameObject.layer == LayerMask.NameToLayer("PlayerBody") && status != Status.Chasing){
                     target = player;
-                    status = Status.Chasing;}
+                    status = Status.Chasing;
+                    AudioController.Instance.PlayAudio(Audio.AudioType.SFX_CopWhistle);
+                }
             }
         }
     }

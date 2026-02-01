@@ -68,7 +68,7 @@ MonoBehaviour:
   m_text: 0,08584598
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d483892b40fe0504082445a73f482f5d, type: 2}
-  m_sharedMaterial: {fileID: -367834463689691219, guid: d483892b40fe0504082445a73f482f5d, type: 2}
+  m_sharedMaterial: {fileID: 2909855766442324699, guid: d483892b40fe0504082445a73f482f5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_text: Space
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d483892b40fe0504082445a73f482f5d, type: 2}
-  m_sharedMaterial: {fileID: -367834463689691219, guid: d483892b40fe0504082445a73f482f5d, type: 2}
+  m_sharedMaterial: {fileID: 2909855766442324699, guid: d483892b40fe0504082445a73f482f5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -633,6 +633,11 @@ MonoBehaviour:
   inRangeColor: {r: 0.9245283, g: 0.89880174, b: 0.398303, a: 1}
   midInPerfectColor: {r: 0.67058825, g: 0.8235294, b: 0.29411766, a: 1}
   inPerfectRangeColor: {r: 0.41568628, g: 0.74509805, b: 0.1882353, a: 1}
+  copOutOfRangeColor: {r: 1, g: 1, b: 1, a: 1}
+  copMidOutInColor: {r: 0.6784314, g: 0.7176471, b: 0.9411765, a: 1}
+  copInRangeColor: {r: 0.35686275, g: 0.43137255, b: 0.88235295, a: 1}
+  copMidInPerfectColor: {r: 0.67058825, g: 0.6901961, b: 0.54901963, a: 1}
+  copInPerfectRangeColor: {r: 0.9843137, g: 0.9490196, b: 0.21176471, a: 1}
   handleRectTransform: {fileID: 8012334647311743206}
   rotationRange: 15
   showX: 0

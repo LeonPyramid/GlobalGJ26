@@ -58,7 +58,7 @@ namespace UI.Menu
                 } 
                 else
                 {
-                    _stateBeforePause = GameManager.Instance.gameState;
+                    _stateBeforePause = GameManager.Instance.CurrentGameState;
                     GameManager.Instance.ChangeGameState(GameState.Pause);
                     Pause();
                 }

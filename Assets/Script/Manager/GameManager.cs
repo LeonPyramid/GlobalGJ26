@@ -14,8 +14,7 @@ public enum GameState { PreGame, Pause, Moving, Qte, GameOver };
 public class GameManager : Utils.Singleton.Singleton<GameManager>
 {
     [SerializeField] AudioType levelMusic;
-    //[SerializeField] AudioType levelMusic;
-    //[SerializeField] AudioType levelMusic;
+
 
     private int _dashCount;
     private int _goldAmount;
@@ -23,11 +22,7 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     private MaskEnum _currentMask;
     public MaskEnum CurrentMask => _currentMask;
 
-    private List<Bin> bins;
-    private List<Pnj> pnj;
-
     private bool _isGamePaused = false;
-    private bool _isGameOver = false;
 
     public static Action<bool> OnGameOver; //true -> win | false -> loose
     public static Action OnKeyPickUp;
@@ -37,14 +32,12 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
 
     private ExitDoor door;
 
-    [SerializeField] public GameState gameState = GameState.PreGame;    
+    private GameState _currentGameState;
+    public GameState CurrentGameState  => _currentGameState;
     void Start()
     {
-        _isGameOver = false;
+        _currentGameState = GameState.PreGame;
         AudioController.Instance.PlayAudio(levelMusic);
-        QteBehaviour.Instance.OnDone += OnQteDone;
-        PreGameUI.Instance.OnMaskChanged += OnMaskChanged;
-        ExitDoor.OnPlayerExit += GameOver;
     }
 
     private void OnMaskChanged(MaskEnum maskEnum)
@@ -70,10 +63,8 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     }
 
     public void ChangeGameState(GameState state){
-        gameState = state;
+        _currentGameState = state;
     }
-
-
 
     public void OnGamePauseHandler(InputAction.CallbackContext context)
     {
@@ -88,15 +79,17 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     private void OnEnable()
     {
         CopGrasp.OnPlayerCatched += GameOver;
-        Bin.OnKeyFound += HasKey;
+        QteBehaviour.Instance.OnDone += OnQteDone;
+        PreGameUI.Instance.OnMaskChanged += OnMaskChanged;
         ExitDoor.OnPlayerExit += GameOver;
     }
 
     private void OnDisable()
     {
         CopGrasp.OnPlayerCatched -= GameOver;
-        Bin.OnKeyFound -= HasKey;
-        ExitDoor.OnPlayerExit += GameOver;
+        QteBehaviour.Instance.OnDone -= OnQteDone;
+        PreGameUI.Instance.OnMaskChanged -= OnMaskChanged;
+        ExitDoor.OnPlayerExit -= GameOver;
     }
 
     public void RestartLevel()
@@ -106,10 +99,9 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
 
     private void GameOver(bool isWin)
     {
-        gameState = GameState.GameOver;
+        _currentGameState = GameState.GameOver;
         Debug.Log("MG has game over");
         OnGameOver?.Invoke(isWin);
-        _isGameOver = true;
     }
 
     private void OnQteDone(int score)
@@ -131,8 +123,4 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
         OnDashUpdated?.Invoke(_dashCount);
     }
 
-    public void HasKey(){
-        door = FindAnyObjectByType<ExitDoor>();
-        door.UnlockDoor();
-    }
 }

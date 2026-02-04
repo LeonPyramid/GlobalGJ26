@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
     {
         Mouse mouse = Mouse.current;
         if(mouse.leftButton.wasPressedThisFrame){
-            if (MenuManager.Instance.MenuCount == 0 && GameManager.Instance.gameState == GameState.Moving){
+            if (MenuManager.Instance.MenuCount == 0 && GameManager.Instance.CurrentGameState == GameState.Moving){
                 OnClick?.Invoke();
                 if(status == Status.Moving)
                 {

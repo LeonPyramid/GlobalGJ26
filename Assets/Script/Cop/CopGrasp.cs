@@ -13,7 +13,7 @@ public class CopGrasp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(cooldown || GameManager.Instance.gameState == GameState.GameOver) return;
+        if(cooldown || GameManager.Instance.CurrentGameState == GameState.GameOver) return;
 
         int CollLayer = collision.gameObject.layer;
         if (CollLayer == LayerMask.NameToLayer("PlayerBody"))

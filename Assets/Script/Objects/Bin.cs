@@ -7,11 +7,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(InteractationBehaviour))]
 public class Bin : MonoBehaviour, IInteractable
 {
     [Header("State")]
     [SerializeField] private bool hasKey = false;
-    private bool isSearched = false;
+    private bool isUsable = true;
     private bool isPlayerInside = false;
 
     [Header("Settings")]
@@ -27,12 +28,13 @@ public class Bin : MonoBehaviour, IInteractable
     [SerializeField] private BinUI binUI;
     [SerializeField] private float shakeDuration = 0.5f;
 
-    private bool isUsable = true;
     private bool playerInside = false;
     private Player currentPlayer;
 
     public bool IsActive => isUsable;
     public float Cooldown => useCoolDown;
+
+    public bool CanInteract => isUsable && !playerInside;
 
     public static event Action OnKeyFound;
 
@@ -42,10 +44,9 @@ public class Bin : MonoBehaviour, IInteractable
 
         EnterBin(player);
 
-        if (hasKey && !isSearched)
+        if (hasKey)
         {
             Debug.Log("Clé trouvée !");
-            isSearched = true;
             hasKey = false;
             OnKeyFound?.Invoke();
         }
@@ -63,8 +64,7 @@ public class Bin : MonoBehaviour, IInteractable
         ApplyVisual(fullSprites);
         PlayShake();
 
-        if (binUI) binUI.PlayFill();
-
+        if (binUI) binUI.PlayFill(ejectCoolDown);
 
         StartCoroutine(EjectTimer());
     }
@@ -80,7 +80,7 @@ public class Bin : MonoBehaviour, IInteractable
         currentPlayer.SetStatic();
 
         PlayShake();
-        if (binUI) binUI.StopFill();
+        if (binUI) binUI.StopFill(useCoolDown);
 
         StartCoroutine(CooldownRoutine());
     }
@@ -115,6 +115,35 @@ public class Bin : MonoBehaviour, IInteractable
         transform.DOShakeRotation(shakeDuration, new Vector3(0, 0, 10)).SetUpdate(true);
     }
 
-    // Méthode pour configurer la poubelle via un GameManager
     public void AssignKey() => hasKey = true;
+
+    public void ExecuteAction()
+    {
+        if (!CanInteract) return;
+        EnterBin(currentPlayer);
+    }
+
+    public void OnPlayerEnter(Player player)
+    {
+        currentPlayer = player;
+        TimeManager.Instance?.SetNewTimeSpeed(TimeManager.NewTimeType.Bin);
+    }
+
+    public void OnPlayerExit()
+    {
+        TimeManager.Instance?.PopTypeSpeed(TimeManager.NewTimeType.Bin);
+    }
+
+    public void SetAvailability(bool isAvailable)
+    {
+        isUsable = isAvailable;
+        if (!isAvailable)
+        {
+            ApplyVisual(fullSprites); 
+        }
+        else
+        {
+            ApplyVisual(emptySprites);
+        }
+    }
 }

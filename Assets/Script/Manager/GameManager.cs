@@ -1,5 +1,6 @@
 using Audio;
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,6 +23,8 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     private MaskEnum _currentMask;
     public MaskEnum CurrentMask => _currentMask;
 
+    private List<Bin> bins;
+    private List<Pnj> pnj;
 
     private bool _isGamePaused = false;
     private bool _isGameOver = false;
@@ -86,14 +89,14 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     {
         CopGrasp.OnPlayerCatched += GameOver;
         Bin.OnKeyFound += HasKey;
-        //ExitDoor.OnPlayerExit += GameOver;
+        ExitDoor.OnPlayerExit += GameOver;
     }
 
     private void OnDisable()
     {
         CopGrasp.OnPlayerCatched -= GameOver;
         Bin.OnKeyFound -= HasKey;
-        //ExitDoor.OnPlayerExit += GameOver;
+        ExitDoor.OnPlayerExit += GameOver;
     }
 
     public void RestartLevel()

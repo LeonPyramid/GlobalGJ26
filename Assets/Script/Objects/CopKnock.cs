@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CopKnock : PlayerInteraction.PlayerAction
+public class CopKnock : InteractationBehaviour
 {
    private TimeManager timeManager;
     //[SerializeField] private GameObject richPart;
@@ -12,9 +12,8 @@ public class CopKnock : PlayerInteraction.PlayerAction
     }
 
     #nullable enable
-    override public void ActionEffect(Collider2D ?playerCollider){
-    }
-    public override void TimerEffect(Collider2D ?playerCollider)
+    //TODO implémenter l'interface IInsteractable
+    public void TimerEffect(Collider2D ?playerCollider)
     {
         GameManager.Instance.ChangeGameState(GameState.Qte);
         Vector2 playerDir = (Vector2)(playerCollider?.gameObject.GetComponent<PlayerGrasp>().player.direction);
@@ -25,21 +24,6 @@ public class CopKnock : PlayerInteraction.PlayerAction
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.QTE);
     }
     #nullable disable
-    public override void SetBlocked()
-    {
-        //richPart.SetActive(false);
-    }
-
-        public override void SetUnblocked()
-    {
-        //richPart.SetActive(true);
-
-    }
-
-    public override void TimerRevert()
-    {
-        //
-    }
 
     public void PostQTE(int score){
         if (score > 0){

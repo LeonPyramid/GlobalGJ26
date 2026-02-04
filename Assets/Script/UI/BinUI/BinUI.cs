@@ -10,12 +10,8 @@ namespace Script.UI.BinUI
 
         [Header("Fill")]
         [SerializeField] private RectTransform fillTransform;
-        [SerializeField] private float fillDuration;
         [SerializeField] private float fillStartX;
         [SerializeField] private float fillEndX;
-
-        [Header("Unfill")]
-        [SerializeField] private float unfillDuration;
 
         [Header("Vibrato")]
         [SerializeField] private int vibratoMin;
@@ -36,11 +32,9 @@ namespace Script.UI.BinUI
         {
             _barInitialPos = barTransform.anchoredPosition;
             barTransform.gameObject.SetActive(false);
-            fillDuration = GetComponentInParent<Bin>().ejectCoolDown;
-            unfillDuration = GetComponentInParent<Bin>().useCoolDown;
         }
 
-        public void PlayFill()
+        public void PlayFill(float fillDuration)
         {
             barTransform.gameObject.SetActive(true);
 
@@ -93,15 +87,15 @@ namespace Script.UI.BinUI
                 .OnComplete(StartShake);
         }
 
-        public void StopFill()
+        public void StopFill(float unfillDuration)
         {
             _fillTween?.Complete();
             _shakeTween?.Kill();
             _shakeControlTween?.Kill();
-            PlayUnfill();
+            PlayUnfill(unfillDuration);
         }
 
-        private void PlayUnfill()
+        private void PlayUnfill(float unfillDuration)
         {
             barTransform.DOKill();
             barTransform.anchoredPosition = _barInitialPos;

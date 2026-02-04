@@ -1,49 +1,53 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Utils.Singleton;
 
 
 /// <summary>
 /// A class storing all interactable objects on the scene
 /// </summary>
-public class ObjectManager: Utils.Singleton.Singleton<ObjectManager>
+public class ObjectManager: Singleton<ObjectManager>
 {
-    [SerializeField] List<PlayerInteraction> bins = new List<PlayerInteraction>();
-    [SerializeField] List<PlayerInteraction> pnj = new List<PlayerInteraction>();
+    [SerializeField] List<Bin> allBins = new List<Bin>();
+    [SerializeField] List<Pnj> allPnjs = new List<Pnj>();
 
     [SerializeField] int nbBinsActive;
     [SerializeField] int nbPnjActive;
 
-    private void Awake()
+    private void Start()
     {
-        
-        List<PlayerInteraction> binsCp = bins.ToList();
-        for (int i = 0; i < nbBinsActive; i ++){
-            int pos = Random.Range(0, binsCp.Count);
-            if (i == 0){
-                ((Bin)binsCp[pos].action).SetHasKey();
-            }
-            binsCp[pos].SetUnblocked();
-            binsCp.RemoveAt(pos);
-            if (binsCp.Count == 0)
-                break;
-        }
-        foreach (var obj in binsCp){
-            obj.SetBLocked();
-        }
-
-        List<PlayerInteraction> pnjCp = pnj.ToList();
-        for (int i = 0; i < nbPnjActive; i ++){
-            int pos = Random.Range(0, pnjCp.Count);
-            pnjCp[pos].SetUnblocked();
-            pnjCp.RemoveAt(pos);
-            if (pnjCp.Count == 0)
-                break;
-        }
-        foreach (var obj in pnjCp){
-            obj.SetBLocked();
-        }
-
+        InitializeBins();
+        InitializePnjs();
     }
 
+    private void InitializeBins()
+    {
+        var shuffledBins = allBins.OrderBy(x => Random.value).ToList();
+
+        for (int i = 0; i < shuffledBins.Count; i++)
+        {
+            bool shouldBeActive = i < nbBinsActive;
+            shuffledBins[i].SetAvailability(shouldBeActive);
+
+            if (shouldBeActive && i == 0)
+            {
+                shuffledBins[i].AssignKey();
+            }
+        }
+    }
+
+    private void InitializePnjs()
+    {
+        var shuffledPnjs = allPnjs.OrderBy(x => Random.value).ToList();
+
+        for (int i = 0; i < shuffledPnjs.Count; i++)
+        {
+            bool shouldBeActive = i < nbPnjActive;
+            shuffledPnjs[i].SetAvailability(shouldBeActive);
+        }
+    }
+
+
 }
+

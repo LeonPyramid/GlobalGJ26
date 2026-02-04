@@ -85,14 +85,14 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     private void OnEnable()
     {
         CopGrasp.OnPlayerCatched += GameOver;
-        Bin.OnKeyPickedUp += HasKey;
+        Bin.OnKeyFound += HasKey;
         //ExitDoor.OnPlayerExit += GameOver;
     }
 
     private void OnDisable()
     {
         CopGrasp.OnPlayerCatched -= GameOver;
-        Bin.OnKeyPickedUp -= HasKey;
+        Bin.OnKeyFound -= HasKey;
         //ExitDoor.OnPlayerExit += GameOver;
     }
 

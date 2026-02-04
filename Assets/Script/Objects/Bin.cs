@@ -1,169 +1,120 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Audio;
 using DG.Tweening;
 using Script.UI.BinUI;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Bin : PlayerInteraction.PlayerAction
+public class Bin : MonoBehaviour, IInteractable
 {
-    [SerializeField] private SpriteRenderer childSprite;
-    private TimeManager timeManager;
-    [SerializeField] bool hasKey = false;
-    [SerializeField] public float useCoolDown 
-    {
-        get; private set;
-    } = 10;
-    [SerializeField]
-    public float ejectCoolDown
-    {
-        get; private set;
-    } = 3;
-    bool isUsable = true;
-    bool isPlayerInside;
+    [Header("State")]
+    [SerializeField] private bool hasKey = false;
+    private bool isSearched = false;
+    private bool isPlayerInside = false;
 
-    [SerializeField] private List<Sprite> binFaceEmpty;
-    [SerializeField] private List<Sprite> binFaceFull;
+    [Header("Settings")]
+    [SerializeField] private float useCoolDown = 10f;
+    [SerializeField] private float ejectCoolDown = 3f;
 
+    [Header("Visuals")]
+    [SerializeField] private SpriteRenderer mainRenderer;
+    [SerializeField] private List<Sprite> emptySprites;
+    [SerializeField] private List<Sprite> fullSprites;
 
-    #nullable enable
-    private Player ?player;
-
-    #nullable disable
-
+    [Header("Feedback")]
     [SerializeField] private BinUI binUI;
-    // Use Play fill to play fill, Stop fill to stop it, values can be changed in Bin prefab, deactivate Canvas if you don't like the system
+    [SerializeField] private float shakeDuration = 0.5f;
 
-    [Header("Shake vars")]
+    private bool isUsable = true;
+    private bool playerInside = false;
+    private Player currentPlayer;
 
-    [SerializeField] private float shakeTime;
-    [SerializeField] int vibrato;
-    [SerializeField] int force;
-    [SerializeField] int randomness;
+    public bool IsActive => isUsable;
+    public float Cooldown => useCoolDown;
 
-    [SerializeField] private Key key;
-  
+    public static event Action OnKeyFound;
 
-    public static Action OnKeyPickedUp;
-    private void Start()
+    public void Interact(Player player)
     {
-        //TODO Rajouter Random sur sprite poubelle
-        timeManager = TimeManager.Instance;
-        //childSprite = GetComponentInChildren<SpriteRenderer>();
-        childSprite.enabled = false;
-        player = null;
-        key.GetComponent<SpriteRenderer>().enabled = false;
-    }
+        if (isPlayerInside) return;
 
+        EnterBin(player);
 
-
-    public override void SetBlocked()
-    {
-        gameObject.GetComponent<SpriteRenderer>().sprite = binFaceFull[UnityEngine.Random.Range(0, binFaceFull.Count)];
-    }
-
-    public override void SetUnblocked()
-    {
-            gameObject.GetComponent<SpriteRenderer>().sprite = binFaceEmpty[UnityEngine.Random.Range(0, binFaceEmpty.Count)];
-            childSprite.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
-
-
-    }
-
-    override public void ActionEffect(Collider2D playerCollider)
-    {
-        
-        if (!isUsable) return;
-        BinShake();
-        GameObject playerGo = playerCollider.gameObject.GetComponent<PlayerGrasp>().player.gameObject;
-        playerGo.transform.position = transform.position;
-        if (player == null)
-            player = playerGo.GetComponent<Player>(); 
-        player.SetHidden();
-        player.OnClick += LeaveBin;
-        isPlayerInside = true;
-        timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.Moving);
-        if(!GameManager.Instance.HasMaskEquiped(MaskEnum.Gas))
+        if (hasKey && !isSearched)
         {
-            StartCoroutine(ProcessEjectCoolDown(player));
-            binUI.PlayFill();
-        }
-        if (hasKey)
-        {
-            OnKeyPickedUp.Invoke();
-            key.KeyPickedUp();
+            Debug.Log("Clé trouvée !");
+            isSearched = true;
             hasKey = false;
-            
+            OnKeyFound?.Invoke();
         }
     }
 
-    IEnumerator ProcessUseCoolDown()
+    private void EnterBin(Player player)
     {
-        PlayerInteraction pi = GetComponentInParent<PlayerInteraction>();
-        pi.status = PlayerInteraction.Status.Blocked;
-        isUsable = false;
-        Debug.Log("Je peux plus");
-        yield return new WaitForSecondsRealtime(useCoolDown);
-        Debug.Log("Je use");
-        isUsable = true;
-        pi.status = PlayerInteraction.Status.Far;
+        playerInside = true;
+        currentPlayer = player;
+
+        player.SetHidden();
+        player.transform.position = transform.position;
+        player.OnClick += LeaveBin; 
+
+        ApplyVisual(fullSprites);
+        PlayShake();
+
+        if (binUI) binUI.PlayFill();
+
+
+        StartCoroutine(EjectTimer());
     }
 
-    void LeaveBin(){
+    private void LeaveBin()
+    {
+        if (!playerInside) return;
+
         StopAllCoroutines();
-        Debug.Log("Je quitte");
-        ProcessEjectInstant(player);
+        playerInside = false;
+
+        currentPlayer.OnClick -= LeaveBin;
+        currentPlayer.SetStatic();
+
+        PlayShake();
+        if (binUI) binUI.StopFill();
+
+        StartCoroutine(CooldownRoutine());
     }
 
-
-    IEnumerator ProcessEjectCoolDown(Player player)
+    private IEnumerator EjectTimer()
     {
         yield return new WaitForSecondsRealtime(ejectCoolDown);
-        if (isPlayerInside)
+        if (playerInside)
         {
-            ProcessEjectInstant(player);
+            Debug.Log("Temps écoulé ! Éjection automatique.");
+            LeaveBin();
         }
     }
 
-    void ProcessEjectInstant(Player player){
-        player.OnClick -= LeaveBin;
-        BinShake();
-        Debug.Log("Pop!");
-        EjectPlayer(player);
-        binUI.StopFill();
-        isPlayerInside = false;
-        StartCoroutine(ProcessUseCoolDown());
+    private IEnumerator CooldownRoutine()
+    {
+        isUsable = false;
+        ApplyVisual(emptySprites);
+        yield return new WaitForSeconds(useCoolDown);
+        isUsable = true;
     }
 
-    #nullable enable
-    public override void TimerEffect(Collider2D ?playerCollider)
+    private void ApplyVisual(List<Sprite> pool)
     {
-        childSprite.enabled = true;
-        TimeManager.Instance.SetNewTimeSpeed(TimeManager.NewTimeType.Bin);
+        if (pool != null && pool.Count > 0)
+            mainRenderer.sprite = pool[Random.Range(0, pool.Count)];
     }
 
-    public override void TimerRevert()
+    private void PlayShake()
     {
-        childSprite.enabled = false;
-        TimeManager.Instance.PopTypeSpeed(TimeManager.NewTimeType.Bin);
-        //StartCoroutine(ProcessUseCoolDown());
-    }
-    #nullable disable
-
-    void BinShake(){
-        AudioController.Instance.PlayAudio(Audio.AudioType.SFX_Bin, false, 0f, Random.Range(.8f,1f));
-        transform.DOShakeRotation(shakeTime,new Vector3(0,0,force),vibrato,randomness).SetUpdate(true);
+        AudioController.Instance?.PlayAudio(Audio.AudioType.SFX_Bin, false, 0f, Random.Range(.8f, 1f));
+        transform.DOShakeRotation(shakeDuration, new Vector3(0, 0, 10)).SetUpdate(true);
     }
 
-    public void SetHasKey()
-    {
-        hasKey = true;
-    }
-   
-    private void EjectPlayer(Player player)
-    {
-        player.SetStatic();
-    }
+    // Méthode pour configurer la poubelle via un GameManager
+    public void AssignKey() => hasKey = true;
 }

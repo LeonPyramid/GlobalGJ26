@@ -11,12 +11,12 @@ public class ExitDoor : MonoBehaviour
 
     void OnEnable()
     {
-        Bin.OnKeyPickedUp += UnlockDoor;
+        Bin.OnKeyFound += UnlockDoor;
     }
 
     private void OnDisable()
     {
-        Bin.OnKeyPickedUp -= UnlockDoor;
+        Bin.OnKeyFound -= UnlockDoor;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

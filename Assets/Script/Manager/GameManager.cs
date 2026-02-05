@@ -39,9 +39,6 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     {
         _isGameOver = false;
         AudioController.Instance.PlayAudio(levelMusic);
-        QteBehaviour.Instance.OnDone += OnQteDone;
-        PreGameUI.Instance.OnMaskChanged += OnMaskChanged;
-        ExitDoor.OnPlayerExit += GameOver;
     }
 
     private void OnMaskChanged(MaskEnum maskEnum)
@@ -86,19 +83,23 @@ public class GameManager : Utils.Singleton.Singleton<GameManager>
     {
         CopGrasp.OnPlayerCatched += GameOver;
         Bin.OnKeyPickedUp += HasKey;
-        //ExitDoor.OnPlayerExit += GameOver;
+        QteBehaviour.OnDone += OnQteDone;
+        PreGameUI.OnMaskChanged += OnMaskChanged;
+        ExitDoor.OnPlayerExit += GameOver;
     }
 
     private void OnDisable()
     {
         CopGrasp.OnPlayerCatched -= GameOver;
         Bin.OnKeyPickedUp -= HasKey;
-        //ExitDoor.OnPlayerExit += GameOver;
+        QteBehaviour.OnDone -= OnQteDone;
+        PreGameUI.OnMaskChanged -= OnMaskChanged;
+        ExitDoor.OnPlayerExit -= GameOver;
     }
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void GameOver(bool isWin)

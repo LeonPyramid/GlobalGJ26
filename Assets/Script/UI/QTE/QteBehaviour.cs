@@ -71,7 +71,7 @@ public class QteBehaviour : Singleton<QteBehaviour>
     [SerializeField] private float ScoreRange;
     [SerializeField] private List<float> scoreRangesPossible;
 
-    public Action<int> OnDone;
+    public static Action<int> OnDone;
     private bool _copMode = false;
 
     private void Start()

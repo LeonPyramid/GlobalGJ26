@@ -20,7 +20,7 @@ public class CopKnock : PlayerInteraction.PlayerAction
         Vector2 playerDir = (Vector2)(playerCollider?.gameObject.GetComponent<PlayerGrasp>().player.direction);
         Vector2 playerToObjDir = (transform.position - playerCollider.gameObject.transform.position).normalized;
         float quality = playerDir.x  * playerToObjDir.x +  playerDir.y  * playerToObjDir.y ;
-        QteBehaviour.Instance.OnDone += PostQTE;
+        QteBehaviour.OnDone += PostQTE;
         timeManager.AddQualityQTE(quality);
         timeManager.SetNewTimeSpeed(TimeManager.NewTimeType.QTE);
     }
@@ -45,6 +45,6 @@ public class CopKnock : PlayerInteraction.PlayerAction
         if (score > 0){
             //GetComponentInParent<PlayerInteraction>().SetBLocked();
         }
-        QteBehaviour.Instance.OnDone -= PostQTE;
+        QteBehaviour.OnDone -= PostQTE;
     }
 }

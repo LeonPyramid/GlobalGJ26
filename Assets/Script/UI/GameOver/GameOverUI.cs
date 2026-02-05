@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameOver : MonoBehaviour
+public class GameOverUI : MonoBehaviour
 {
     [SerializeField] private RectTransform rectTransform;
 
@@ -56,11 +56,11 @@ public class GameOver : MonoBehaviour
 
     private void OnGameOver(bool win)
     {
-        if(win)
+        if (win)
         {
             title.color = winColor;
             title.text = winText;
-        } 
+        }
         else
         {
             title.color = loseColor;
@@ -72,9 +72,10 @@ public class GameOver : MonoBehaviour
 
     private void Show(bool win)
     {
-        timeText.text = InGameUi.Instance.TimerText;
-        dashText.text = InGameUi.Instance.DashText;
-        scoreText.text = InGameUi.Instance.ScoreText;
+        timeText.text = InGameUI.Instance.TimerText;
+        dashText.text = InGameUI.Instance.DashText;
+        scoreText.text = InGameUI.Instance.ScoreText;
+        nextButton.gameObject.SetActive(win);
 
         rectTransform
             .DOAnchorPosY(0f, showDuration)
@@ -82,10 +83,10 @@ public class GameOver : MonoBehaviour
             .SetUpdate(true)
             .OnComplete(() =>
             {
-                if(win)
+                if (win)
                 {
                     ShowScores();
-                } 
+                }
                 else
                 {
                     ShowRetryButton();
@@ -121,5 +122,10 @@ public class GameOver : MonoBehaviour
         retry.DOAnchorPosY(showRetryY, showRetryDuration)
             .SetUpdate(true)
             .SetEase(showRetryEase);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnGameOver -= OnGameOver;
     }
 }

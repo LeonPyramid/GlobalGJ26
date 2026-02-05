@@ -45,7 +45,7 @@ public class CopGrasp : MonoBehaviour
                 Invoke(nameof(ResetCooldown), cooldownDuration);
                 TimeManager.Instance.AddQualityQTE(quality);
                 TimeManager.Instance.SetNewTimeSpeed(TimeManager.NewTimeType.Cop);
-                QteBehaviour.Instance.OnDone += OnQteDone;   
+                QteBehaviour.OnDone += OnQteDone;   
                 QteBehaviour.Instance.Show(UnityEngine.Random.Range(0,2)==0?-1f:1f, 0.25f, true);
                 return;
             }
@@ -53,7 +53,7 @@ public class CopGrasp : MonoBehaviour
 
     private void OnQteDone(int score)
     {
-        QteBehaviour.Instance.OnDone -= OnQteDone;
+        QteBehaviour.OnDone -= OnQteDone;
         if(score == 0)
         {
             OnPlayerCatched?.Invoke(false);

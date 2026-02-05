@@ -43,7 +43,7 @@ public class Cop : MonoBehaviour
                     currentIndex = 0;
                 _target = wayPoint[currentIndex];
             }
-            transform.position = Vector2.MoveTowards(transform.position, _target.position, currentSpeed * Time.timeScale);
+            transform.position = Vector2.MoveTowards(transform.position, _target.position, currentSpeed * Time.deltaTime);
         }
     }
 

@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe68d340d5a22b499a3284f8d744e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotatingSpeed: 0.35
+  rotatingSpeed: 1
   mask:
     serializedVersion: 2
     m_Bits: 320
@@ -745,8 +745,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5a8d00e7feccc429bc4cc0e89a2f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPoint: []
+  wayPoint:
+  - {fileID: 0}
+  - {fileID: 0}
   status: 0
-  chasingSpeed: 0.5
-  patrolSpeed: 0.1
+  chasingSpeed: 5
+  patrolSpeed: 1
   copVisionGo: {fileID: 5754665617578081286}

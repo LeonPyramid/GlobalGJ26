@@ -18,9 +18,9 @@ public class PreGameUI : Singleton<PreGameUI>
 
     private MaskTemplate _currentMaskSelected;
 
-    public Action<MaskEnum> OnMaskChanged;
+    public static Action<MaskEnum> OnMaskChanged;
 
-    public Action OnGameStarted;
+    public static Action OnGameStarted;
     
     private void Start()
     {

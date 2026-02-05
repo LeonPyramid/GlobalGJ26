@@ -12,7 +12,7 @@ public class PlayerMaskHandler : MonoBehaviour
 
     private void Start()
     {
-        PreGameUI.Instance.OnMaskChanged += OnMaskChanged;
+        PreGameUI.OnMaskChanged += OnMaskChanged;
     }
 
     private void OnMaskChanged(MaskEnum mask)
@@ -36,6 +36,11 @@ public class PlayerMaskHandler : MonoBehaviour
     public bool HasMaskEquiped(MaskEnum maskEnum)
     {
         return _currentMaskEquiped.MaskEnum == maskEnum;
+    }
+
+    private void OnDestroy()
+    {
+        PreGameUI.OnMaskChanged -= OnMaskChanged;
     }
 }
 

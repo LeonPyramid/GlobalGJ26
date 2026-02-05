@@ -5,7 +5,7 @@ using UnityEngine;
 using Utils.Anchor;
 using Utils.Singleton;
 
-public class InGameUi : Singleton<InGameUi>
+public class InGameUI : Singleton<InGameUI>
 {
     [Header("Timer")]
     [SerializeField] private TextMeshProUGUI timer;
@@ -37,8 +37,10 @@ public class InGameUi : Singleton<InGameUi>
     private void Start()
     {
         GameManager.OnGameOver += OnGameOver;
+        GameManager.OnGoldUpdated += OnGoldUpdated;
 
-        PreGameUI.Instance.OnGameStarted += OnGameStarted;
+        GameManager.OnDashUpdated += OnDashUpdated;
+        PreGameUI.OnGameStarted += OnGameStarted;
     }
 
     private void OnGameOver(bool obj)
@@ -51,11 +53,13 @@ public class InGameUi : Singleton<InGameUi>
         StartTimer();
     }
 
-    private void OnEnable()
+    private void OnDestroy()
     {
-        GameManager.OnGoldUpdated += OnGoldUpdated;
-        
-        GameManager.OnDashUpdated += OnDashUpdated;
+        GameManager.OnGameOver -= OnGameOver;
+        GameManager.OnGoldUpdated -= OnGoldUpdated;
+
+        GameManager.OnDashUpdated -= OnDashUpdated;
+        PreGameUI.OnGameStarted -= OnGameStarted;
     }
 
     private void OnDashUpdated(int obj)

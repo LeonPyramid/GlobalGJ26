@@ -38,7 +38,7 @@ public class TimeManager : Singleton<TimeManager>
             newTimeQueue = new Queue<NewTimeType>();
         qualityQTEQueue = new Queue<float>();
         qteBehaviour = QteBehaviour.Instance;
-        qteBehaviour.OnDone += OnQteDone;
+        QteBehaviour.OnDone += OnQteDone;
         InitiaFixedDeltaTime = Time.fixedDeltaTime;
         newTimeType = NewTimeType.Pause;
         //Time.timeScale = 0;
@@ -140,7 +140,7 @@ public class TimeManager : Singleton<TimeManager>
         lastChangeTime = DOTween.To(x => Time.timeScale = x,Time.timeScale,newTimeSpeed,timeChangeSpeed).SetUpdate(true);
         lastChangeFixed.Kill();
         lastChangeFixed = DOTween.To(x => Time.fixedDeltaTime = x, Time.fixedDeltaTime, InitiaFixedDeltaTime * newTimeSpeed, timeChangeSpeed);
-        VolumeManager.Instance.LerpVignette(newTimeSpeed / vignetteAttenuationRatio,
+        VolumeManager.Instance?.LerpVignette(newTimeSpeed / vignetteAttenuationRatio,
                                             Time.timeScale / vignetteAttenuationRatio, timeChangeSpeed);
     }
 

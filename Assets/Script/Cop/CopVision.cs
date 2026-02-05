@@ -25,7 +25,7 @@ public class CopVision : MonoBehaviour
     void FixedUpdate()
     {
         if (cop.IsStatic())
-            transform.Rotate(0, 0, rotatingSpeed*Time.timeScale, Space.Self);
+            transform.Rotate(0, 0, rotatingSpeed * Time.deltaTime, Space.Self);
 
         else if(target !=  null)
         {

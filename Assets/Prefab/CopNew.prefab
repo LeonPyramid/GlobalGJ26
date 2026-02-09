@@ -752,5 +752,5 @@ MonoBehaviour:
   - {fileID: 0}
   status: 0
   chasingSpeed: 30
-  patrolSpeed: 20
+  patrolSpeed: 5
   copVisionGo: {fileID: 5754665617578081286}

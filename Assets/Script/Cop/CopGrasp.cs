@@ -31,6 +31,7 @@ public class CopGrasp : MonoBehaviour
             } 
 
             OnPlayerCatched?.Invoke(false);
+            TimeManager.Instance.SetNewTimeSpeed(TimeManager.NewTimeType.Pause);
             AudioController.Instance.PlayAudio(Audio.AudioType.SFX_GameOver);
         }
         else 

@@ -38,6 +38,8 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private Button retryButton;
     [SerializeField] private Button nextButton;
 
+    [SerializeField] private string nextLvlName;
+
 
     private void Start()
     {
@@ -50,7 +52,7 @@ public class GameOverUI : MonoBehaviour
 
         nextButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("Game 2");
+            SceneManager.LoadScene(nextLvlName);
         });
     }
 

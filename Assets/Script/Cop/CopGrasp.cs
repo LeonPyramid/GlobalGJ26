@@ -26,6 +26,7 @@ public class CopGrasp : MonoBehaviour
                 PreGameUI.Instance.ForceNewMask(MaskEnum.Basic);
                 AudioController.Instance.PlayAudio(Audio.AudioType.SFX_Wood);
                 cooldown = true;
+                cop.Stun(1);
                 Invoke(nameof(ResetCooldown), cooldownDuration);
                 return;
             } 

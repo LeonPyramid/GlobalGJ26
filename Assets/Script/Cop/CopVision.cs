@@ -2,13 +2,16 @@ using Audio;
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class CopVision : MonoBehaviour
 {
     private PolygonCollider2D visionCone;
     [SerializeField] private float rotatingSpeed = 0.65f;
     [SerializeField] private LayerMask mask;
- 
+    [SerializeField] Color looking;
+    [SerializeField] Color chasing;
+
     public enum Status { Idle, Chasing };
 
     [SerializeField] public Status status;
@@ -20,6 +23,7 @@ public class CopVision : MonoBehaviour
     {
         visionCone = this.GetComponent<PolygonCollider2D>();
         cop = GetComponentInParent<Cop>();
+        GetComponent<Light2D>().color = looking;
     }
 
     void FixedUpdate()
@@ -50,6 +54,7 @@ public class CopVision : MonoBehaviour
                 Debug.Log(hit);
                 if(hit.collider.gameObject.layer == LayerMask.NameToLayer("PlayerBody") && status != Status.Chasing){
                     target = player.transform;
+                    GetComponent<Light2D>().color = chasing;
                     status = Status.Chasing;
                     cop.BeginChase(target.transform);
                     AudioController.Instance.PlayAudio(Audio.AudioType.SFX_CopWhistle);

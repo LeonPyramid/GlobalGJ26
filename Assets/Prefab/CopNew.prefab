@@ -471,10 +471,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe68d340d5a22b499a3284f8d744e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotatingSpeed: 1
+  rotatingSpeed: 30
   mask:
     serializedVersion: 2
     m_Bits: 320
+  looking: {r: 1, g: 0.85490197, b: 0.6, a: 1}
+  chasing: {r: 1, g: 0.011764706, b: 0, a: 1}
   status: 0
 --- !u!60 &5956882990270560901
 PolygonCollider2D:
